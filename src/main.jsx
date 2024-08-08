@@ -12,7 +12,7 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-      <BrowserRouter basename="/Melodia">
+      <BrowserRouter basename="/Lumina-AI">
         <Routes>
           <Route path="/" element={<LogIn />} />
           <Route path="register" element={<Register />} />

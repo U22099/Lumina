@@ -1,19 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       animation: {
-        'spin-once': 'spin 0.5s linear'
+        "spin-once": "spin 0.5s linear",
       },
-      fontFamily: {
-        custom: ['Plus\\ Jakarta\\ Sans', 'serif'],
-    },
     },
   },
   plugins: [],
-}
-
+};

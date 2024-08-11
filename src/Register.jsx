@@ -65,9 +65,9 @@ const Register = () => {
     return data;
   };
   return (
-    <div className="my-[30px] flex flex-col justify-center md:p-[30px] p-[0px] rounded-[16px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
+    <div className="my-[30px] flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
       <header className="flex justify-start text-start w-[100%]">
-        <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">
+        <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Welcome to Lumina
         </h1>
       </header>
@@ -97,20 +97,20 @@ const Register = () => {
           </div>
           <label
             htmlFor="input"
-            className="underline text-[1.1em] cursor-pointer text-[var(--accent-color-2)] "
+            className="underline text-[1.3em] cursor-pointer text-[var(--accent-color-2)] comic-neue-bold "
           >
             Add Photo
           </label>
         </div>
         <input className="input" type="email" id="email" placeholder="Email" />
         <input
-          className="input"
+          className="input comic-neue-bold"
           type="text"
           id="username"
           placeholder="Username"
         />
         <input
-          className="input"
+          className="input comic-neue-bold"
           type="password"
           id="pwd"
           placeholder="Password"
@@ -124,7 +124,7 @@ const Register = () => {
         </p>
         <button
           onClick={upload}
-          className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-lg font-extrabold"
+          className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-[1.5em] comic-neue-bold"
           id="submit"
         >
           {text}

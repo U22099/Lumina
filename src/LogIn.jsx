@@ -60,7 +60,7 @@ const LogIn = () => {
   return (
     <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[20px]">
       <header className="flex justify-start text-start w-[100%]">
-        <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">
+        <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Log in to Lumina
         </h1>
       </header>
@@ -70,14 +70,14 @@ const LogIn = () => {
         className="w-[100%] flex flex-col justify-start gap-[10px]"
       >
         <input
-          className="input"
+          className="input comic-neue-bold"
           type="text"
           id="input"
           placeholder="Email or username"
         />
         <div className="relative text-center w-[100%] flex justify-start align-center">
           <input
-            className="input"
+            className="input comic-neue-bold"
             id="pwd"
             type={show ? "text" : "password"}
             placeholder="Password"
@@ -94,11 +94,7 @@ const LogIn = () => {
             />
           )}
         </div>
-        <p
-          className={
-            error === "" ? "hidden" : "text-[0.8em] font-bold text-red-500"
-          }
-        >
+        <p className={error === "" ? "hidden" : "text-[0.8em] text-red-500"}>
           {error}
         </p>
         <div className="flex mt-[10px] gap-[10px] justify-start w-[100%] text-white">
@@ -108,13 +104,13 @@ const LogIn = () => {
             id="checkbox"
             className="accent-[var(--secondary-color)] transform scale-[1.3] hover:cursor-pointer"
           />
-          <label htmlFor="checkbox" className="text-[0.9em]">
+          <label htmlFor="checkbox" className="comic-neue-regular text-[0.9em]">
             Remember me
           </label>
         </div>
         <button
           onClick={auth}
-          className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-lg font-extrabold"
+          className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-[1.5em] comic-neue-bold"
           id="submit"
         >
           {text}
@@ -123,17 +119,17 @@ const LogIn = () => {
       <footer className="mt-[20px] flex flex-col gap-[20px] align-center justify-center text-center w-[100%]">
         <Link
           to="/forgotPassword"
-          className="underline my-[10px] hover:cursor-pointer "
+          className="comic-neue-regular underline my-[10px] hover:cursor-pointer "
         >
           Forgot your password
         </Link>
         <div className="gap-[20px]">
-          <p className="text-[var(--accent-color-2)] font-bold hover:cursor-pointer font-serif">
+          <p className="text-[var(--accent-color-2)] hover:cursor-pointer comic-neue-regular">
             Don't have an account?
           </p>
           <Link
             to="/register"
-            className="text-[var(--accent-color-2)]  underline mt-[20px] hover:cursor-pointer"
+            className="text-[var(--accent-color-2)] underline mt-[20px] hover:cursor-pointer"
           >
             Sign up for Lumina
           </Link>

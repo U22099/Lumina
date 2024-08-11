@@ -41,7 +41,7 @@ const ForgotPassword = () => {
   return (
     <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:border-[var(--secondary-color)] md:border-[2px]  gap-[20px] my-[20px]">
       <header className="flex justify-start text-start w-[100%]">
-        <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">
+        <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Request New Password
         </h1>
       </header>
@@ -50,7 +50,12 @@ const ForgotPassword = () => {
         method="post"
         className="w-[100%] flex flex-col justify-start gap-[10px]"
       >
-        <input className="input" type="email" id="input" placeholder="Email" />
+        <input
+          className="input comic-neue-bold"
+          type="email"
+          id="input"
+          placeholder="Email"
+        />
         <p
           className={
             error === "" ? "hidden" : "text-[0.8em] font-bold text-red-500"
@@ -60,18 +65,21 @@ const ForgotPassword = () => {
         </p>
         <button
           onClick={auth}
-          className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-lg font-extrabold"
+          className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-[1.5em] comic-neue-bold"
           id="submit"
         >
           {text}
         </button>
       </form>
       <footer className="mt-[20px] flex flex-col gap-[20px] align-center justify-center text-center w-[100%]">
-        <Link to="/" className="underline mb-[10px] hover:cursor-pointer">
+        <Link
+          to="/"
+          className="underline mb-[10px] hover:cursor-pointer comic-neue-bold"
+        >
           Log In to Lumina
         </Link>
         <div className="gap-[20px]">
-          <p className="text-[var(--accent-color-2)] font-bold hover:cursor-pointer">
+          <p className="text-[var(--accent-color-2)] font-bold hover:cursor-pointer comic-neue-bold">
             Don't have an account?
           </p>
           <Link

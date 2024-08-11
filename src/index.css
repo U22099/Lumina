@@ -22,9 +22,10 @@
   cursor: pointer;
 }
 :root {
-  --secondary-color: #1db954;
-  --primary-color: #121212;
-  --text-primary-color: #797878;
+  --secondary-color: #b871fd;
+  --primary-color: #1c1c22;
+  --accent-color: #1e1e24;
+  --accent-color-2: #3c3c46;
   --font: "helvetica" "calibri" arial;
 }
 .input {
@@ -35,6 +36,7 @@
   color: #aaaaaa;
   border-radius: 10px;
   margin: 0px auto;
+  outline: none;
 }
 .btn {
   display: flex;

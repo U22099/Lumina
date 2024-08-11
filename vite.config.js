@@ -15,6 +15,8 @@ export default defineConfig({
         target: origin.default.origin,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/server/, ""),
+        cookieDomainRewrite: true,
+        credentials: true,
       },
     },
   },

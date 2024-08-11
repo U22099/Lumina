@@ -6,9 +6,7 @@ import refresh from './refresh.js'
 const deleteUser = async (setErr, navigate) => {
     try {
       const url = "/server/user";
-      const response = await axios.delete(url, {
-        withCredentials: true,
-      });
+      const response = await axios.delete(url);
       if (response.status === 200) {
         await logOut(setErr, navigate);
         console.log("Deleted User Successfully");

@@ -2,12 +2,8 @@ const init = () => {
     const opendb = indexedDB.open("Melodia");
     opendb.onupgradeneeded = (event) => {
         const db = event.target.result;
-        db.createObjectStore("RecentMusicData");
-        db.createObjectStore("TopMusicData");
-        db.createObjectStore("DevData");
-        db.createObjectStore("MusicData");
+        db.createObjectStore("ChatData");
         db.createObjectStore("UserData");
-        db.createObjectStore("AdminData");
     }
     return opendb;
 }

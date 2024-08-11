@@ -3,13 +3,7 @@ import axios from "axios";
 const refresh = async (showErr, navigate) => {
   try {
     const url = "/server/refresh";
-    const response = await axios.post(
-      url,
-      {},
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.post(url, {});
     if (response.status === 200) return response;
   } catch (err) {
     if (
@@ -25,13 +19,7 @@ const refresh = async (showErr, navigate) => {
 const logOut = async (navigate) => {
     try {
         const url = "/server/logout";
-      const response = await axios.post(
-        url,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(url,{});
       if (response.status === 200) {
         navigate("/", { replace: true });
       }

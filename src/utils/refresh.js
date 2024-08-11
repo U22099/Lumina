@@ -1,19 +1,14 @@
 import axios from "axios";
 import origin from "../../config/origin.json";
 
-const refresh = async (navigate) => {
+const refresh = async (showErr, navigate) => {
   try {
     const url = origin.default.origin + "/refresh";
-    const refreshToken = localStorage.getItem("refreshToken");
     const response = await axios.post(
       url,
       {},
       {
         withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + refreshToken,
-        },
       }
     );
     if (response.status === 200) return response;
@@ -22,12 +17,28 @@ const refresh = async (navigate) => {
       err.response &&
       (err.response.status === 403 || err.response.status === 401)
     ) {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      navigate("/", { replace: true });
+      logOut(navigate);
       return err.response;
     }
   }
+};
+
+const logOut = async (navigate) => {
+    try {
+      const url = origin.default.origin + "/logout";
+      const response = await axios.post(
+        url,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      if (response.status === 200) {
+        navigate("/", { replace: true });
+      }
+    } catch (err) {
+      console.log(err);
+    }
 };
 
 export default refresh;

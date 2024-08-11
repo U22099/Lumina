@@ -29,12 +29,8 @@ const fetchUserData = async (
   } else {
     try {
       const url = origin.default.origin + "/user";
-      const accessToken = localStorage.getItem("accessToken");
       const response = await axios.get(url, {
         withCredentials: true,
-        headers: {
-          Authorization: "Bearer " + accessToken,
-        },
       });
       indexedDB.saveData(response.data, "UserData", indexedDB.init);
       localStorage.setItem("user_stored", true);
@@ -50,8 +46,6 @@ const fetchUserData = async (
       if (err.response && [401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);
         if (res.status === 200) {
-          localStorage.setItem("accessToken", res.data.accessToken);
-          console.log(res.data.accessToken);
           fetchUserData(
             refresh,
             setRefresh,
@@ -62,12 +56,9 @@ const fetchUserData = async (
             navigate
           );
         } else {
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
           navigate("/", { replace: true });
         }
       } else {
-        // props.setErr({ occured: true, msg: err.message });
         console.log(err);
       }
       if (err.message.includes("Network")) {

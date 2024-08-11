@@ -7,13 +7,8 @@ import refresh from './refresh.js'
 const deleteUser = async (setErr, navigate) => {
     try {
       const url = origin.default.origin + "/user";
-      const accessToken = localStorage.getItem("accessToken");
       const response = await axios.delete(url, {
         withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + accessToken,
-        },
       });
       if (response.status === 200) {
         await logOut(setErr, navigate);
@@ -24,7 +19,7 @@ const deleteUser = async (setErr, navigate) => {
       if ([401, 403].includes(err.response.status)) {
         const res = await refresh();
         if (res.status === 200) {
-          localStorage.setItem("accessToken", res.data.accessToken);
+
           deleteUser();
         } else {
           navigate("/", { replace: true });

@@ -54,7 +54,7 @@ const LogIn = () => {
     return (
         <div className="flex flex-col justify-center md:p-[30px] rounded-[10px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:bg-[var(--primary-color)] gap-[20px] my-[20px]">
             <header className="flex justify-start text-start w-[100%]">
-                <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">Log in to Melodia</h1>
+                <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">Log in to Lumina</h1>
             </header>
             <form action="" method="post" className="w-[100%] flex flex-col justify-start gap-[10px]">
                 <p className="text-[1.1em] font-bold">Email or username</p>
@@ -77,7 +77,7 @@ const LogIn = () => {
                 <Link to="/forgotPassword" className="underline my-[10px] hover:cursor-pointer">Forgot your password</Link>
                 <div className="gap-[20px]">
                     <p className="text-[var(--text-primary-color)] font-bold hover:cursor-pointer">Don't have an account?</p>
-                    <Link to="/register" className="underline mt-[20px] hover:cursor-pointer">Sign up for Melodia</Link>
+                    <Link to="/register" className="underline mt-[20px] hover:cursor-pointer">Sign up for Lumina</Link>
                 </div>
             </footer>
         </div>

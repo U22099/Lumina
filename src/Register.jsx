@@ -64,7 +64,7 @@ const Register = () => {
   return (
     <div className="flex flex-col justify-center md:p-[30px] p-[0px] rounded-[10px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:bg-[var(--primary-color)] gap-[20px] my-[40px]">
       <header className="flex justify-start text-start w-[100%]">
-        <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">Welcome to Melodia</h1>
+        <h1 className="text-[1.5em] md:text-[2.4em] text-[var(--secondary-color)] font-extrabold">Welcome to Lumina</h1>
       </header>
       <main className="w-[100%] flex flex-col justify-start gap-[10px]">
         <div className="flex justify-center items-center flex-col">
@@ -87,7 +87,7 @@ const Register = () => {
       </main>
       <footer className="mt-[20px] flex flex-col gap-[20px] align-center justify-center text-center w-[100%]">
         <p className="text-[var(--text-primary-color)] font-bold hover:cursor-pointer">Already have an account?</p>
-        <Link to="/" className="underline hover:cursor-pointer">Sign in to Melodia</Link>
+        <Link to="/" className="underline hover:cursor-pointer">Sign in to Lumina</Link>
       </footer>
     </div>
   )

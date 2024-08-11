@@ -1,9 +1,8 @@
 import axios from "axios";
-import origin from "../../config/origin.json";
 
 const refresh = async (showErr, navigate) => {
   try {
-    const url = origin.default.origin + "/refresh";
+    const url = "/server/refresh";
     const response = await axios.post(
       url,
       {},
@@ -25,7 +24,7 @@ const refresh = async (showErr, navigate) => {
 
 const logOut = async (navigate) => {
     try {
-      const url = origin.default.origin + "/logout";
+        const url = "/server/logout";
       const response = await axios.post(
         url,
         {},

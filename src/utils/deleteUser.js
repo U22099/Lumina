@@ -1,12 +1,11 @@
 import axios from 'axios'
 import indexedDB from './indexedDB.js'
-import origin from '../../config/origin.json'
 import logOut from './logOut.js'
 import refresh from './refresh.js'
 
 const deleteUser = async (setErr, navigate) => {
     try {
-      const url = origin.default.origin + "/user";
+      const url = "/server/user";
       const response = await axios.delete(url, {
         withCredentials: true,
       });

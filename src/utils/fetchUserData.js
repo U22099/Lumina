@@ -1,5 +1,4 @@
 import axios from "axios";
-import origin from "../../config/origin.json";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 
@@ -28,7 +27,7 @@ const fetchUserData = async (
     setLoading(false);
   } else {
     try {
-      const url = origin.default.origin + "/user";
+      const url = "/server/user";
       const response = await axios.get(url, {
         withCredentials: true,
       });

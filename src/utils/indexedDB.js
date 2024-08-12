@@ -1,5 +1,5 @@
 const init = () => {
-    const opendb = indexedDB.open("Melodia");
+    const opendb = indexedDB.open("Lumina");
     opendb.onupgradeneeded = (event) => {
         const db = event.target.result;
         db.createObjectStore("ChatData");

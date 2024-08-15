@@ -1,4 +1,3 @@
-import LuminaLogoImage from "../../public/Logo.jpg";
 import Avatar from "./Avatar";
 import { MdLogout } from "react-icons/md";
 
@@ -7,7 +6,7 @@ const Header = () => {
     <header className="flex items-center justify-between min-h-20 max-h-18 h-16 w-full bg-gray-200 dark:bg-[var(--accent-color-2)] px-20">
       <div className="flex items-center">
         <img
-          src={LuminaLogoImage}
+          src="logo.jpg"
           className="w-10 h-10 object-cover rounded-md"
           alt="Lumina logo"
         />

@@ -64,7 +64,7 @@ const Register = () => {
     return data;
   };
   return (
-    <div className="my-[30px] flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[50%] lg:w-[40%] dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
+    <div className="my-[30px] flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[70%] lg:w-[50%] dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
       <header className="flex justify-start text-start w-[100%]">
         <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Welcome to Lumina

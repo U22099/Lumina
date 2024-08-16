@@ -72,23 +72,20 @@
   z-index: 100;
 }
 .scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
   border-radius: 20px;
   transition: all 1s linear;
 }
 .scrollbar::-webkit-scrollbar-thumb {
-  width: 3px;
-  height: 3px;
-  border-radius: 20px;
+  visibility: hidden;
   cursor: pointer;
   background: var(--secondary-color);
 }
+.scrollbar::-webkit-scrollbar-thumb:hover{
+  visibility: visible;
+}
 .scrollbar::-webkit-scrollbar-track {
   background: black;
-  border-radius: 20px;
-  width: 5px;
-  height: 5px;
   cursor: pointer;
 }
 .borderAnim {

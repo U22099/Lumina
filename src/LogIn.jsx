@@ -57,7 +57,7 @@ const LogIn = () => {
     if (logged) navigate("/homepage", { replace: true });
   }, []);
   return (
-    <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-white dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[20px]">
+    <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[70%] lg:w-[50%] bg-white dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[20px]">
       <header className="flex justify-start text-start w-[100%]">
         <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Log in to Lumina

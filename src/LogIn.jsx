@@ -36,11 +36,10 @@ const LogIn = () => {
           }
         );
         if (response.status === 200) {
-          localStorage.setItem("accessToken", response.data.token.accessToken);
-          localStorage.setItem(
-            "refreshToken",
-            response.data.token?.refreshToken
-          );
+          const Lumina = JSON.parse(localStorage.getItem('Lumina')) || {
+            logged: true
+          }
+          localStorage.setItem('Lumina', JSON.stringify(Lumina));
           navigate("/homepage", { replace: true });
         }
       } catch (err) {
@@ -54,11 +53,11 @@ const LogIn = () => {
     }
   };
   useEffect(() => {
-    const refreshToken = localStorage.getItem("refreshToken");
-    if (refreshToken) navigate("/homepage", { replace: true });
+    const logged = JSON.parse(localStorage.getItem("Lumina"))?.logged
+    if (logged) navigate("/homepage", { replace: true });
   }, []);
   return (
-    <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[20px]">
+    <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-white dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[20px]">
       <header className="flex justify-start text-start w-[100%]">
         <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Log in to Lumina
@@ -70,7 +69,7 @@ const LogIn = () => {
         className="w-[100%] flex flex-col justify-start gap-[10px]"
       >
         <input
-          className="input comic-neue-bold"
+          className="input comic-neue-bold "
           type="text"
           id="input"
           placeholder="Email or username"
@@ -84,12 +83,12 @@ const LogIn = () => {
           />
           {show ? (
             <FaEyeSlash
-              className="absolute top-[40%] cursor-pointer left-[82%] transform scale-[1.2]"
+              className="absolute top-[40%] cursor-pointer left-[82%] transform scale-[1.2] fill-[var(--secondary-color)] dark:fill-white"
               onClick={reverse}
             />
           ) : (
             <FaEye
-              className="absolute cursor-pointer top-[40%] left-[82%] transform scale-[1.2]"
+              className="absolute cursor-pointer top-[40%] left-[82%] transform scale-[1.2] fill-[var(--secondary-color)] dark:fill-white"
               onClick={reverse}
             />
           )}
@@ -97,14 +96,17 @@ const LogIn = () => {
         <p className={error === "" ? "hidden" : "text-[0.8em] text-red-500"}>
           {error}
         </p>
-        <div className="flex mt-[10px] gap-[10px] justify-start w-[100%] text-white">
+        <div className="flex mt-[10px] gap-[10px] justify-start w-[100%]">
           <input
             type="checkbox"
             name="Rem"
             id="checkbox"
             className="accent-[var(--secondary-color)] transform scale-[1.3] hover:cursor-pointer"
           />
-          <label htmlFor="checkbox" className="comic-neue-regular text-[0.9em]">
+          <label
+            htmlFor="checkbox"
+            className="comic-neue-regular text-[0.9em] text-black dark:text-white"
+          >
             Remember me
           </label>
         </div>
@@ -119,7 +121,7 @@ const LogIn = () => {
       <footer className="mt-[20px] flex flex-col gap-[20px] align-center justify-center text-center w-[100%]">
         <Link
           to="/forgotPassword"
-          className="comic-neue-regular underline my-[10px] hover:cursor-pointer "
+          className="comic-neue-regular underline my-[10px] hover:cursor-pointer dark:text-white text-black"
         >
           Forgot your password
         </Link>

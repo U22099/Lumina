@@ -40,52 +40,10 @@
   --accent-color-2: #3c3c46;
   --font: "helvetica" "calibri" arial;
 }
-.input {
-  width: 90%;
-  background: var(--primary-color);
-  padding: 8px 15px;
-  font-size: 1.1em;
-  color: #aaaaaa;
-  border-radius: 10px;
-  margin: 0px auto;
-  outline: none;
-}
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  width: 88%;
-  margin: 0px auto;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-  color: black;
-  background: var(--secondary-color);
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  font-size: 1.3em;
-}
 .link {
   text-decoration: underline;
   margin-top: 20px;
   cursor: pointer;
-}
-.active {
-  position: relative;
-}
-.active::after {
-  content: "";
-  position: absolute;
-  width: calc(100% - 10px);
-  height: 5px;
-  background-color: var(--secondary-color);
-  top: 100%;
-  left: calc(0% + 5px);
-  margin: 0px auto;
-  border-radius: 10px;
-  transition: all 1s ease;
 }
 #roll1 {
   background-color: black;
@@ -133,58 +91,6 @@
   height: 5px;
   cursor: pointer;
 }
-.glow {
-  transition: 0.5s;
-  animation: glow 2s ease infinite alternate;
-}
-#range {
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 230px;
-  height: 10px;
-  background: black;
-  border-radius: 20px;
-  overflow: hidden;
-}
-#range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  background: var(--secondary-color);
-  border-radius: 20px;
-  box-shadow: -400px 0px 0px 390px var(--secondary-color);
-  cursor: pointer;
-  border: none;
-}
-#range:focus {
-  outline: none;
-}
-#vol {
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100px;
-  overflow: hidden;
-  height: 8px;
-  background: black;
-  border-radius: 20px;
-}
-#vol::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  background: var(--secondary-color);
-  border-radius: 20px;
-  box-shadow: -150px 0px 0px 140px var(--secondary-color);
-  cursor: pointer;
-  border: none;
-}
-#vol:focus {
-  outline: none;
-}
 .borderAnim {
   background: none;
   border-radius: 10px;
@@ -193,43 +99,6 @@
   border: 2px solid var(--secondary-color);
   transition: 1s;
   animation: hueRotate 3s linear infinite;
-}
-#loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto auto;
-  padding: 5px;
-  border: 3px solid var(--secondary-color);
-  border-top: transparent;
-  border-left: transparent;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: rotate 1s linear infinite;
-}
-#loader > p {
-  margin: none;
-  border: 3px solid var(--secondary-color);
-  border-left: transparent;
-  border-bottom: transparent;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: rotate 0.5s linear infinite;
-  animation-direction: reverse;
-}
-.profileLoader {
-  border: 2px solid green;
-  animation: glow 1s linear infinite;
-}
-@keyframes glow {
-  0% {
-    border-color: white;
-  }
-  100% {
-    border-color: var(--secondary-color);
-  }
 }
 @keyframes move {
   0% {
@@ -250,17 +119,16 @@
     filter: hue-rotate(360deg);
   }
 }
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
+
+.input {
+  @apply w-[90%] bg-transparent border-2 border-[var(--secondary-color)] dark:border-none dark:bg-[var(--primary-color)] p-[8px_15px] text-[1.1em] text-[#aaa] rounded-[10px] mx-auto outline-none text-black dark:text-white
+}
+.btn {
+  @apply flex justify-center items-center mt-[20px] w-[88%] mx-auto cursor-pointer text-center font-bold text-black bg-[var(--secondary-color)] border-none outline-none rounded-[10px] text-[1.3em]
+}

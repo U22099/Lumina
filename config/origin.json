@@ -1,7 +1,7 @@
 {
     "default": {
         "originA" : "http://localhost:7700",
-	"origin" : "https://melodia-server.onrender.com",
+	"origin" : "https://lumina-ai-bh5y.onrender.com",
 	"originB" : "https://melodia-omega.vercel.app",
 	"originD" : "https://x33q75-7700.csb.app"
     }

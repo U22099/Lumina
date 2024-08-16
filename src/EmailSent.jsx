@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const EmailSent = () => {
   return (
-    <div className="flex flex-col justify-center md:p-[30px] rounded-[10px] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:bg-[var(--primary-color)] gap-[20px] my-[20px]">
+    <div className="flex flex-col justify-center md:p-[30px] rounded-[10px] align-center w-[80%] md:w-[50%] lg:w-[40%] dark:bg-black md:bg-[var(--primary-color)] gap-[20px] my-[20px]">
       <main className="w-[100%] flex flex-col justify-center gap-[10px]">
         <h1 className="borderAnim mx-auto text-[var(--secondary-color)] comic-neue-bold">
           Email Sent Successfully

@@ -31,11 +31,10 @@ const Register = () => {
           },
         });
         if (response.status === 200) {
-          localStorage.setItem("accessToken", response.data.token.accessToken);
-          localStorage.setItem(
-            "refreshToken",
-            response.data.token?.refreshToken
-          );
+          const Lumina = JSON.parse(localStorage.getItem('Lumina')) || {
+            logged: true
+          }
+          localStorage.setItem('Lumina', JSON.stringify(Lumina));
           navigate("/homepage", { replace: true, state: { fromRoute: true } });
           setError("");
         }
@@ -65,7 +64,7 @@ const Register = () => {
     return data;
   };
   return (
-    <div className="my-[30px] flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[50%] lg:w-[40%] bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
+    <div className="my-[30px] flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[50%] lg:w-[40%] dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
       <header className="flex justify-start text-start w-[100%]">
         <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Welcome to Lumina
@@ -90,7 +89,7 @@ const Register = () => {
               />
             ) : (
               <FaUser
-                className=" rounded-[100%] flex justify-center align-center items-center bg-[var(--primary-color)] text-black text-[12em] pt-[10px] cursor-pointer"
+                className=" rounded-[100%] flex justify-center align-center items-center dark:bg-[var(--primary-color)] text-black text-[12em] pt-[10px] cursor-pointer fill-white"
                 onClick={() => document.getElementById("input").click()}
               />
             )}

@@ -1,6 +1,6 @@
 import { IoMdSend, IoMdAttach } from "react-icons/io";
 
-const SearchBox = () => {
+const InputBox = () => {
   const handleFileChange = (e) => {
     console.log(e.target.files[0].name);
   };
@@ -9,7 +9,7 @@ const SearchBox = () => {
     <div className="bg-gray-200 rounded-full  border-0  ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600   focus:ring-2 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color-2)] w-[90%] py-3 px-5 flex fixed left-[5%] bottom-10">
       <input
         type="text"
-        className="bg-none bg-transparent outline-none w-full placeholder:font-semibold"
+        className="bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-regular"
         autoComplete="off"
         placeholder="Message Lumina"
         tabIndex={0}
@@ -40,4 +40,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default InputBox;

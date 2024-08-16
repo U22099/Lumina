@@ -10,7 +10,7 @@ const Avatar = ({ userImage, userName }) => {
         }
         alt="user avatar"
       />
-      <span className="mx-2">{userName}</span>
+      <span className="mx-2 comic-neue-bold">{userName}</span>
     </div>
   );
 };

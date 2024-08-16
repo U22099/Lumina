@@ -10,7 +10,7 @@ const Header = () => {
           className="w-10 h-10 object-cover rounded-md"
           alt="Lumina logo"
         />
-        <span className="text-white font-semibold block ml-4">Lumina</span>
+        <span className="text-white comic-neue-bold block ml-4">Lumina</span>
       </div>
       <div className="flex">
         <Avatar userName={"Daniel"} />

@@ -3,6 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import origin from "../config/origin.json";
+import * as storage from './localStorage.js'
+
 
 const LogIn = () => {
   const [show, setShow] = useState(false);
@@ -36,10 +38,7 @@ const LogIn = () => {
           }
         );
         if (response.status === 200) {
-          const Lumina = JSON.parse(localStorage.getItem('Lumina')) || {
-            logged: true
-          }
-          localStorage.setItem('Lumina', JSON.stringify(Lumina));
+          storage.setValue("logged", true);
           navigate("/homepage", { replace: true });
         }
       } catch (err) {

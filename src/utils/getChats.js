@@ -1,6 +1,7 @@
 import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
+import * as storage from './localStorage.js'
 
 const getChats = async (
   setLoading,
@@ -8,7 +9,7 @@ const getChats = async (
   navigate
 ) => {
   setLoading(true);
-  const stored = JSON.parse(localStorage.getItem("chat_stored"));
+  const stored = storage.getValue("chat_stored");
   if (stored) {
     const data = await indexedDB.getData("ChatData", indexedDB.init);
     setChat(data.history);
@@ -18,7 +19,7 @@ const getChats = async (
       const url = "/server/chat";
       const response = await axios.get(url);
       indexedDB.saveData(response.data, "ChatData", indexedDB.init);
-      localStorage.setItem("chat_stored", true);
+      storage.setValue("chat_stored", true);
       setChat(response.data.history);
       if (response.status === 200) setLoading(false);
     } catch (err) {

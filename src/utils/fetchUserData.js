@@ -1,42 +1,29 @@
 import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
+import * as storage from './localStorage.js'
 
 const fetchUserData = async (
-  refresh,
-  setRefresh,
   setLoading,
-  setImage,
-  setEmail,
+  setUserImage,
   setUsername,
   navigate
 ) => {
   setLoading(true);
-  const stored = JSON.parse(localStorage.getItem("user_stored"));
+  const stored = storage.getValue("user_stored");
   if (stored && refresh.first) {
-    //&& !forceRefresh) {
     const data = await indexedDB.getData("UserData", indexedDB.init);
-    setImage(data.image);
-    setEmail(data.email);
+    setUserImage(data.image);
     setUsername(data.username);
-    // if (data.isAdmin) {
-    //   props.setIsAdmin(true);
-    // }
-    // setForceRefresh(true);
-    setRefresh({ refresh: true, first: false });
     setLoading(false);
   } else {
     try {
       const url = "/server/user";
       const response = await axios.get(url);
       indexedDB.saveData(response.data, "UserData", indexedDB.init);
-      localStorage.setItem("user_stored", true);
-      setImage(response.data.image);
-      setEmail(response.data.email);
+      storage.setValue("user_stored", true)
+      setUserImage(response.data.image);
       setUsername(response.data.username);
-      // if (response.data.isAdmin) {
-      //   props.setIsAdmin(true);
-      // }
       if (response.status === 200) setLoading(false);
     } catch (err) {
       console.log(err);
@@ -44,13 +31,10 @@ const fetchUserData = async (
         const res = await refresh(navigate);
         if (res.status === 200) {
           fetchUserData(
-            refresh,
-            setRefresh,
             setLoading,
-            setImage,
-            setEmail,
-            setUsername,
-            navigate
+  setUserImage,
+  setUsername,
+  navigate
           );
         } else {
           navigate("/", { replace: true });
@@ -60,13 +44,10 @@ const fetchUserData = async (
       }
       if (err.message.includes("Network")) {
         fetchUserData(
-          refresh,
-          setRefresh,
           setLoading,
-          setImage,
-          setEmail,
-          setUsername,
-          navigate
+  setUserImage,
+  setUsername,
+  navigate
         );
       }
     }

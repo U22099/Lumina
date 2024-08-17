@@ -74,7 +74,7 @@ const ForgotPassword = () => {
       <footer className="mt-[20px] flex flex-col gap-[20px] align-center justify-center text-center w-[100%]">
         <Link
           to="/"
-          className="underline mb-[10px] hover:cursor-pointer comic-neue-bold"
+          className="underline mb-[10px] hover:cursor-pointer comic-neue-bold text-black dark:text-white"
         >
           Log In to Lumina
         </Link>

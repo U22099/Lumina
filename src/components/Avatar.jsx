@@ -1,16 +1,25 @@
 import PropTypes from "prop-types";
-const Avatar = ({ userImage, userName }) => {
+import toBase64 from '../utils/base64'
+const Avatar = ({ userImage, userName, setUserImage }) => {
+  const handleFileChange = async (e) => {
+    console.log(e.target.files[0].name);
+    const data = await toBase64(e.target.files[0]);
+    setUserImage(data);
+  };
   return (
     <div className="flex items-center justify-between mr-7">
-      <img
-        className="inline-block h-12 w-12 rounded-full"
-        src={
-          userImage ||
-          "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-        }
-        alt="user avatar"
-      />
-      <span className="mx-2 comic-neue-bold">{userName}</span>
+      <label htmlFor="user-image">
+        <input type="file" hidden onClick={handleFileChange}/>
+        <img
+          id="user-image"
+          className="inline-block h-10 w-10 rounded-full"
+          src={
+            userImage
+          }
+          alt="user avatar"
+        />
+      </label>
+      <span className="mx-2 comic-neue-bold text-black dark:text-white">{userName}</span>
     </div>
   );
 };
@@ -18,6 +27,7 @@ const Avatar = ({ userImage, userName }) => {
 Avatar.propTypes = {
   userImage: PropTypes.string,
   userName: PropTypes.string,
+  setUserImage: PropTypes.func,
 };
 
 export default Avatar;

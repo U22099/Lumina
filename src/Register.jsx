@@ -3,13 +3,15 @@ import axios from "axios";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import origin from "../config/origin.json";
+import * as storage from './localStorage.js'
+
 
 const Register = () => {
   const [error, setError] = useState("");
   const [image, setImage] = useState();
   const [text, setText] = useState("Sign up");
   const navigate = useNavigate();
-  const upload = async () => {
+  const register = async () => {
     const username = document.getElementById("username");
     const email = document.getElementById("email");
     const pwd = document.getElementById("pwd");
@@ -31,10 +33,7 @@ const Register = () => {
           },
         });
         if (response.status === 200) {
-          const Lumina = JSON.parse(localStorage.getItem('Lumina')) || {
-            logged: true
-          }
-          localStorage.setItem('Lumina', JSON.stringify(Lumina));
+          storage.setValue("logged", true);
           navigate("/homepage", { replace: true, state: { fromRoute: true } });
           setError("");
         }
@@ -101,7 +100,7 @@ const Register = () => {
             Add Photo
           </label>
         </div>
-        <input className="input" type="email" id="email" placeholder="Email" />
+        <input className="input comic-neue-bold" type="email" id="email" placeholder="Email" />
         <input
           className="input comic-neue-bold"
           type="text"
@@ -122,7 +121,7 @@ const Register = () => {
           {error}
         </p>
         <button
-          onClick={upload}
+          onClick={register}
           className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-[1.5em] comic-neue-bold"
           id="submit"
         >

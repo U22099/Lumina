@@ -1,6 +1,6 @@
 {
     "default": {
         "originA" : "http://localhost:7700",
-	    "origin" : "https://lumina-ai-proxy.vercel.app"
+	    "origin" : "https://lumina-ai-server.onrender.com"
     }
 }

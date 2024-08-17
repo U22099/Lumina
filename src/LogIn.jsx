@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import storage from './utils/localStorage.js'
-
+import storage from './utils/localStorage.js';
+import origin from '../config/origin.json';
 
 const LogIn = () => {
   const [show, setShow] = useState(false);
@@ -21,7 +21,7 @@ const LogIn = () => {
     if (input && pwd) {
       try {
         setText(<a id="roll1"></a>);
-        const url = "/server/auth";
+        const url = `${origin.default.origin}/auth`;
         const response = await axios.post(
           url,
           {
@@ -54,6 +54,7 @@ const LogIn = () => {
     const logged = JSON.parse(localStorage.getItem("Lumina"))?.logged
     if (logged) navigate("/homepage", { replace: true });
   }, []);
+
   return (
     <div className="flex flex-col justify-center md:p-[30px] rounded-[16px] align-center w-[80%] md:w-[70%] lg:w-[50%] bg-white dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[20px]">
       <header className="flex justify-start text-start w-[100%]">
@@ -125,7 +126,7 @@ const LogIn = () => {
         </Link>
         <div className="gap-[20px]">
           <p className="text-[var(--accent-color-2)] hover:cursor-pointer comic-neue-regular">
-            Don't have an account?
+            Don&apos;t have an account?
           </p>
           <Link
             to="/register"

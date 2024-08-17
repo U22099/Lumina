@@ -1,6 +1,5 @@
 {
   "homepage": "https://u22099.github.io/Lumina-AI",
-  "proxy" : "https://lumina-ai-proxy.vercel.app",
   "name": "lumina",
   "private": true,
   "version": "0.0.0",

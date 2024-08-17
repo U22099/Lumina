@@ -2,7 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
-import storage from './utils/localStorage.js'
+import storage from './utils/localStorage.js';
+import origin from '../config/origin.json';
+
 
 
 const Register = () => {
@@ -24,7 +26,7 @@ const Register = () => {
           password: pwd.value,
           image: image,
         };
-        const url = "/server/register";
+        const url = `${origin.default.origin}/register`;
         const response = await axios.post(url, DATA, {
           withCredentials: true,
           headers: {

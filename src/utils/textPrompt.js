@@ -1,6 +1,8 @@
 import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
+import origin from '../../config/origin.json';
+
 
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
   setLoading(true);
@@ -9,7 +11,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
       role: "user",
       parts: [{ text: inputText }],
     });
-    const url = "/server/chat/text";
+    const url = `${origin.default.origin}/chat/text`;
     const response = await axios.post(url, { history: chat, message: inputText });
     const updatedChat = [
       ...chat,

@@ -1,7 +1,9 @@
 import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
-import storage from './localStorage.js'
+import storage from './localStorage.js';
+import origin from '../../config/origin.json';
+
 
 const getChats = async (
   setLoading,
@@ -16,7 +18,7 @@ const getChats = async (
     setLoading(false);
   } else {
     try {
-      const url = "/server/chat";
+      const url = `${origin.default.origin}/chat`;
       const response = await axios.get(url,{
         withCredentials: true, 
       });

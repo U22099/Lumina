@@ -1,8 +1,10 @@
-import axios from 'axios'
+import axios from 'axios';
+import origin from '../../config/origin.json';
+
 
 const logOut = async (showErr, navigate) => {
     try {
-      const url = "/server/logout";
+      const url = `${origin.default.origin}/logout`;
       const response = await axios.post(url, {});
       if (response.status === 200) {
         navigate("/", { replace: true });

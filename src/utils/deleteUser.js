@@ -1,11 +1,10 @@
 import axios from 'axios'
-import indexedDB from './indexedDB.js'
 import logOut from './logOut.js'
 import refresh from './refresh.js'
 
 const deleteUser = async (setErr, navigate) => {
     try {
-      const url = "/server/user";
+      const url = `${origin.default.origin}/user`;
       const response = await axios.delete(url);
       if (response.status === 200) {
         await logOut(setErr, navigate);

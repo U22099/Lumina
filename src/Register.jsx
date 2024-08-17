@@ -3,7 +3,7 @@ import axios from "axios";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import origin from "../config/origin.json";
-import * as storage from './utils/localStorage.js'
+import storage from './utils/localStorage.js'
 
 
 const Register = () => {

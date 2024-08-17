@@ -40,4 +40,4 @@ function setValue(key, value){
 }
 init();
 
-module.exports = {getValue, setValue}
+export default {getValue, setValue}

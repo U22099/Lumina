@@ -1,7 +1,7 @@
 import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
-import * as storage from './localStorage.js'
+import storage from './localStorage.js'
 
 const getChats = async (
   setLoading,

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import logOut from './logOut.js'
 import refresh from './refresh.js'
+import storage from "./localStorage.js"
 
 const deleteUser = async (setErr, navigate) => {
     try {
@@ -18,6 +19,7 @@ const deleteUser = async (setErr, navigate) => {
 
           deleteUser();
         } else {
+          storage.setValue("logged", false);
           navigate("/", { replace: true });
         }
       } else {

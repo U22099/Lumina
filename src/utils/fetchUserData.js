@@ -1,9 +1,8 @@
 import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
-import storage from './localStorage.js';
-import origin from '../../config/origin.json';
-
+import storage from "./localStorage.js";
+import origin from "../../config/origin.json";
 
 const fetchUserData = async (
   setLoading,
@@ -21,11 +20,11 @@ const fetchUserData = async (
   } else {
     try {
       const url = `${origin.default.origin}/user`;
-      const response = await axios.get(url,{
-        withCredentials: true, 
+      const response = await axios.get(url, {
+        withCredentials: true,
       });
       indexedDB.saveData(response.data, "UserData", indexedDB.init);
-      storage.setValue("user_stored", true)
+      storage.setValue("user_stored", true);
       setUserImage(response.data.image);
       setUsername(response.data.username);
       if (response.status === 200) setLoading(false);
@@ -34,25 +33,16 @@ const fetchUserData = async (
       if (err.response && [401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);
         if (res.status === 200) {
-          fetchUserData(
-            setLoading,
-  setUserImage,
-  setUsername,
-  navigate
-          );
+          fetchUserData(setLoading, setUserImage, setUsername, navigate);
         } else {
+          storage.setValue("logged", false);
           navigate("/", { replace: true });
         }
       } else {
         console.log(err);
       }
       if (err.message.includes("Network")) {
-        fetchUserData(
-          setLoading,
-  setUserImage,
-  setUsername,
-  navigate
-        );
+        fetchUserData(setLoading, setUserImage, setUsername, navigate);
       }
     }
   }

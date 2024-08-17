@@ -2,6 +2,7 @@ import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import origin from '../../config/origin.json';
+import storage from "./localStorage.js";
 
 
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
@@ -38,6 +39,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
       if (res.status === 200) {
         textPrompt(setLoading, inputText, chat, navigate);
       } else {
+        storage.setValue("logged", false);
         navigate("/", { replace: true });
       }
     } else {

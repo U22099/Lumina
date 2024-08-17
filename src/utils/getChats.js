@@ -37,6 +37,7 @@ const getChats = async (
             navigate
           );
         } else {
+          storage.setValue("logged", false);
           navigate("/", { replace: true });
         }
       } else {

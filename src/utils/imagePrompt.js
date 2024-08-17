@@ -2,8 +2,7 @@ import axios from "axios";
 import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import origin from '../../config/origin.json';
-
-
+import storage from "./localStorage.js";
 const imagePrompt = async (
   setLoading,
   inputText,
@@ -51,6 +50,7 @@ const imagePrompt = async (
                 navigate
             );
         } else {
+            storage.setValue("logged", false);
             navigate("/", { replace: true });
         }
         } else {

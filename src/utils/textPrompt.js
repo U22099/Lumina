@@ -10,7 +10,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
       parts: [{ text: inputText }],
     });
     const url = "/server/chat/text";
-    const response = await axios.post(url, { history: chat, text: inputText });
+    const response = await axios.post(url, { history: chat, message: inputText });
     const updatedChat = [
       ...chat,
       {

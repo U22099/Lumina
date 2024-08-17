@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import origin from "../config/origin.json";
 import storage from './utils/localStorage.js'
 
 
@@ -22,7 +21,7 @@ const LogIn = () => {
     if (input && pwd) {
       try {
         setText(<a id="roll1"></a>);
-        const url = origin.default.origin + "/auth";
+        const url = "/server/auth";
         const response = await axios.post(
           url,
           {

@@ -19,7 +19,9 @@ const fetchUserData = async (
   } else {
     try {
       const url = "/server/user";
-      const response = await axios.get(url);
+      const response = await axios.get(url,{
+        withCredentials: true, 
+      });
       indexedDB.saveData(response.data, "UserData", indexedDB.init);
       storage.setValue("user_stored", true)
       setUserImage(response.data.image);

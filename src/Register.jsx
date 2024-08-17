@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
-import origin from "../config/origin.json";
 import storage from './utils/localStorage.js'
 
 
@@ -25,7 +24,7 @@ const Register = () => {
           password: pwd.value,
           image: image,
         };
-        const url = origin.default.origin + "/register";
+        const url = "/server/register";
         const response = await axios.post(url, DATA, {
           withCredentials: true,
           headers: {
@@ -63,7 +62,7 @@ const Register = () => {
     return data;
   };
   return (
-    <div className="my-[30px] flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[70%] lg:w-[50%] dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
+    <div className="flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[70%] lg:w-[50%] dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
       <header className="flex justify-start text-start w-[100%]">
         <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
           Welcome to Lumina

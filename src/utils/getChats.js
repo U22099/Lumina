@@ -17,7 +17,9 @@ const getChats = async (
   } else {
     try {
       const url = "/server/chat";
-      const response = await axios.get(url);
+      const response = await axios.get(url,{
+        withCredentials: true, 
+      });
       indexedDB.saveData(response.data, "ChatData", indexedDB.init);
       storage.setValue("chat_stored", true);
       setChat(response.data.history);

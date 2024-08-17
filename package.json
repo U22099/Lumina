@@ -2,7 +2,7 @@
   "homepage": "https://u22099.github.io/Lumina-AI",
   "name": "lumina",
   "private": true,
-  "proxy" : "https://lumina-ai-server.onrender.com"
+  "proxy" : "https://lumina-ai-server.onrender.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

@@ -6,13 +6,13 @@ import storage from './utils/localStorage.js';
 import origin from '../config/origin.json';
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const reverse = () => {
     setShow(!show);
   };
   const [error, setError] = useState("");
   const [text, setText] = useState("Log In");
-  const navigate = useNavigate();
   const auth = async (e) => {
     e.preventDefault();
     const input = document.getElementById("input");
@@ -51,7 +51,7 @@ const LogIn = () => {
     }
   };
   useEffect(() => {
-    const logged = JSON.parse(localStorage.getItem("Lumina"))?.logged
+    const logged = storage.getValue("logged");
     if (logged) navigate("/homepage", { replace: true });
   }, []);
 

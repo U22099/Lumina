@@ -1,5 +1,6 @@
 function init(){
-    const lumina = {
+    
+    const lumina = JSON.parse(localStorage.getItem("Lumina")) || {
         user_stored: false,
         chat_stored: false,
         logged: false
@@ -38,6 +39,7 @@ function setValue(key, value){
 
     localStorage.setItem("Lumina", JSON.stringify(lumina));
 }
+
 init();
 
 export default {getValue, setValue}

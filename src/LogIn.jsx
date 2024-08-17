@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import origin from "../config/origin.json";
-import * as storage from './localStorage.js'
+import * as storage from './utils/localStorage.js'
 
 
 const LogIn = () => {

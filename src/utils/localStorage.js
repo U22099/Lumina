@@ -3,7 +3,9 @@ function init(){
     const lumina = JSON.parse(localStorage.getItem("Lumina")) || {
         user_stored: false,
         chat_stored: false,
-        logged: false
+        logged: false,
+        __R: '',
+        __A: ''
     }
     localStorage.setItem("Lumina", JSON.stringify(lumina));
 }
@@ -20,6 +22,12 @@ function getValue(key){
         case "logged":
             result = lumina.logged;
             break;
+        case "__R":
+            result = lumina.__R;
+            break;
+        case "__A":
+            result = lumina.__A;
+            break;
     }
     return result;
 }
@@ -34,6 +42,12 @@ function setValue(key, value){
             break;
         case "logged":
             lumina.logged = value;
+            break;
+        case "__R":
+            lumina.__R = value;
+            break;
+        case "__A":
+            lumina.__A = value;
             break;
     }
 

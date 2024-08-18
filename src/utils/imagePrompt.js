@@ -3,6 +3,8 @@ import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import origin from '../../config/origin.json';
 import storage from "./localStorage.js";
+import {getToken} from './token.js'
+
 const imagePrompt = async (
   setLoading,
   inputText,
@@ -16,7 +18,7 @@ const imagePrompt = async (
             role: "user",
             parts: [{image: inputImage}, {text: inputText}]
         });
-        const url = `${origin.default.origin}/chat/image`;
+        const url = `${origin.default.origin}/chat/image?${getToken('__A')}`;
         const response = await axios.post(url, {history: chat, image: inputImage, message: inputText});
         const updatedChat = [
             ...chat,

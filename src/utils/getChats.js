@@ -3,7 +3,7 @@ import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import storage from './localStorage.js';
 import origin from '../../config/origin.json';
-
+import {getToken} from './token.js'
 
 const getChats = async (
   setLoading,
@@ -18,7 +18,7 @@ const getChats = async (
     setLoading(false);
   } else {
     try {
-      const url = `${origin.default.origin}/chat`;
+      const url = `${origin.default.origin}/chat?${getToken('__A')}`;
       const response = await axios.get(url,{
         withCredentials: true, 
       });

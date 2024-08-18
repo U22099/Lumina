@@ -3,7 +3,7 @@ import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import origin from '../../config/origin.json';
 import storage from "./localStorage.js";
-
+import {getToken} from './token.js'
 
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
   setLoading(true);
@@ -12,7 +12,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
       role: "user",
       parts: [{ text: inputText }],
     });
-    const url = `${origin.default.origin}/chat/text`;
+    const url = `${origin.default.origin}/chat/text?${getToken('__A')}`;
     const response = await axios.post(url, { history: chat, message: inputText });
     const updatedChat = [
       ...chat,

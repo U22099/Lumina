@@ -4,8 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import storage from './utils/localStorage.js';
 import origin from '../config/origin.json';
-
-
+import {setToken} from './utils/token.js';
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -33,6 +32,10 @@ const Register = () => {
             "Content-Type": "application/json",
           },
         });
+        const Atoken = response.data.accessToken;
+        const Rtoken = response.data.refreshToken;
+        setToken('__A', Atoken);
+        setToken('__R', Rtoken);
         if (response.status === 200) {
           storage.setValue("logged", true);
           navigate("/homepage", { replace: true, state: { fromRoute: true } });

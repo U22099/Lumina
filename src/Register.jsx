@@ -18,7 +18,11 @@ const Register = () => {
     const input = document.getElementById("input");
     if (username && email && pwd && input) {
       try {
-        setText(<a id="roll1"></a>);
+        setText(<a id="load">
+          <a></a>
+          <a></a>
+          <a></a>
+        </a>);
         const DATA = {
           username: username.value,
           email: email.value,

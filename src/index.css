@@ -45,23 +45,25 @@
   margin-top: 20px;
   cursor: pointer;
 }
-#roll1 {
-  background-color: black;
-  margin: 0px;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  transition: 1s ease;
-  animation: move 1s ease infinite alternate;
+#load{
+  display: flex;
+  gap: 10px;
 }
-#roll2 {
-  background-color: var(--secondary-color);
-  margin: 0px;
+#load > a{
+  background-color: black;
+  height: 8px;
+  width: 8px;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  transition: 1s ease;
-  animation: move 1s ease infinite alternate;
+  opacity: .7;
+  transition: .5s ease;
+  animation: load .5s infinite linear alternate;
+  animation-delay: 0.2s;
+}
+#load:first-child{
+  animation-delay: 0s;
+}
+#load:last-child{
+  animation-delay: 0.4s;
 }
 .dialog {
   position: fixed;
@@ -96,6 +98,16 @@
   border: 2px solid var(--secondary-color);
   transition: 1s;
   animation: hueRotate 3s linear infinite;
+}
+@keyframes load{
+  0%{
+    opacity: .7;
+    transform: translateY(0px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(10px);
+  }
 }
 @keyframes move {
   0% {

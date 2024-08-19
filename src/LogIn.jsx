@@ -21,7 +21,11 @@ const LogIn = () => {
     const check = document.getElementById("checkbox").checked;
     if (input && pwd) {
       try {
-        setText(<a id="roll1"></a>);
+        setText(<a id="load">
+          <a></a>
+          <a></a>
+          <a></a>
+        </a>);
         const url = `${origin.default.origin}/auth`;
         const response = await axios.post(
           url,

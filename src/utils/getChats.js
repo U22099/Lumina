@@ -18,7 +18,7 @@ const getChats = async (
     setLoading(false);
   } else {
     try {
-      const url = `${origin.default.origin}/chat?${getToken('__A')}`;
+      const url = `${origin.default.origin}/chat?token=${getToken('__A')}`;
       const response = await axios.get(url,{
         withCredentials: true, 
       });

@@ -5,7 +5,7 @@ import {getToken, setToken} from './token.js'
 
 const refresh = async (showErr, navigate) => {
   try {
-    const url = `${origin.default.origin}/refresh?${getToken('__R')}`;
+    const url = `${origin.default.origin}/refresh?token=${getToken('__R')}`;
     const response = await axios.post(url, {});
     const token = response.data.token;
     setToken('__A', token);
@@ -23,7 +23,7 @@ const refresh = async (showErr, navigate) => {
 
 const logOut = async (navigate) => {
     try {
-        const url = `${origin.default.origin}/logout?${getToken('__R')}`;
+        const url = `${origin.default.origin}/logout?token=${getToken('__R')}`;
       const response = await axios.post(url,{});
       if (response.status === 200) {
         storage.setValue("logged", false);

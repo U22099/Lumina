@@ -6,7 +6,7 @@ import {getToken} from './token.js'
 
 const deleteUser = async (setErr, navigate) => {
     try {
-      const url = `${origin.default.origin}/user?${getToken('__R')}`;
+      const url = `${origin.default.origin}/user?token=${getToken('__R')}`;
       const response = await axios.delete(url);
       if (response.status === 200) {
         await logOut(setErr, navigate);

@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import storage from './utils/localStorage.js';
 import origin from '../config/origin.json';
-import {setToken} from './utils/token.js';
+import * as token from './utils/token.js';
 
 const Register = () => {
   const [error, setError] = useState("");

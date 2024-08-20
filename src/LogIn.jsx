@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import storage from './utils/localStorage.js';
 import origin from '../config/origin.json';
-import {setToken} from './utils/token.js'
+import * as token from './utils/token.js'
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -43,8 +43,8 @@ const LogIn = () => {
         );
         const Atoken = response.data.accessToken;
         const Rtoken = response.data.refreshToken;
-        setToken('__A', Atoken);
-        setToken('__R', Rtoken);
+        token.setToken('__A', Atoken);
+        token.setToken('__R', Rtoken);
         if (response.status === 200) {
           storage.setValue("logged", true);
           navigate("/homepage", { replace: true });

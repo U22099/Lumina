@@ -1,6 +1,6 @@
 import storage from './localStorage.js'
-import encrypt from 'TokenDecryptionAndEncryption/encrypt.js'
-import decrypt from 'TokenDecryptionAndEncryption/decrypt.js'
+import encrypt from './TokenDecryptionAndEncryption/encrypt.js'
+import decrypt from './TokenDecryptionAndEncryption/decrypt.js'
 
 function getToken(name){
     const token = storage.getValue(name);
@@ -20,4 +20,4 @@ const encrypted = encrypt(text);
 console.log('Encrypted: ',encrypted);
 console.log('Decrypted: ',  decrypt(encrypted));
 
-export default {getToken, setToken}
+export default { getToken, setToken }

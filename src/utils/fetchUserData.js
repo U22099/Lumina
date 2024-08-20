@@ -3,7 +3,7 @@ import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
-import {getToken} from './token.js'
+import * as token from './token.js'
 
 const fetchUserData = async (
   setLoading,
@@ -20,7 +20,7 @@ const fetchUserData = async (
     setLoading(false);
   } else {
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
+      const url = `${origin.default.origin}/user?token=${token.getToken('__A')}`;
       const response = await axios.get(url, {
         withCredentials: true,
       });

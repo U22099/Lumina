@@ -54,10 +54,10 @@
   animation-delay: 0s;
 }
 #load > :nth-child(2){
-  animation-delay: .4s;
+  animation-delay: .1s;
 }
 #load :last-child{
-  animation-delay:  .8s;
+  animation-delay:  .2s;
 }
 #load > div{
   background-color: black;
@@ -66,7 +66,7 @@
   border-radius: 50%;
   opacity: .7;
   transition: .5s ease;
-  animation: load .5s infinite linear alternate;
+  animation: load .4s infinite linear alternate;
 }
 .dialog {
   position: fixed;

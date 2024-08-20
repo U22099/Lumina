@@ -1,25 +1,24 @@
 import shuffle from './shuffle.js'
 
 function encrypt(token){
-    const arr = token.split('');
-    let arrIndex = [], joinedArr = [],encrypted = '';
-    for(let x = 0; x < arr.length; x++){
-        arrIndex.push(swap(x));
+    const chunkArr = [];
+    const tokenArr = token.split('');
+    const encryptedChunkArr = [];
+    for(let x = 0; x < Math.ceil(tokenArr.length/100); x++){
+        chunkArr.push(tokenArr.splice(100));
     }
-    for(let x = 0; x < arr.length; x++){
-        joinedArr.push(`${arr[x]}${arrIndex[x]}`);
-    }
-    encrypted = shuffle(joinedArr).join('');
-    return encrypted;
+    chunkArr.map(chunk => {
+        let arr = [];
+        for(let x = 0; x < chunk.length; x++){
+            arr.push(`${token[x]}${swap(x)}`);
+        }
+        encryptedChunkArr.push(shuffle(arr).join(''));
+    });
+    console.log(encryptedChunkArr);
+    return encryptedChunkArr;
 }
 function swap(no){
-    let str = '';
-    
-    if(no < 10){
-        str = `0${no}`;
-    } else {
-        str =   `${no}`;
-    }
+    let str = (no < 10) ? `0${no}` : `${no}`;
     return str.split('').reverse().join('');
 }
 export default encrypt

@@ -15,7 +15,8 @@ function setToken(name, token){
     storage.setValue(name, result);
 }
 //for test
-const text = 'eych094[@3kThis_is$tes099tkdanieldanieldanieladnaeiladadadadadadaadadadadadadadadadadadadadadadadad53535dadadadadaadadadadadada';
+const text = 'eych094[@3kThis_is$tes099tkdanieldanieldanieladnaeiladadadadadadaadadadadadadadadadadadaadadadadadadadada556dadadaadadadadadadadada';
+console.log(text);
 const encrypted = encrypt(text);
 console.log('Encrypted: ',encrypted);
 console.log('Decrypted: ',  decrypt(encrypted));

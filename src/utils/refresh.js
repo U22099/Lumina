@@ -1,11 +1,11 @@
 import axios from "axios";
 import origin from '../../config/origin.json';
 import storage from "./localStorage.js";
-import * as token from './token.js'
+import {getToken} from './token.js'
 
 const refresh = async (showErr, navigate) => {
   try {
-    const url = `${origin.default.origin}/refresh?token=${token.getToken('__R')}`;
+    const url = `${origin.default.origin}/refresh?token=${getToken('__R')}`;
     const response = await axios.post(url, {});
     const token = response.data.token;
     token.setToken('__A', token);
@@ -23,7 +23,7 @@ const refresh = async (showErr, navigate) => {
 
 const logOut = async (navigate) => {
     try {
-        const url = `${origin.default.origin}/logout?token=${token.getToken('__R')}`;
+        const url = `${origin.default.origin}/logout?token=${getToken('__R')}`;
       const response = await axios.post(url,{});
       if (response.status === 200) {
         storage.setValue("logged", false);

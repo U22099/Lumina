@@ -20,4 +20,4 @@ const encrypted = encrypt(text);
 console.log('Encrypted: ',encrypted);
 console.log('Decrypted: ',  decrypt(encrypted));
 
-export default { getToken, setToken }
+export { getToken, setToken }

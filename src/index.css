@@ -49,7 +49,7 @@
   display: flex;
   gap: 10px;
 }
-#load > a{
+#load > div{
   background-color: black;
   height: 8px;
   width: 8px;
@@ -57,13 +57,13 @@
   opacity: .7;
   transition: .5s ease;
   animation: load .5s infinite linear alternate;
-  animation-delay: 0.2s;
+  animation-delay: .4s;
 }
 #load:first-child{
   animation-delay: 0s;
 }
 #load:last-child{
-  animation-delay: 0.4s;
+  animation-delay:.8s;
 }
 .dialog {
   position: fixed;
@@ -106,7 +106,7 @@
   }
   100%{
     opacity: 1;
-    transform: translateY(10px);
+    transform: translateY(-8px);
   }
 }
 @keyframes move {

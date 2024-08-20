@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import storage from './utils/localStorage.js';
 import origin from '../config/origin.json';
-import * as token from './utils/token.js';
+import {setToken} from './utils/token.js';
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -18,11 +18,11 @@ const Register = () => {
     const input = document.getElementById("input");
     if (username && email && pwd && input) {
       try {
-        setText(<a id="load">
-          <a></a>
-          <a></a>
-          <a></a>
-        </a>);
+        setText(<div id="load">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>);
         const DATA = {
           username: username.value,
           email: email.value,

@@ -7,14 +7,7 @@ function decrypt(str){
     }
     return decryptedArr.join('');
 }
-function swap(no){
-    let str = '';
-    
-    if(no < 10){
-        str = `0${no}`;
-    } else {
-        str =   `${no}`;
-    }
+function swap(str){
     return str.split('').reverse().join('');
 }
 

@@ -1,6 +1,6 @@
 function decrypt(string){
     let decryptedArr = [];
-    string.map( str => {
+    string.forEach( str => {
         const decodedChunk = [];
         for(let x = 0; x < str.length; x+=3){
             const index = parseInt(swap(`${str[x+1]}${str[x+2]}`), 10);

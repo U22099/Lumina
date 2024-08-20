@@ -20,7 +20,9 @@ const fetchUserData = async (
     setLoading(false);
   } else {
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
+      const token = getToken('__A');
+      console.log(token);
+      const url = `${origin.default.origin}/user?token=${token}`;
       const response = await axios.get(url, {
         withCredentials: true,
       });

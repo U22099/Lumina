@@ -43,6 +43,7 @@ const LogIn = () => {
         );
         const Atoken = response.data.accessToken;
         const Rtoken = response.data.refreshToken;
+        console.log(Atoken);
         setToken('__A', Atoken);
         setToken('__R', Rtoken);
         if (response.status === 200) {

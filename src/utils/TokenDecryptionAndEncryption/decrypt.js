@@ -1,9 +1,8 @@
 function decrypt(str){
-    const arr = str.split('');
-    let decryptedArr = [];
+    const decryptedArr = new Array(Math.ceil(str.length / 3));
     for(let x = 0; x < arr.length; x+=3){
-        const index = parseInt(swap(`${arr[x+1]}${arr[x+2]}`));
-        decryptedArr[index] = arr[x];
+        const index = parseInt(swap(`${str[x+1]}${str[x+2]}`), 10);
+        decryptedArr[index] = str[x];
     }
     return decryptedArr.join('');
 }

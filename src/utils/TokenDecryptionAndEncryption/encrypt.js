@@ -4,7 +4,7 @@ function encrypt(token){
     const chunkArr = [];
     const tokenArr = token.split('');
     const encryptedChunkArr = [];
-    for(let x = 0; x < Math.ceil(tokenArr.length/100); x++){
+    for(let x = 0; x < (Math.ceil(token.length/100) + 1); x++){
         chunkArr.push(tokenArr.splice(0, 100));
     }
     console.log(chunkArr);

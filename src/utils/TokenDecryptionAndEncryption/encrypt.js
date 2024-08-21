@@ -5,18 +5,15 @@ function encrypt(token){
     const tokenArr = token.split('');
     const encryptedChunkArr = [];
     for(let x = 0; x < (Math.ceil(token.length/100) + 1); x++){
-        chunkArr.push(tokenArr.splice(0, 100));
+        chunkArr.push(tokenArr.splice(100));
     }
-    console.log(chunkArr);
     chunkArr.forEach(chunk => {
         let arr = [];
         for(let x = 0; x < chunk.length; x++){
             arr.push(`${chunk[x]}${swap(x)}`);
         }
-        console.log(arr);
         encryptedChunkArr.push(shuffle(arr).join(''));
     });
-    console.log(encryptedChunkArr);
     return encryptedChunkArr;
 }
 function swap(no){

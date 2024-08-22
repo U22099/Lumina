@@ -21,7 +21,7 @@ function ConfirmDialog({var2, callback, msg}) {
                         duration: 0.5,
                     }
                 }}
-                className="flex flex-col bg-black rounded-xl p-[20px] dialog md:w-[40vw] w-[80vw] justify-center items-center gap-[10px]">
+                className="flex flex-col bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.3),inset_1px_2px_3px_1px_rgba(0,0,0,0.1)] p-8 dialog md:w-[40vw] w-[80vw] justify-center items-center gap-2">
                 <div className="w-[100%] flex justify-center items-center">
                     <GiConfirmed className="text-red-600 text-bold text-[5em]" />
                 </div>

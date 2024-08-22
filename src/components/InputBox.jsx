@@ -6,7 +6,7 @@ const InputBox = () => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-full border-0  ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 flex fixed left-[5%] bottom-14 md:bottom-10">
+    <div className="bg-gray-100 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 flex fixed left-[5%] bottom-14 md:bottom-10">
       <input
         type="text"
         className="bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white"

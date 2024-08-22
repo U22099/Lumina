@@ -8,7 +8,7 @@ const Avatar = ({ userImage, userName, setUserImage}) => {
     await updateImage(data);
   };
   return (
-    <div className="flex items-center justify-between mr-7">
+    <div className="flex items-center justify-between">
       <label htmlFor="user-image">
         <input type="file" hidden onClick={handleFileChange}/>
         <img

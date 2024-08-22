@@ -19,7 +19,7 @@ const Header = () => {
     fetchUserData(setLoading, setUserImage, setUsername, navigate);
   },[]);
   return (
-    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-6 md:px-20">
+    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16">
       <div className="flex items-center">
         <img
           src="logo.jpg"
@@ -37,7 +37,7 @@ const Header = () => {
           </div>
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
-        <div className="flex justify-start items-center gap-2">
+        <div className="flex justify-start items-center md:gap-4">
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
           <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
@@ -72,8 +72,7 @@ const Menu = ({userName, userImage, setUserImage, menu}) => {
           <div className="flex">
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
-          <div className="flex gap-3">
-            
+          <div className="flex gap-4">
             <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
             <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
             <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>

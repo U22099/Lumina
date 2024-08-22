@@ -1,15 +1,17 @@
-import axios from 'axios'
-import logOut from './logOut.js'
-import refresh from './refresh.js'
-import storage from "./localStorage.js"
-import {getToken} from './token.js'
+import axios from 'axios';
+import logOut from './logOut.js';
+import refresh from './refresh.js';
+import storage from "./localStorage.js";
+import {getToken} from './token.js';
+import {useNavigate} from 'react-router-dom';
 
-const deleteUser = async (setErr, navigate) => {
+const deleteUser = async () => {
+  const navigate = useNavigate();
     try {
       const url = `${origin.default.origin}/user?token=${getToken('__R')}`;
       const response = await axios.delete(url);
       if (response.status === 200) {
-        await logOut(setErr, navigate);
+        await logOut();
         console.log("Deleted User Successfully");
         navigate("/", { replace: true });
       }
@@ -23,7 +25,7 @@ const deleteUser = async (setErr, navigate) => {
           navigate("/", { replace: true });
         }
       } else {
-        setErr({ occured: true, msg: err.message });
+        console.log(err);
       }
     }
   };

@@ -2,12 +2,12 @@ import { GiConfirmed } from 'react-icons/gi'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
-function ConfirmDialog(props) {
+function ConfirmDialog({var2, callback, msg}) {
     const [show, setShow] = useState(true)
     function ans(x) {
         setShow(false);
-        props.var2(false);
-        x ? props.callback({ask: true, result: true}) : "";
+        var2(false);
+        x ? callback() : "";
     }
     if (show) {
         return (
@@ -27,7 +27,7 @@ function ConfirmDialog(props) {
                 </div>
                 <h1 className="text-[2.5em] display flex w-[100%] justify-center items-center">Confirm</h1>
                 <div className=" w-[80%] text-center items-center text-[1.3em]">
-                    <p>{props.msg}</p>
+                    <p>{msg}</p>
                 </div>
                 <div className="flex w-[100%] mx-auto gap-[10px]">
                     <button className="w-[50%] bg-red-600 rounded-md text-[2em] shadow-[2px_2px_5px_3px_rgba(0,0,0,0.5)]" onClick={() => ans(true)}>Delete</button>

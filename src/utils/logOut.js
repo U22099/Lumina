@@ -1,9 +1,11 @@
 import axios from 'axios';
 import origin from '../../config/origin.json';
-import storage from './localStorage.js'
-import {getToken} from './token.js'
+import storage from './localStorage.js';
+import {getToken} from './token.js';
+import {useNavigate} from 'react-router-dom';
 
-const logOut = async (showErr, navigate) => {
+const logOut = async () => {
+  const navigate = useNavigate();
     try {
       const url = `${origin.default.origin}/logout?token=${getToken('__A')}`;
       const response = await axios.post(url, {});
@@ -12,7 +14,7 @@ const logOut = async (showErr, navigate) => {
         navigate("/", { replace: true });
       }
     } catch (err) {
-      showErr({ occured: true, msg: err.message });
+      console.log(err);
     }
 };
 

@@ -5,14 +5,13 @@ const Avatar = ({ userImage, userName, setUserImage}) => {
     console.log(e.target.files[0].name);
     const data = await toBase64(e.target.files[0]);
     setUserImage(data);
-    await updateImage(data);
+    //await updateImage(data);
   };
   return (
     <div className="flex items-center justify-between">
       <label htmlFor="user-image">
-        <input type="file" hidden onClick={handleFileChange}/>
+          <input type="file" id="user-image" hidden onClick={handleFileChange}/>
         <img
-          id="user-image"
           className="inline-block h-10 w-10 rounded-full"
           src={
             userImage

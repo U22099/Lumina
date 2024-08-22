@@ -7,6 +7,9 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {motion } from 'framer-motion';
 import fetchUserData from '../utils/fetchUserData';
+import logOut from '../utils//logOut.js';
+import deleteUser from '../utils/deleteUser.js'
+import ConfirmDialog from '../utils/dialogs/ConfirmDialog';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,6 +17,7 @@ const Header = () => {
   const [userName, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [del, setDel] = useState(false);
 
   useEffect(()=>{
     fetchUserData(setLoading, setUserImage, setUsername, navigate);
@@ -39,8 +43,8 @@ const Header = () => {
         }
         <div className="flex justify-start items-center md:gap-4">
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
-          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" /></span>
-          <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
+          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={logOut} /></span>
+          <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"onClick={() => setDel(true)}/></span>
           {
           menu ? 
           <FaAngleRight arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(false)}/> 
@@ -68,15 +72,16 @@ const Menu = ({userName, userImage, setUserImage, menu}) => {
         transition={{
           type: "spring"
         }}
-        key={menu} className="absolute top-[8%] left-[70%] flex flex-col gap-2 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.3),inset_1px_2px_5px_1px_rgba(0,0,0,0.15)] p-2">
+        key={menu} className="absolute top-[8%] flex flex-col gap-2 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.3),inset_1px_2px_3px_1px_rgba(0,0,0,0.1)] p-2">
           <div className="flex">
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
           <div className="flex gap-4">
             <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
-            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
-            <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
+            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={logOut} /></span>
+            <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
           </div>
+          {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"}/> : ''}
         </motion.div>
 
   )

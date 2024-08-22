@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import toBase64 from '../utils/base64'
-const Avatar = ({ userImage, userName, setUserImage }) => {
+const Avatar = ({ userImage, userName, setUserImage, menu }) => {
   const handleFileChange = async (e) => {
     console.log(e.target.files[0].name);
     const data = await toBase64(e.target.files[0]);
@@ -19,7 +19,7 @@ const Avatar = ({ userImage, userName, setUserImage }) => {
           alt="user avatar"
         />
       </label>
-      <span className="mx-2 comic-neue-bold text-black dark:text-white hidden md:visible">{userName}</span>
+      <span className={(menu ? '': "hidden ") +"mx-2 comic-neue-bold text-black dark:text-white hidden md:flex"}>{userName}</span>
     </div>
   );
 };
@@ -28,6 +28,7 @@ Avatar.propTypes = {
   userImage: PropTypes.string,
   userName: PropTypes.string,
   setUserImage: PropTypes.func,
+  menu: PropTypes.bool
 };
 
 export default Avatar;

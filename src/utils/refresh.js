@@ -1,14 +1,14 @@
 import axios from "axios";
 import origin from '../../config/origin.json';
 import storage from "./localStorage.js";
-import {getToken} from './token.js'
+import {getToken, setToken} from './token.js'
 
 const refresh = async (showErr, navigate) => {
   try {
     const url = `${origin.default.origin}/refresh?token=${getToken('__R')}`;
     const response = await axios.post(url, {});
     const token = response.data.token;
-    token.setToken('__A', token);
+    setToken('__A', token);
     if (response.status === 200) return response;
   } catch (err) {
     if (

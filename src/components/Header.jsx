@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Avatar from "./Avatar";
 import { MdLogout, MdDelete } from "react-icons/md";
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
@@ -18,7 +19,7 @@ const Header = () => {
     fetchUserData(setLoading, setUserImage, setUsername, navigate);
   },[]);
   return (
-    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-7 md:px-20">
+    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-7 md:px-20 relative">
       <div className="flex items-center">
         <img
           src="logo.jpg"
@@ -37,9 +38,9 @@ const Header = () => {
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
         }
         <div className="flex justify-start items-center gap-4">
-          <AiOutlineClear arial-label="Clear chat" className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/>
-          <MdLogout arial-label="Log Out" className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" />
-          <MdDelete arial-label="Delete User" className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/>
+          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
+          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" /></span>
+          <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
           {
           menu ? 
           <FaAngleRight arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(false)}/> 
@@ -47,7 +48,15 @@ const Header = () => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        <motion.div 
+        {menu ? <Menu userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/> : ''}
+      </div>
+    </header>
+  );
+};
+
+const Menu = ({userName, userImage, setUserImage, menu}) => {
+  return(
+    <motion.div 
         initial={{
           x: 100,
           opacity: 0
@@ -59,19 +68,24 @@ const Header = () => {
         transition={{
           type: "spring"
         }}
-        key={menu} className={(menu ? '': "hidden ") +"absolute top-[10%] left-3/4 flex flex-col gap-2 bg-white rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.5),inset_1px_2px_5px_1px_rgba(0,0,0,0.3)] p-2"}>
+        key={menu} className="absolute top-[10%] left-3/4 flex flex-col gap-2 bg-gray-300 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.5),inset_1px_2px_5px_1px_rgba(0,0,0,0.3)] p-2">
           <div className="flex">
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
           <div className="flex gap-8">
-            <AiOutlineClear arial-label="Clear chat" className="w-6 h-6 fill-black dark:fill-white"/>
-            <MdLogout arial-label="Log Out" className="w-6 h-6 fill-black dark:fill-white" />
-            <MdDelete arial-label="Delete User" className="w-6 h-6 fill-black dark:fill-white "/>
+            
+            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
+            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
+            <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
           </div>
         </motion.div>
-      </div>
-    </header>
-  );
-};
 
+  )
+}
+Menu.propTypes = {
+  userImage: PropTypes.string,
+  userName: PropTypes.string,
+  setUserImage: PropTypes.func,
+  menu: PropTypes.bool
+};
 export default Header;

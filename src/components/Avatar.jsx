@@ -19,7 +19,7 @@ const Avatar = ({ userImage, userName, setUserImage }) => {
           alt="user avatar"
         />
       </label>
-      <span className="mx-2 comic-neue-bold text-black dark:text-white">{userName}</span>
+      <span className="mx-2 comic-neue-bold text-black dark:text-white hidden md:visible">{userName}</span>
     </div>
   );
 };

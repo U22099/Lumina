@@ -35,7 +35,7 @@ const Header = () => {
             <div></div>
             <div></div> 
           </div>
-          : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
+          : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
         <div className="flex justify-start items-center gap-4">
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
@@ -68,7 +68,7 @@ const Menu = ({userName, userImage, setUserImage, menu}) => {
         transition={{
           type: "spring"
         }}
-        key={menu} className="absolute top-[10%] left-3/4 flex flex-col gap-2 bg-gray-300 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.5),inset_1px_2px_5px_1px_rgba(0,0,0,0.3)] p-2">
+        key={menu} className="absolute top-[10%] left-3/4 flex flex-col gap-2 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.3),inset_1px_2px_5px_1px_rgba(0,0,0,0.15)] p-2">
           <div className="flex">
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>

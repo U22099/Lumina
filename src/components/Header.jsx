@@ -30,7 +30,7 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-end gap-2">
         {loading ? 
-          <div id="load" className="w-8 h-8 m-none mt-2">
+          <div id="load" className="w-8 h-8">
             <div></div>
             <div></div>
             <div></div> 

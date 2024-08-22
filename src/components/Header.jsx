@@ -19,7 +19,7 @@ const Header = () => {
     fetchUserData(setLoading, setUserImage, setUsername, navigate);
   },[]);
   return (
-    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-7 md:px-20 relative">
+    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-6 md:px-20">
       <div className="flex items-center">
         <img
           src="logo.jpg"
@@ -28,16 +28,16 @@ const Header = () => {
         />
         <span className="text-black dark:text-white comic-neue-bold block ml-4">Lumina AI</span>
       </div>
-      <div className="flex">
+      <div className="flex items-center justify-end gap-2">
         {loading ? 
-          <div id="load" className="w-8 h-8 m-none">
+          <div id="load" className="w-8 h-8 m-none mt-2">
             <div></div>
             <div></div>
             <div></div> 
           </div>
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
-        <div className="flex justify-start items-center gap-4">
+        <div className="flex justify-start items-center gap-2">
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
           <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
@@ -72,7 +72,7 @@ const Menu = ({userName, userImage, setUserImage, menu}) => {
           <div className="flex">
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
-          <div className="flex gap-8">
+          <div className="flex gap-3">
             
             <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
             <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>

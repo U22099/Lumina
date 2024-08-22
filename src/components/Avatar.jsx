@@ -5,6 +5,7 @@ const Avatar = ({ userImage, userName, setUserImage}) => {
     console.log(e.target.files[0].name);
     const data = await toBase64(e.target.files[0]);
     setUserImage(data);
+    await updateImage(data);
   };
   return (
     <div className="flex items-center justify-between mr-7">

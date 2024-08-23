@@ -2,6 +2,7 @@ const init = () => {
     const opendb = indexedDB.open("Lumina");
     opendb.onupgradeneeded = (event) => {
         const db = event.target.result;
+        db.createObjectStore("AiImage");
         db.createObjectStore("ChatData");
         db.createObjectStore("UserData");
     }

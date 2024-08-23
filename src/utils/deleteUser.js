@@ -1,9 +1,9 @@
 import axios from 'axios';
 import logOut from './logOut.js';
 import refresh from './refresh.js';
-import storage from "./localStorage.js";
 import {getToken} from './token.js';
-import {useNavigate} from 'react-router-dom';
+import storage from "./localStorage.js";
+import { useNavigate } from './customHooks/useNavigator';
 
 const deleteUser = async () => {
   const navigate = useNavigate();

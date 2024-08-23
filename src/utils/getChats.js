@@ -1,11 +1,11 @@
 import axios from "axios";
-import indexedDB from "./indexedDB";
+import useChat from '../store';
 import refresh from "./refresh.js";
+import {getToken} from './token.js';
+import indexedDB from "./indexedDB";
 import storage from './localStorage.js';
 import origin from '../../config/origin.json';
-import {getToken} from './token.js';
-import useChat from '../store';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from './customHooks/useNavigator';
 
 const getChats = async (
   setLoading

@@ -1,11 +1,11 @@
 import axios from "axios";
-import indexedDB from "./indexedDB";
-import refresh from "./refresh.js";
-import origin from '../../config/origin.json';
-import storage from "./localStorage.js";
-import {getToken} from './token.js';
 import useChat from '../store';
-import {useNavigate} from 'react-router-dom';
+import refresh from "./refresh.js";
+import indexedDB from "./indexedDB";
+import {getToken} from './token.js';
+import storage from "./localStorage.js";
+import origin from '../../config/origin.json';
+import { useNavigate } from './customHooks/useNavigator';
 
 const textPrompt = async (setLoading, inputText) => {
   const chat = useChat((state) => state.chat);

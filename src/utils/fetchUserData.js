@@ -1,15 +1,15 @@
 import axios from "axios";
-import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
+import {getToken} from './token.js';
+import indexedDB from "./indexedDB";
 import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
-import {getToken} from './token.js'
+import { useNavigate } from './customHooks/useNavigator';
 
 const fetchUserData = async (
   setLoading,
   setUserImage,
-  setUsername,
-  navigate
+  setUsername
 ) => {
   setLoading(true);
   const stored = storage.getValue("user_stored");
@@ -34,7 +34,7 @@ const fetchUserData = async (
       if (err.response && [401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);
         if (res.status === 200) {
-          fetchUserData(setLoading, setUserImage, setUsername, navigate);
+          fetchUserData(setLoading, setUserImage, setUsername);
         } else {
           storage.setValue("logged", false);
           navigate("/", { replace: true });
@@ -43,7 +43,7 @@ const fetchUserData = async (
         console.log(err);
       }
       if (err.message.includes("Network")) {
-        fetchUserData(setLoading, setUserImage, setUsername, navigate);
+        fetchUserData(setLoading, setUserImage, setUsername);
       }
     }
   }

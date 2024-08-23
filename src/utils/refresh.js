@@ -1,7 +1,7 @@
 import axios from "axios";
-import origin from '../../config/origin.json';
 import storage from "./localStorage.js";
-import {getToken, setToken} from './token.js'
+import {getToken, setToken} from './token.js';
+import origin from '../../config/origin.json';
 
 const refresh = async (showErr, navigate) => {
   try {

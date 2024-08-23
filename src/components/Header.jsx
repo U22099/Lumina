@@ -54,13 +54,14 @@ const Header = () => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu} del={del} setDell={setDel}/> : ''}
+        {menu ? <Menu userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu} setDel={setDel}/> : ''}
       </div>
+      {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"}/> : ''}
     </header>
   );
 };
 
-const Menu = ({userName, userImage, setUserImage, menu, del, setDel}) => {
+const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
   return(
     <motion.div 
         initial={{
@@ -83,7 +84,6 @@ const Menu = ({userName, userImage, setUserImage, menu, del, setDel}) => {
             <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={logOut} /></span>
             <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
           </div>
-          {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"}/> : ''}
         </motion.div>
 
   )

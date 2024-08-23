@@ -1,11 +1,11 @@
-import useChat from '../store';
-import indexedDB from './indexedDB';
 import axios from 'axios';
+import useChat from '../store';
 import refresh from "./refresh.js";
+import indexedDB from './indexedDB';
+import { getToken } from './token.js';
 import storage from './localStorage.js';
 import origin from '../../config/origin.json';
-import { getToken } from './token.js';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from './customHooks/useNavigator';
 
 const clearChats = async () => {
     const setChat = useChat((state) => state.setChat);

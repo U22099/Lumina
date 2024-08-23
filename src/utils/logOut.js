@@ -2,7 +2,7 @@ import axios from 'axios';
 import origin from '../../config/origin.json';
 import storage from './localStorage.js';
 import {getToken} from './token.js';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from './customHooks/useNavigator';
 
 const logOut = async () => {
   const navigate = useNavigate();

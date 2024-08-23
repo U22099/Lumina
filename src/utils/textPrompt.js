@@ -3,9 +3,13 @@ import indexedDB from "./indexedDB";
 import refresh from "./refresh.js";
 import origin from '../../config/origin.json';
 import storage from "./localStorage.js";
-import {getToken} from './token.js'
+import {getToken} from './token.js';
+import useChat from '../store';
+import {useNavigate} from 'react-router-dom';
 
-const textPrompt = async (setLoading, inputText, chat, navigate) => {
+const textPrompt = async (setLoading, inputText) => {
+  const chat = useChat((state) => state.chat);
+  const navigate = useNavigate();
   setLoading(true);
   try {
     chat.push({
@@ -37,7 +41,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {
-        textPrompt(setLoading, inputText, chat, navigate);
+        textPrompt(setLoading, inputText);
       } else {
         storage.setValue("logged", false);
         navigate("/", { replace: true });
@@ -46,7 +50,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
       console.log(err);
     }
     if (err.message.includes("Network")) {
-      textPrompt(setLoading, inputText, chat, navigate);
+      textPrompt(setLoading, inputText);
     }
   }
 };

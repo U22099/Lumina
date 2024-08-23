@@ -44,7 +44,7 @@ const Header = () => {
         <div className="flex justify-start items-center md:gap-4">
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
           <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={logOut} /></span>
-          <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"onClick={() => setDel(true)}/></span>
+          <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
           {
           menu ? 
           <FaAngleRight arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(false)}/> 
@@ -52,13 +52,13 @@ const Header = () => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/> : ''}
+        {menu ? <Menu userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu} del={del} setDell={setDel}/> : ''}
       </div>
     </header>
   );
 };
 
-const Menu = ({userName, userImage, setUserImage, menu}) => {
+const Menu = ({userName, userImage, setUserImage, menu, del, setDel}) => {
   return(
     <motion.div 
         initial={{
@@ -90,6 +90,8 @@ Menu.propTypes = {
   userImage: PropTypes.string,
   userName: PropTypes.string,
   setUserImage: PropTypes.func,
-  menu: PropTypes.bool
+  menu: PropTypes.bool,
+  del: PropTypes.bool,
+  setDel: PropTypes.func
 };
 export default Header;

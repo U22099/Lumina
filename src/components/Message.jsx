@@ -10,8 +10,7 @@ const Message = () => {
     const chat = useChat((state) => state.chat);
     useEffect(() => {
         getChats(setLoading);
-        const data = getAiImage();
-        setAiImage(data);
+        getAiImage(setAiImage);
     }, [])
     return (
         <div className="h-full overflow-hidden overflow-y-scroll flex flex-cols">
@@ -31,7 +30,7 @@ const Message = () => {
 const ChatAi = ({x}) => {
     return (
         <div>
-            <img src={getAiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
+            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
             <div>
                 <p>{x.parts[0].text}</p>
             </div>
@@ -41,7 +40,7 @@ const ChatAi = ({x}) => {
 const ChatUser = ({x}) => {
     return (
         <div>
-            <img src={getAiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
+            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
             <div>
                 {x.parts.map((part) => {
                     {part.image ? <img src={part.image} alt="Lumina" className="rounded-full mx-auto w-40 h-40"/> : ''}

@@ -24,8 +24,7 @@ const Header = () => {
 
   useEffect(()=>{
     fetchUserData(setLoading, setUserImage, setUsername, navigate);
-    const data = getAiImage();
-    setAiImage(data);
+    getAiImage(setAiImage);
   },[]);
   return (
     <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16">

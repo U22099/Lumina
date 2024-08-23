@@ -1,9 +1,9 @@
 import indexedDB from './indexedDB.js';
 import toBase64 from './base64';
 
-const getAiImage = async () => {
+const getAiImage = async (setImage) => {
     const data = await indexedDB.getData("AiImage");
-    return data
+    setImage(data);
 }
 
 (async () => {

@@ -11,8 +11,8 @@ const Message = () => {
     }, [])
     return (
         <div className="h-full overflow-hidden overflow-y-scroll flex flex-cols">
-            <div className="flex flex-col mx-auto h-fit justify-center items-center text-center">
-                <img src="logo.jpg" alt="Lumina" className="rounded-md mx-auto w-40 h-40"/>
+            <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-20 gap-3 w-42">
+                <img src="logo.jpg" alt="Lumina" className="rounded-full mx-auto w-40 h-40"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
             <div>

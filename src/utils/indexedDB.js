@@ -37,4 +37,4 @@ const getData = (objStore, key = 1) => {
         }
     });
 }
-export default { saveData, getData, init }
+export default { saveData, getData}

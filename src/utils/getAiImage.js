@@ -1,5 +1,5 @@
 import indexedDB from './indexedDB.js';
-import base64 from './base64';
+import toBase64 from './base64';
 
 const getAiImage = async () => {
     const data = await indexedDB.getData("AiImage");
@@ -9,7 +9,7 @@ const getAiImage = async () => {
 (async () => {
     const data = await indexedDB.getData("AiImage");
     if(!data){
-        const data = await base64('logo.jpg');
+        const data = await toBase64('logo.jpg');
         indexedDB.saveData(data, "AiImage");
     }
 })();

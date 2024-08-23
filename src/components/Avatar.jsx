@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
-import toBase64 from '../utils/base64'
+import toBase64 from '../utils/base64';
+import updateImage from '../utils/updateImage';
+
 const Avatar = ({ userImage, userName, setUserImage}) => {
   const handleFileChange = async (e) => {
     console.log(e.target.files[0].name);
     const data = await toBase64(e.target.files[0]);
     setUserImage(data);
-    //await updateImage(data);
+    await updateImage(data);
   };
   return (
     <div className="flex items-center justify-between">

@@ -77,7 +77,7 @@ const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
         transition={{
           type: "spring"
         }}
-        key={menu} className="absolute top-[8%] flex flex-col gap-2 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-[1px_1px_9px_1px_rgba(0,0,0,0.3),inset_1px_2px_3px_1px_rgba(0,0,0,0.1)] p-2">
+        key={menu} className="absolute top-[8%] flex flex-col gap-2 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
           <div className="flex">
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>

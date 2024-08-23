@@ -8,7 +8,8 @@ import {useNavigate} from 'react-router-dom';
 import {motion } from 'framer-motion';
 import fetchUserData from '../utils/fetchUserData';
 import logOut from '../utils//logOut.js';
-import deleteUser from '../utils/deleteUser.js'
+import deleteUser from '../utils/deleteUser.js';
+import clearChats from '../utils/clearChats.js';
 import ConfirmDialog from '../utils/dialogs/ConfirmDialog';
 
 const Header = () => {
@@ -42,7 +43,7 @@ const Header = () => {
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
         <div className="flex justify-start items-center md:gap-4">
-          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer"/></span>
+          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={clearChats}/></span>
           <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={logOut} /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
           {
@@ -77,7 +78,7 @@ const Menu = ({userName, userImage, setUserImage, menu, del, setDel}) => {
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
           <div className="flex gap-4">
-            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer"/></span>
+            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={clearChats}/></span>
             <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={logOut} /></span>
             <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
           </div>

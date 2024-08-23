@@ -15,6 +15,7 @@ import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
 
 const Header = () => {
   const navigate = useNavigate();
+  const [aiImage, setAiImage] = useState();
   const [userImage, setUserImage] = useState("");
   const [userName, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,12 +24,14 @@ const Header = () => {
 
   useEffect(()=>{
     fetchUserData(setLoading, setUserImage, setUsername, navigate);
+    const data = getAiImage();
+    setAiImage(data);
   },[]);
   return (
     <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16">
       <div className="flex items-center">
         <img
-          src={getAiImage}
+          src={aiImage}
           className="w-10 h-10 object-cover rounded-md"
           alt="Lumina logo"
         />

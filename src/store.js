@@ -7,4 +7,4 @@ const useChat = create((set) => ({
     }
 }));
 
-export default useChat
+export default useChat;

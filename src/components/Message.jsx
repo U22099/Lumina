@@ -12,9 +12,9 @@ const Message = () => {
     }, [])
     return (
         <div className="h-full overflow-hidden overflow-y-scroll flex flex-cols">
-            <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-16 gap-3">
+            <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-14 gap-3 max-w-44">
                 <img src={getAiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40"/>
-                <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center w-44">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
+                <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-44 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
             <div>
                 {chat.map((x) => {

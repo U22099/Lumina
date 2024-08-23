@@ -47,8 +47,8 @@ const Header = () => {
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
         <div className="flex justify-start items-center md:gap-4">
-          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={clearChats}/></span>
-          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={logOut} /></span>
+          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats()}/></span>
+          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut()} /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
           {
           menu ? 
@@ -83,8 +83,8 @@ const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
           <div className="flex gap-4">
-            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={clearChats}/></span>
-            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={logOut} /></span>
+            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats()}/></span>
+            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut()} /></span>
             <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
           </div>
         </motion.div>

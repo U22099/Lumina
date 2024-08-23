@@ -33,7 +33,7 @@ const imagePrompt = async (setLoading, inputText, inputImage) => {
         parts: [{ text: response.data }],
       },
     ];
-    indexedDB.saveData(updatedChat, "ChatData", indexedDB.init);
+    indexedDB.saveData(updatedChat, "ChatData");
     localStorage.setItem("chat_stored", true);
     chat.push({
       role: "model",

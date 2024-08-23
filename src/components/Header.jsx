@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
-import Avatar from "./Avatar";
-import { MdLogout, MdDelete } from "react-icons/md";
-import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
-import {AiOutlineClear} from 'react-icons/ai';
+import {motion } from 'framer-motion';
 import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {motion } from 'framer-motion';
-import fetchUserData from '../utils/fetchUserData';
+import {AiOutlineClear} from 'react-icons/ai';
+import { MdLogout, MdDelete } from "react-icons/md";
+import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
+import Avatar from "./Avatar";
 import logOut from '../utils//logOut.js';
 import deleteUser from '../utils/deleteUser.js';
 import clearChats from '../utils/clearChats.js';
-import ConfirmDialog from '../utils/dialogs/ConfirmDialog';
+import getAiImage from '../utils/getAiImage.js';
+import fetchUserData from '../utils/fetchUserData';
+import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Header = () => {
     <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16">
       <div className="flex items-center">
         <img
-          src="logo.jpg"
+          src={getAiImage}
           className="w-10 h-10 object-cover rounded-md"
           alt="Lumina logo"
         />

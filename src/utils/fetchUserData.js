@@ -14,7 +14,7 @@ const fetchUserData = async (
   setLoading(true);
   const stored = storage.getValue("user_stored");
   if (stored) {
-    const data = await indexedDB.getData("UserData", indexedDB.init);
+    const data = await indexedDB.getData("UserData");
     setUserImage(data.image);
     setUsername(data.username);
     setLoading(false);
@@ -24,7 +24,7 @@ const fetchUserData = async (
       const response = await axios.get(url, {
         withCredentials: true,
       });
-      indexedDB.saveData(response.data, "UserData", indexedDB.init);
+      indexedDB.saveData(response.data, "UserData");
       storage.setValue("user_stored", true);
       setUserImage(response.data.image);
       setUsername(response.data.username);

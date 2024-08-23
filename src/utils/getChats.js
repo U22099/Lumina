@@ -15,7 +15,7 @@ const getChats = async (
   setLoading(true);
   const stored = storage.getValue("chat_stored");
   if (stored) {
-    const data = await indexedDB.getData("ChatData", indexedDB.init);
+    const data = await indexedDB.getData("ChatData");
     setChat(data);
     setLoading(false);
   } else {
@@ -24,7 +24,7 @@ const getChats = async (
       const response = await axios.get(url,{
         withCredentials: true, 
       });
-      indexedDB.saveData(response.data.history, "ChatData", indexedDB.init);
+      indexedDB.saveData(response.data.history, "ChatData");
       storage.setValue("chat_stored", true);
       setChat(response.data.history);
       if (response.status === 200) setLoading(false);

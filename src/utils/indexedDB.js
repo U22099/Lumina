@@ -7,7 +7,7 @@ const init = () => {
     }
     return opendb;
 }
-const saveData = (data, objStore, init, key = 1) => {
+const saveData = (data, objStore, key = 1) => {
     const request = init();
     request.onsuccess = event => {
         const db = event.target.result;
@@ -19,7 +19,7 @@ const saveData = (data, objStore, init, key = 1) => {
         }
     }
 }
-const getData = (objStore, init, key = 1) => {
+const getData = (objStore, key = 1) => {
     const request = init();
     return new Promise(resolve => {
         request.onsuccess = event => {
@@ -36,5 +36,4 @@ const getData = (objStore, init, key = 1) => {
         }
     });
 }
-
 export default { saveData, getData, init }

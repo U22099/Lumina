@@ -16,7 +16,7 @@ const clearChats = async () => {
         if (response.status === 200) {
             storage.setValue("chat_stored", false);
             setChat([]);
-            indexedDB.saveData([], "ChatData", indexedDB.init);
+            indexedDB.saveData([], "ChatData");
         }
     } catch (err) {
         if ([401, 403].includes(err.response.status)) {

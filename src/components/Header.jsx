@@ -81,15 +81,10 @@ const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
         transition={{
           type: "spring"
         }}
-        key={menu} className="absolute top-[8%] flex flex-col gap-2 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
-          <div className="flex">
-            <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
-          </div>
-          <div className="flex gap-4">
-            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
-            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
-            <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
-          </div>
+        key={menu} className="absolute top-[8%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
+            <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
+            <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
+            <span title="Delete User"><MdDelete className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
         </motion.div>
 
   )

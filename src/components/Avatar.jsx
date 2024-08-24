@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import toBase64 from '../utils/base64';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import updateImage from '../utils/updateImage';
 
 const Avatar = ({ userImage, userName, setUserImage}) => {
@@ -14,7 +14,7 @@ const Avatar = ({ userImage, userName, setUserImage}) => {
   return (
     <div className="flex items-center justify-between">
       <label htmlFor="user-image">
-          <input type="file" id="user-image" hidden onClick={handleFileChange}/>
+          <input type="file" id="user-image" hidden onChange={handleFileChange}/>
         <img
           className="inline-block h-10 w-10 rounded-full"
           src={

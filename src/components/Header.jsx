@@ -58,14 +58,14 @@ const Header = () => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu} setDel={setDel}/> : ''}
+        {menu ? <Menu menu={menu} setDel={setDel}/> : ''}
       </div>
       {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"}/> : ''}
     </header>
   );
 };
 
-const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
+const Menu = ({ menu, setDel}) => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
   return(
@@ -90,9 +90,6 @@ const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
   )
 }
 Menu.propTypes = {
-  userImage: PropTypes.string,
-  userName: PropTypes.string,
-  setUserImage: PropTypes.func,
   menu: PropTypes.bool,
   del: PropTypes.bool,
   setDel: PropTypes.func

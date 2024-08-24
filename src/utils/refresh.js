@@ -3,7 +3,7 @@ import storage from "./localStorage.js";
 import {getToken, setToken} from './token.js';
 import origin from '../../config/origin.json';
 
-const refresh = async (showErr, navigate) => {
+const refresh = async (navigate) => {
   try {
     const url = `${origin.default.origin}/refresh?token=${getToken('__R')}`;
     const response = await axios.post(url, {});

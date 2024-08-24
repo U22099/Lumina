@@ -7,7 +7,7 @@ const getAiImage = (setImage) => {
 }
 
 (async () => {
-    const stored = storage.getValue("ai-image");
+    const stored = storage.getValue("ai_image");
     if(!stored){
         const data = await toBase64('logo.jpg');
         storage.setValue("ai_image", data);

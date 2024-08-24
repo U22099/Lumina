@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import {navigate} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';

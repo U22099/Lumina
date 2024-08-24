@@ -6,7 +6,7 @@ import {AiOutlineClear} from 'react-icons/ai';
 import { MdLogout, MdDelete } from "react-icons/md";
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
 import Avatar from "./Avatar";
-import useChat from '../store';
+import useChat from '../store.js';
 import logOut from '../utils/logOut.js';
 import deleteUser from '../utils/deleteUser.js';
 import clearChats from '../utils/clearChats.js';

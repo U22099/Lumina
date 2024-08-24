@@ -1,6 +1,7 @@
 function init(){
     
     const lumina = JSON.parse(localStorage.getItem("Lumina")) || {
+		  ai_image: '',
         user_stored: false,
         chat_stored: false,
         logged: false,
@@ -13,6 +14,9 @@ function getValue(key){
     const lumina = JSON.parse(localStorage.getItem("Lumina"));
     let result;
     switch(key){
+		  case "ai_image":
+            result = lumina.ai_image;
+            break;
         case "user_stored":
             result = lumina.user_stored;
             break;
@@ -34,6 +38,9 @@ function getValue(key){
 function setValue(key, value){
     const lumina = JSON.parse(localStorage.getItem("Lumina"));
     switch(key){
+		  case "ai_image":
+            lumina.ai_image = value;
+            break;
         case "user_stored":
             lumina.user_stored = value;
             break;

@@ -8,7 +8,8 @@ import origin from '../../config/origin.json';
 import { useNavigate } from './customHooks/useNavigator';
 
 const getChats = async (
-  setLoading
+  setLoading,
+  set
 ) => {
   const setChat = useChat((state) => state.setChat);
   const navigate = useNavigate();

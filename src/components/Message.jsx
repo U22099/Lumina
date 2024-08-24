@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import {navigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
@@ -7,9 +8,11 @@ import getAiImage from '../utils/getAiImage';
 const Message = () => {
     const [aiImage, setAiImage] = useState();
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
     useEffect(() => {
-        getChats(setLoading);
+        getChats(setLoading, setChat, navigate);
         getAiImage(setAiImage);
     }, [])
     return (

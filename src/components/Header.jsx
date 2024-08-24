@@ -6,7 +6,8 @@ import {AiOutlineClear} from 'react-icons/ai';
 import { MdLogout, MdDelete } from "react-icons/md";
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
 import Avatar from "./Avatar";
-import logOut from '../utils//logOut.js';
+import useChat from '../store';
+import logOut from '../utils/logOut.js';
 import deleteUser from '../utils/deleteUser.js';
 import clearChats from '../utils/clearChats.js';
 import getAiImage from '../utils/getAiImage.js';
@@ -15,6 +16,7 @@ import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
 
 const Header = () => {
   const navigate = useNavigate();
+  const setChat = useChat((state) => state.setChat);
   const [aiImage, setAiImage] = useState();
   const [userImage, setUserImage] = useState("");
   const [userName, setUsername] = useState("");
@@ -46,8 +48,8 @@ const Header = () => {
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
         <div className="flex justify-start items-center md:gap-4">
-          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats()}/></span>
-          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut()} /></span>
+          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
+          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
           {
           menu ? 
@@ -64,6 +66,8 @@ const Header = () => {
 };
 
 const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
+  const navigate = useNavigate();
+  const setChat = useChat((state) => state.setChat);
   return(
     <motion.div 
         initial={{
@@ -82,8 +86,8 @@ const Menu = ({userName, userImage, setUserImage, menu, setDel}) => {
             <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} menu={menu}/>
           </div>
           <div className="flex gap-4">
-            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats()}/></span>
-            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut()} /></span>
+            <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
+            <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
             <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
           </div>
         </motion.div>

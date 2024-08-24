@@ -1,17 +1,15 @@
 import axios from "axios";
-import useChat from '../store';
 import refresh from "./refresh.js";
 import {getToken} from './token.js';
 import indexedDB from "./indexedDB";
 import storage from './localStorage.js';
 import origin from '../../config/origin.json';
-import { useNavigate } from './customHooks/useNavigator';
 
 const getChats = async (
-  setLoading
+  setLoading,
+  setChat,
+  navigate
 ) => {
-  const setChat = useChat((state) => state.setChat);
-  const navigate = useNavigate();
   setLoading(true);
   const stored = storage.getValue("chat_stored");
   if (stored) {
@@ -34,7 +32,9 @@ const getChats = async (
         const res = await refresh(navigate);
         if (res.status === 200) {
           getChats(
-            setLoading
+            setLoading,
+				setChat,
+  				navigate
           );
         } else {
           storage.setValue("logged", false);
@@ -45,7 +45,9 @@ const getChats = async (
       }
       if (err.message.includes("Network")) {
         getChats(
-            setLoading
+            setLoading,
+				setChat,
+  				navigate
           );
       }
     }

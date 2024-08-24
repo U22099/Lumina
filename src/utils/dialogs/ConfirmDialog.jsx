@@ -1,13 +1,15 @@
 import { GiConfirmed } from 'react-icons/gi'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { navigate } from 'react-router-dom'
 
 function ConfirmDialog({var2, callback, msg}) {
+	 const navigate = useNavigate();
     const [show, setShow] = useState(true)
     function ans(x) {
         setShow(false);
         var2(false);
-        x ? callback() : "";
+        x ? callback(navigate) : "";
     }
     if (show) {
         return (

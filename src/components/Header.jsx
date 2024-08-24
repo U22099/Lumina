@@ -17,7 +17,7 @@ import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
 const Header = () => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
-  const [aiImage, setAiImage] = useState();
+  const [aiImage, setAiImage] = useState("logo.jpg");
   const [userImage, setUserImage] = useState("");
   const [userName, setUsername] = useState("");
   const [loading, setLoading] = useState(false);

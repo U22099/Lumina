@@ -6,7 +6,7 @@ import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 
 const Message = () => {
-    const [aiImage, setAiImage] = useState();
+    const [aiImage, setAiImage] = useState("logo.jpg");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const setChat = useChat((state) => state.setChat);

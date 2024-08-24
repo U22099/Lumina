@@ -1,15 +1,18 @@
 import PropTypes from "prop-types";
-import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 
 const Message = () => {
-    const [aiImage, setAiImage] = useState();
+    const [aiImage, setAiImage] = useState("logo.jpg");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
     useEffect(() => {
-        getChats(setLoading);
+        getChats(setLoading, setChat, navigate);
         getAiImage(setAiImage);
     }, [])
     return (

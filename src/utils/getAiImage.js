@@ -1,16 +1,18 @@
+import storage from './localStorage.js';
 import indexedDB from './indexedDB.js';
 import toBase64 from './base64';
 
 const getAiImage = async (setImage) => {
-    const data = await indexedDB.getData("AiImage");
+    const data = await indexedDB.getData("AI_Image");
     setImage(data);
 }
 
 (async () => {
-    const data = await indexedDB.getData("AiImage");
-    if(!data){
+    const stored = storage.getValue("ai_image");
+    if(!stored){
         const data = await toBase64('logo.jpg');
-        indexedDB.saveData(data, "AiImage");
+        indexedDB.saveData(data, "AI_Image");
+storage.setValue("ai_image", true);
     }
 })();
 

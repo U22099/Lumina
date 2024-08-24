@@ -1,15 +1,12 @@
 import axios from "axios";
-import useChat from '../store';
 import refresh from "./refresh.js";
 import indexedDB from "./indexedDB";
 import {getToken} from './token.js';
 import storage from "./localStorage.js";
 import origin from '../../config/origin.json';
-import { useNavigate } from './customHooks/useNavigator';
 
-const textPrompt = async (setLoading, inputText) => {
-  const chat = useChat((state) => state.chat);
-  const navigate = useNavigate();
+
+const textPrompt = async (setLoading, inputText, chat, navigate) => {
   setLoading(true);
   try {
     chat.push({
@@ -41,7 +38,7 @@ const textPrompt = async (setLoading, inputText) => {
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {
-        textPrompt(setLoading, inputText);
+        textPrompt(setLoading, inputText, chat, navigate);
       } else {
         storage.setValue("logged", false);
         navigate("/", { replace: true });
@@ -50,7 +47,7 @@ const textPrompt = async (setLoading, inputText) => {
       console.log(err);
     }
     if (err.message.includes("Network")) {
-      textPrompt(setLoading, inputText);
+      textPrompt(setLoading, inputText, chat, navigate);
     }
   }
 };

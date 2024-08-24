@@ -1,15 +1,12 @@
 import axios from "axios";
-import useChat from "../store";
 import refresh from "./refresh.js";
 import indexedDB from "./indexedDB";
 import { getToken } from "./token.js";
 import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
-import { useNavigate } from './customHooks/useNavigator';
 
-const imagePrompt = async (setLoading, inputText, inputImage) => {
-  const chat = useChat((state) => state.chat);
-  const navigate = useNavigate();
+
+const imagePrompt = async (setLoading, inputText, inputImage, chat, navigate) => {
   setLoading(true);
   try {
     chat.push({
@@ -34,7 +31,7 @@ const imagePrompt = async (setLoading, inputText, inputImage) => {
       },
     ];
     indexedDB.saveData(updatedChat, "ChatData");
-    localStorage.setItem("chat_stored", true);
+    storage.setValue("chat_stored", true);
     chat.push({
       role: "model",
       parts: [{ text: response.data }],
@@ -45,7 +42,7 @@ const imagePrompt = async (setLoading, inputText, inputImage) => {
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {
-        imagePrompt(setLoading, inputText, inputImage);
+        imagePrompt(setLoading, inputText, inputImage, chat, navigate);
       } else {
         storage.setValue("logged", false);
         navigate("/", { replace: true });
@@ -54,7 +51,7 @@ const imagePrompt = async (setLoading, inputText, inputImage) => {
       console.log(err);
     }
     if (err.message.includes("Network")) {
-      imagePrompt(setLoading, inputText, inputImage);
+      imagePrompt(setLoading, inputText, inputImage, chat, navigate);
     }
   }
 };

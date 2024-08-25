@@ -13,6 +13,7 @@ import clearChats from '../utils/clearChats.js';
 import getAiImage from '../utils/getAiImage.js';
 import fetchUserData from '../utils/fetchUserData';
 import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
+import logo from 'logo.jpg';
 
 const Header = ({userName, userImage, loading, setUserName, setUserImage, setLoading}) => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Header = ({userName, userImage, loading, setUserName, setUserImage, setLoa
 
   useEffect(()=>{
     fetchUserData(setLoading, setUserImage, setUserName, navigate);
-    getAiImage(setAiImage);
+    getAiImage(setAiImage, logo);
   },[]);
   return (
     <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16 py-5 md:py-8">

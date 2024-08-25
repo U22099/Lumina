@@ -5,7 +5,7 @@ const InputBox = () => {
     console.log(e.target.files[0].name);
   };
   const autoResize = (e) => {
-	   e.target.style.height = e.target.lineHeight;
+	   e.target.style.height = e.target.scrollHeight/ e.target.lineHeight;
               e.target.style.height = `${e.target.scrollHeight}px`;
   }
   return (

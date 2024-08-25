@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
-import logo from 'logo.jpg'
 
 const Message = ({ userImage }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -15,7 +14,7 @@ const Message = ({ userImage }) => {
     useEffect(() => {
         //getChats(setLoading, setChat, navigate);
         console.log(chat);
-        getAiImage(setAiImage, logo);
+        //getAiImage(setAiImage);
     }, [])
     return (
         <div className="h-full overflow-hidden overflow-y-scroll flex flex-col">

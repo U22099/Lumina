@@ -5,7 +5,7 @@ import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 
-const Message = () => {
+const Message = ({ userImage }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -17,16 +17,14 @@ const Message = () => {
         getAiImage(setAiImage);
     }, [])
     return (
-        <div className="h-full overflow-hidden overflow-y-scroll flex flex-cols">
+        <div className="h-full overflow-hidden overflow-y-scroll flex flex-col">
             <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-12 gap-3 max-w-48 md:max-w-56">
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
-            <div>
-                {chat.map((x) => {
-                    x.role === "model" ? <ChatAi x={x} /> : <ChatUser x={x} /> 
-                })}
-            </div>
+            {chat.map((x) => {
+                (x.role === "model") ? <ChatAi x={x} /> : <ChatUser x={x} /> 
+            })}
         </div>
     )
 }
@@ -50,7 +48,7 @@ const ChatUser = ({x}) => {
                     <p>{part.text}</p>
                 })}
             </div>
-            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
+            <img src={userImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
         </div>
     )
 }
@@ -60,5 +58,8 @@ ChatAi.propTypes = {
 }
 ChatUser.propTypes = {
     x: PropTypes.object
+}
+Message.propTypes = {
+    userImage: PropTypes.string
 }
 export default Message

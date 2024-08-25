@@ -14,18 +14,15 @@ import getAiImage from '../utils/getAiImage.js';
 import fetchUserData from '../utils/fetchUserData';
 import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
 
-const Header = () => {
+const Header = ({userName, userImage, loading, setUserName, setUserImage, setLoading}) => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
   const [aiImage, setAiImage] = useState("logo.jpg");
-  const [userImage, setUserImage] = useState("");
-  const [userName, setUsername] = useState("");
-  const [loading, setLoading] = useState(false);
   const [menu, setMenu] = useState(false);
   const [del, setDel] = useState(false);
 
   useEffect(()=>{
-    fetchUserData(setLoading, setUserImage, setUsername, navigate);
+    fetchUserData(setLoading, setUserImage, setUserName, navigate);
     getAiImage(setAiImage);
   },[]);
   return (
@@ -94,4 +91,12 @@ Menu.propTypes = {
   del: PropTypes.bool,
   setDel: PropTypes.func
 };
+Header.propTypes = {
+  loading: PropTypes.bool,
+  userName: PropTypes.string,
+  userImage: PropTypes.string,
+  setLoading: PropTypes.func,
+  setUserName: PropTypes.func,
+  setUserImage: PropTypes.func,
+}
 export default Header;

@@ -46,7 +46,7 @@ const ChatUser = ({x}) => {
         <div className="flex self-end">
             <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-75vw md:max-w-50vw text-right rounded-md">
                 {x.parts.map((part) => {
-                    {part.image ? <img src={part.image} alt="Lumina" className="rounded-md w-40 h-40"/> : ''}
+                    {part.image ? <img src={part.image} alt="Lumina" className="rounded-md w-40 h-40"/> : null}
                     <p>{part.text}</p>
                 })}
             </div>

@@ -22,8 +22,6 @@ const Message = ({ userImage }) => {
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
-				<ChatUser x={chat[0]} userImage={userImage}/>
-				<ChatAi x={chat[1]} aiImage={aiImage}/>
             {chat.map(x => {
                 return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
             })}
@@ -33,9 +31,9 @@ const Message = ({ userImage }) => {
 
 const ChatAi = ({x, aiImage}) => {
     return (
-        <div className="flex items-start">
-            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 md:w-16 md:h-16 h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-5 align-left max-w-[75vw] md:max-w-[50vw] text-left rounded-md">
+        <div className="flex items-start gap-1 mx-3">
+            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-12 h-12 md:w-14 md:h-14"/>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-3 align-left w-[70vw] md:w-[50vw] text-left rounded-md">
                 <p className="comic-neue-bold text-md text-black dark:text-white">{x.parts[0].text}</p>
             </div>
         </div>
@@ -43,18 +41,18 @@ const ChatAi = ({x, aiImage}) => {
 }
 const ChatUser = ({x, userImage}) => {
     return (
-        <div className="flex self-end">
-            <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-[75vw] md:max-w-[50vw] text-right rounded-md">
+        <div className="flex self-end gap-1 mx-3">
+            <div className="bg-[var(--secondary-color)] p-3 comic-neue-bold text-md align-right w-[70vw] md:w-[50vw] text-right rounded-md">
                 {x.parts.map((part) => {
                     return ( 
                         <div>
-                            {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40"/>}
+                            {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
                             <p className="comic-neue-bold text-md text-black dark:text-white">{part.text}</p> 
                         </div>
                     )
                 })}
             </div>
-            <img src={userImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
+            <img src={userImage} alt="Lumina" className="rounded-full mx-auto w-12 h-12 md:w-14 md:h-14"/>
         </div>
     )
 }

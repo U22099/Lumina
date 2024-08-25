@@ -26,7 +26,7 @@ const Header = ({userName, userImage, loading, setUserName, setUserImage, setLoa
     //getAiImage(setAiImage);
   },[]);
   return (
-    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16 py-5 md:py-8">
+    <header className="flex items-center justify-between min-h-14 max-h-20 h-14 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16 py-5 md:py-8">
       <div className="flex items-center">
         <img
           src={aiImage}

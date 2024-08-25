@@ -27,7 +27,7 @@
   background: var(--primary-color);
 }
 ::-webkit-scrollbar-track {
-  background: black;
+  background: transparent;
   border-radius: 20px;
   width: 5px;
   height: 5px;

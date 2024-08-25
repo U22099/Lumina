@@ -42,7 +42,7 @@ const ChatAi = ({x}) => {
 }
 const ChatUser = ({x}) => {
     return (
-        <div className="flex items-end w-screen">
+        <div className="flex self-end">
             <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-75vw md:max-w-50vw text-right rounded-md">
                 {x.parts.map((part) => {
                     {part.image ? <img src={part.image} alt="Lumina" className="rounded-full mx-auto w-40 h-40"/> : ''}

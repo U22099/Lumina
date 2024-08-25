@@ -5,7 +5,7 @@ const InputBox = () => {
     console.log(e.target.files[0].name);
   };
   const autoResize = (e) => {
-	   e.target.style.height = "56px";
+	   e.target.style.height = "40px";
               e.target.style.height = `${e.target.scrollHeight}px`;
   }
   return (
@@ -13,7 +13,7 @@ const InputBox = () => {
       <textarea
         rows={0}
         type="text"
-        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-8 my-auto h-14 max-h-20"
+        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-8 my-auto h-10 max-h-20"
         onKeyPress={autoResize}
 		  onKeyUp={autoResize}
         autoComplete="off"

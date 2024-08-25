@@ -29,7 +29,7 @@ const Header = () => {
     getAiImage(setAiImage);
   },[]);
   return (
-    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16">
+    <header className="flex items-center justify-between min-h-12 max-h-16 h-12 w-full bg-gray-100 dark:bg-[var(--accent-color)] px-4 md:px-16 py-5 md:py-8">
       <div className="flex items-center">
         <img
           src={aiImage}
@@ -40,7 +40,7 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-end gap-2">
         {loading ? 
-          <div id="load" className="w-8 h-8">
+          <div id="load" className="w-14 h-14 flex mt-4 h-full items-center">
             <div></div>
             <div></div>
             <div></div> 

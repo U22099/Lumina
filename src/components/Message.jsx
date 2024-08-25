@@ -12,7 +12,7 @@ const Message = () => {
     const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
     useEffect(() => {
-        getChats(setLoading, setChat, navigate);
+        //getChats(setLoading, setChat, navigate);
         getAiImage(setAiImage);
     }, [])
     return (
@@ -32,9 +32,9 @@ const Message = () => {
 
 const ChatAi = ({x}) => {
     return (
-        <div>
-            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
-            <div>
+        <div className="flex items-start">
+            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 md:w-16 md:h-16 h-14"/>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-8 comic-neue-bold text-md align-left max-w-75vw md:max-w-50vw text-left rounded-md">
                 <p>{x.parts[0].text}</p>
             </div>
         </div>
@@ -42,14 +42,14 @@ const ChatAi = ({x}) => {
 }
 const ChatUser = ({x}) => {
     return (
-        <div>
-            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
-            <div>
+        <div className="flex items-end w-screen">
+            <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-75vw md:max-w-50vw text-right rounded-md">
                 {x.parts.map((part) => {
                     {part.image ? <img src={part.image} alt="Lumina" className="rounded-full mx-auto w-40 h-40"/> : ''}
                     <p>{part.text}</p>
                 })}
             </div>
+            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>
         </div>
     )
 }

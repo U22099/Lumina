@@ -10,7 +10,7 @@ const updateImage = async (image, navigate) => {
       const response = await axios.patch(url, {image});
     } catch (err) {
       if ([401, 403].includes(err.response.status)) {
-        const res = await refresh();
+        const res = await refresh(navigate);
         if (res.status === 200) {
           updateImage(image, navigate);
         } else {

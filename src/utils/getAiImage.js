@@ -10,9 +10,11 @@ const getAiImage = async (setImage) => {
 (async () => {
     const stored = storage.getValue("ai_image");
     if(!stored){
-        const data = await toBase64('logo.jpg');
+        const response = await axios.get('logo.jpg', {responseType: 'arraybuffer'});
+        const blobl = new Blob([response.data], {type: 'image/jpeg'});
+        const data = await toBase64(blob);
         indexedDB.saveData(data, "AI_Image");
-storage.setValue("ai_image", true);
+        storage.setValue("ai_image", true);
     }
 })();
 

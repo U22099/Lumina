@@ -1,15 +1,18 @@
-const init = () => {
-    const opendb = indexedDB.open("Lumina");
+const init = (version = 1) => {
+    const opendb = indexedDB.open("Lumina", version);
     opendb.onupgradeneeded = (event) => {
         const db = event.target.result;
-		db.createObjectStore("AI_Image");
-        db.createObjectStore("ChatData");
-        db.createObjectStore("UserData");
+        if(event.oldVersion < 2 ){
+		    db.createObjectStore("AI_Image");
+        } else {
+            db.createObjectStore("ChatData");
+            db.createObjectStore("UserData");
+        }
     }
     return opendb;
 }
 const saveData = (data, objStore, key = 1) => {
-    const request = init();
+    const request = init(2);
     request.onsuccess = event => {
         const db = event.target.result;
         const transaction = db.transaction(objStore, 'readwrite');
@@ -21,7 +24,7 @@ const saveData = (data, objStore, key = 1) => {
     }
 }
 const getData = (objStore, key = 1) => {
-    const request = init();
+    const request = init(2);
     return new Promise(resolve => {
         request.onsuccess = event => {
             const db = event.target.result;

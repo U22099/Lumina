@@ -14,7 +14,7 @@ const Avatar = ({ userImage, userName, setUserImage}) => {
   return (
     <div className="flex items-center justify-between">
       <label htmlFor="user-image">
-          <input type="file" id="user-image" hidden onChange={handleFileChange}/>
+        <input type="file" id="user-image" hidden onChange={async () => await handleFileChange()}/>
         <img
           className="inline-block h-10 w-10 rounded-full"
           src={

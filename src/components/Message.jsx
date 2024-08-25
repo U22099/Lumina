@@ -23,7 +23,7 @@ const Message = ({ userImage }) => {
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
             {chat.map((x) => {
-                (x.role === "model") ? <ChatAi x={x} /> : <ChatUser x={x} /> 
+                return (x.role === "model") ? <ChatAi x={x} /> : <ChatUser x={x} /> 
             })}
         </div>
     )

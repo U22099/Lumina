@@ -35,8 +35,8 @@ const ChatAi = ({x, aiImage}) => {
     return (
         <div className="flex items-start">
             <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 md:w-16 md:h-16 h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-8 comic-neue-bold text-md align-left max-w-75vw md:max-w-50vw text-left rounded-md">
-                <p>{x.parts[0].text}</p>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-5 align-left max-w-[75vw] md:max-w-[50vw] text-left rounded-md">
+                <p className="comic-neue-bold text-md text-black dark:text-white">{x.parts[0].text}</p>
             </div>
         </div>
     )
@@ -44,10 +44,14 @@ const ChatAi = ({x, aiImage}) => {
 const ChatUser = ({x, userImage}) => {
     return (
         <div className="flex self-end">
-            <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-75vw md:max-w-50vw text-right rounded-md">
+            <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-[75vw] md:max-w-[50vw] text-right rounded-md">
                 {x.parts.map((part) => {
-                    {part.image ? <img src={part.image} alt="Lumina" className="rounded-md w-40 h-40"/> : null}
-                    <p>{part.text}</p>
+                    return ( 
+                        <div>
+                            {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40"/>}
+                            <p className="comic-neue-bold text-md text-black dark:text-white">{part.text}</p> 
+                        </div>
+                    )
                 })}
             </div>
             <img src={userImage} alt="Lumina" className="rounded-full mx-auto w-14 h-14"/>

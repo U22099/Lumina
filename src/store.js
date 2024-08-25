@@ -18,7 +18,11 @@ const useChat = create((set) => ({
             role: 'user',
             parts: [{
                 text: 'Must be tough, krypton being destroyed and him being the last son, sounds like a stupid asshole did that right?'
-            }]
+                },
+                {
+                    image: 'logo.jpg'
+                }
+            ]
         },
         {
             role: 'model',

@@ -13,7 +13,7 @@ const InputBox = () => {
       <textarea
         rows="1"
         type="text"
-        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-7 h-5 max-h-20"
+        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-7 mr-4 h-5 max-h-20"
         onKeyPress={autoResize}
 		  onKeyUp={autoResize}
         autoComplete="off"

@@ -13,6 +13,7 @@ const Message = () => {
     const chat = useChat((state) => state.chat);
     useEffect(() => {
         //getChats(setLoading, setChat, navigate);
+        console.log(chat);
         getAiImage(setAiImage);
     }, [])
     return (

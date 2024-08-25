@@ -14,8 +14,8 @@ const InputBox = () => {
         onKeyPress={
           (e) => {
             if(e.key === 'Enter'){
-              e.target.styles.height = "56px";
-              e.target.styles.height = `${e.target.scrollHeight}px`;
+              e.target.style.height = "56px";
+              e.target.style.height = `${e.target.scrollHeight}px`;
             }
           }
         }

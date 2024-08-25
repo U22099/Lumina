@@ -25,7 +25,7 @@ const Message = ({ userImage }) => {
 				<ChatUser x={chat[0]}/>
 				<ChatAi x={chat[1]}/>
             {chat.map(x => {
-                return x.role === "model" ? <ChatAi x={x}/> : <ChatUser x={x}/> 
+                return (x.role === "model") ? <ChatAi x={x}/> : <ChatUser x={x}/> 
             })}
         </div>
     )

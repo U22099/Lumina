@@ -22,16 +22,16 @@ const Message = ({ userImage }) => {
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
-				<ChatUser x={chat[0]}/>
-				<ChatAi x={chat[1]}/>
+				<ChatUser x={chat[0]} userImage={userImage}/>
+				<ChatAi x={chat[1]} aiImage={aiImage}/>
             {chat.map(x => {
-                return (x.role === "model") ? <ChatAi x={x}/> : <ChatUser x={x}/> 
+                return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
             })}
         </div>
     )
 }
 
-const ChatAi = ({x}) => {
+const ChatAi = ({x, aiImage}) => {
     return (
         <div className="flex items-start">
             <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-14 md:w-16 md:h-16 h-14"/>
@@ -41,7 +41,7 @@ const ChatAi = ({x}) => {
         </div>
     )
 }
-const ChatUser = ({x}) => {
+const ChatUser = ({x, userImage}) => {
     return (
         <div className="flex self-end">
             <div className="bg-[var(--secondary-color)] p-8 comic-neue-bold text-md align-right max-w-75vw md:max-w-50vw text-right rounded-md">

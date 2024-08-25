@@ -6,10 +6,19 @@ const InputBox = () => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 flex fixed left-[5%] bottom-6 md:bottom-10">
-      <input
+    <div className="bg-gray-100 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 flex fixed left-[5%] bottom-6 md:bottom-10 h-16">
+      <textarea
+        rows={1}
         type="text"
-        className="bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white"
+        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-8 my-auto h-14 max-h-20"
+        onKeyPress={
+          (e) => {
+            if(e.key === 'Enter'){
+              e.target.styles.height = "56px";
+              e.target.styles.height = `${e.target.scrollHeight}px`;
+            }
+          }
+        }
         autoComplete="off"
         placeholder="Message Lumina"
         tabIndex={0}

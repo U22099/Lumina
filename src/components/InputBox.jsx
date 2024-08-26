@@ -4,7 +4,7 @@ import textPrompt from '../utils/textPrompt';
 import imagePrompt from '../utils/imagePrompt';
 import {useNavigate} from 'react-router-dom';
 import useChat from '../store';
-import toBase64 from '../util/base64'
+import toBase64 from '../utils/base64'
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();

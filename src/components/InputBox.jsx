@@ -21,7 +21,7 @@ const InputBox = ({loading, setLoading}) => {
       if(file){
     chat.push({
       role: "user",
-      parts: [{ image: file }, { text: prompt }],
+      parts: [{ inlineData: {data: image, mimeType: image.split(",")[0].split(";")[0].split(":")[1]} }, { text: prompt }],
     });
         await imagePrompt(setLoading, prompt, file, chat, navigate);
       } else {

@@ -67,7 +67,7 @@ const ChatUser = ({x, userImage}) => {
                 {x.parts.map((part) => {
                     return ( 
                         <div>
-                            {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
+                            {part.inlineData&&<img src={part.inlineData.data} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
                             <Markdown className="comic-neue-bold text-md text-black dark:text-white display">{part.text}</Markdown> 
                         </div>
                     )

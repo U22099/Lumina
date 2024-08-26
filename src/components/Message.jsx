@@ -28,9 +28,9 @@ const Message = ({ userImage, loading }) => {
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
-            {/*chat.map(x => {
+            {chat.map(x => {
                 return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
-            })*/}
+            })}
             {loading ? <ChatAiLoad aiImage={aiImage} /> : ''}
         </div>
     )
@@ -41,7 +41,7 @@ const ChatAi = ({x, aiImage}) => {
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md">
-                <Markdown className="comic-neue-bold text-black dark:text-white" >{x.parts[0].text}</Markdown>
+                <Markdown className="comic-neue-bold text-black dark:text-white display" >{x.parts[0].text}</Markdown>
             </div>
         </div>
     )
@@ -66,8 +66,8 @@ const ChatUser = ({x, userImage}) => {
                 {x.parts.map((part) => {
                     return ( 
                         <div>
-                            {part.inlineData&&<img src={part.inlineData.data} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
-                            <Markdown className="comic-neue-bold text-black dark:text-white">{part.text}</Markdown> 
+                            {/*part.inlineData ? <img src={part.inlineData.data} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/> : ''*/}
+                            <Markdown className="comic-neue-bold text-black dark:text-white display">{part.text}</Markdown> 
                         </div>
                     )
                 })}

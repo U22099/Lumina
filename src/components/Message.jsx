@@ -28,7 +28,7 @@ const Message = ({ userImage, loading }) => {
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
-            {chat.map(x => {
+            {chat?.map(x => {
                 return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
             })}
             {loading ? <ChatAiLoad aiImage={aiImage} /> : null}
@@ -63,7 +63,7 @@ const ChatUser = ({x, userImage}) => {
     return (
         <div className="flex self-end gap-1 my-3">
             <div className="bg-[var(--secondary-color)] p-2 comic-neue-bold text-md align-right w-fit max-w-[70vw] md:max-w-[50vw] text-right rounded-md">
-                {x.parts?.map((part) => {
+                {x.parts.map((part) => {
                     return ( 
                         <div>
                             {part.inlineData&&<img src={part.inlineData.data} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}

@@ -18,7 +18,7 @@ const InputBox = ({loading, setLoading}) => {
   const postPrompt = async () => {
 	 document.getElementById("input").value = "";
 	document.getElementById("input").style.height = "20px";
-    document.getElementById("input").style.height = `${e.target.scrollHeight}px`;
+    document.getElementById("input").style.height = `${document.getElementById("input").scrollHeight}px`;
     if(prompt){
       if(file){
         chat.push({

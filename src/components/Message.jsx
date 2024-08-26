@@ -11,7 +11,7 @@ const Message = ({ userImage, loading }) => {
     const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
     useEffect(() => {
-        //getChats(setChat, navigate);
+        getChats(setChat, navigate);
         console.log(chat);
         //getAiImage(setAiImage);
     }, [])
@@ -24,7 +24,7 @@ const Message = ({ userImage, loading }) => {
             {chat.map(x => {
                 return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
             })}
-            {loading ? <ChatAiLoad/> : null}
+            {loading ? <ChatAiLoad aiImage={aiImage} /> : null}
         </div>
     )
 }
@@ -39,7 +39,7 @@ const ChatAi = ({x, aiImage}) => {
         </div>
     )
 }
-const ChatAiLoad = () => {
+const ChatAiLoad = ({aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
@@ -70,13 +70,20 @@ const ChatUser = ({x, userImage}) => {
     )
 }
 
+ChatAiLoad.propTypes = {
+    x: PropTypes.object,
+    aiImage: PropTypes.string
+}
 ChatAi.propTypes = {
-    x: PropTypes.object
+    x: PropTypes.object,
+    aiImage: PropTypes.string
 }
 ChatUser.propTypes = {
-    x: PropTypes.object
+    x: PropTypes.object,
+    userImage: PropTypes.string
 }
 Message.propTypes = {
-    userImage: PropTypes.string
+    userImage: PropTypes.string,
+    loading: PropTypes.bool
 }
 export default Message

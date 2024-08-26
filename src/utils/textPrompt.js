@@ -46,9 +46,6 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
     } else {
       console.log(err);
     }
-    if (err.message.includes("Network")) {
-      textPrompt(setLoading, inputText, chat, navigate);
-    }
   }
 };
 

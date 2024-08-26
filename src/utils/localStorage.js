@@ -1,6 +1,6 @@
 function init(){
-    
-    const lumina = JSON.parse(localStorage.getItem("Lumina")) || {
+    //JSON.parse(localStorage.getItem("Lumina")) || 
+    const lumina = {
 		  ai_image: false,
         user_stored: false,
         chat_stored: false,

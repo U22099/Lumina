@@ -143,7 +143,10 @@
 .display > *{
   @apply comic-neue-bold text-black dark:text-white
 }
-.display > p{
+.display > * > *{
+  @apply comic-neue-bold text-black dark:text-white
+}
+.display > * > * > *{
   @apply comic-neue-bold text-black dark:text-white
 }
 .display > ol,
@@ -155,5 +158,8 @@
   @apply comic-neue-bold text-black dark:text-white
 }
 .display > a{
+  @apply comic-neue-bold text-[var(--secondary-color)]
+}
+.display > * > a{
   @apply comic-neue-bold text-[var(--secondary-color)]
 }

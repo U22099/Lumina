@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
@@ -10,13 +10,19 @@ const Message = ({ userImage, loading }) => {
     const navigate = useNavigate();
     const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
+	const messageRef = useRef();
     useEffect(() => {
         getChats(setChat, navigate);
         console.log(chat);
         //getAiImage(setAiImage);
     }, [])
+	useEffect(() => {
+        messageRef.current.scrollIntoView({behavior: 'smooth', block: 'end'})
+    }, [chat])
     return (
-        <div className="h-full overflow-hidden overflow-y-scroll flex flex-col scroll-snap-type-y mandatory scroll-snap-align-end">
+        <div 
+	ref={messageRef}
+	className="h-full overflow-hidden overflow-y-scroll flex flex-col scroll-snap-type-y mandatory scroll-snap-align-end">
             <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-12 gap-3 max-w-48 md:max-w-56 mb-8">
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>

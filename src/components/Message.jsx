@@ -18,7 +18,7 @@ const Message = ({ userImage }) => {
     }, [])
     return (
         <div className="h-full overflow-hidden overflow-y-scroll flex flex-col">
-            <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-12 gap-3 max-w-48 md:max-w-56">
+            <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-12 gap-3 max-w-48 md:max-w-56 mb-8">
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
@@ -31,9 +31,9 @@ const Message = ({ userImage }) => {
 
 const ChatAi = ({x, aiImage}) => {
     return (
-        <div className="flex items-start gap-1 mx-3">
+        <div className="flex items-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-12 h-12 md:w-14 md:h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-3 align-left w-[70vw] md:w-[50vw] text-left rounded-md">
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-[70vw] md:w-[50vw] text-left rounded-md">
                 <p className="comic-neue-bold text-md text-black dark:text-white">{x.parts[0].text}</p>
             </div>
         </div>
@@ -41,8 +41,8 @@ const ChatAi = ({x, aiImage}) => {
 }
 const ChatUser = ({x, userImage}) => {
     return (
-        <div className="flex self-end gap-1 mx-3">
-            <div className="bg-[var(--secondary-color)] p-3 comic-neue-bold text-md align-right w-[70vw] md:w-[50vw] text-right rounded-md">
+        <div className="flex self-end gap-1 my-3">
+            <div className="bg-[var(--secondary-color)] p-2 comic-neue-bold text-md align-right w-[70vw] md:w-[50vw] text-right rounded-md">
                 {x.parts.map((part) => {
                     return ( 
                         <div>

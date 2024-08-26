@@ -4,14 +4,16 @@ import textPrompt from '../utils/textPrompt';
 import imagePrompt from '../utils/imagePrompt';
 import {useNavigate} from 'react-router-dom';
 import useChat from '../store';
+import toBase64 from '../util/base64'
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();
   const chat = useChat((state) => state.chat);
   const [prompt, setPrompt] = useState();
   const [file, setFile] = useState();
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleFileChange = async (e) => {
+	 const data = await toBase64(e.target.files[0])
+    setFile(data);
   };
   const postPrompt = async () => {
     if(prompt){
@@ -50,7 +52,7 @@ const InputBox = ({loading, setLoading}) => {
             type="file"
             accept="image/jpeg, image/png, image/jpg"
             id="custom-input"
-            onChange={(e) => handleFileChange(e)}
+            onChange={async (e) => await handleFileChange(e)}
             hidden
           />
           <IoMdAttach className="scale-x-[-1] w-4 h-4" />

@@ -22,7 +22,6 @@ const getChats = async (
       indexedDB.saveData(response.data.history, "ChatData");
       storage.setValue("chat_stored", true);
       setChat(response.data.history);
-      if (response.status === 200) setLoading(false);
     } catch (err) {
       console.log(err);
       if (err.response && [401, 403].includes(err.response.status)) {

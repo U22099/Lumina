@@ -11,7 +11,7 @@ const Message = ({ userImage, loading }) => {
     const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
     useEffect(() => {
-        getChats(setChat, navigate);
+        //getChats(setChat, navigate);
         console.log(chat);
         //getAiImage(setAiImage);
     }, [])
@@ -43,7 +43,7 @@ const ChatAiLoad = ({aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
-            <div id="load" className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 w-[30vw] md:w-[20vw] rounded-md text-[1.5em]">
+            <div id="load" className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 w-fit h-6 rounded-md text-[1.5em]">
                 <div></div>
                 <div></div>
                 <div></div>

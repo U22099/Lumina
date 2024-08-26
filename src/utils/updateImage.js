@@ -6,7 +6,7 @@ import storage from "./localStorage.js";
 
 const updateImage = async (image, navigate) => {
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__R')}`;
+      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
       const response = await axios.patch(url, {image});
     } catch (err) {
       if ([401, 403].includes(err.response.status)) {

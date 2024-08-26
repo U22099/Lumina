@@ -33,8 +33,8 @@ const ChatAi = ({x, aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-[70vw] md:w-[50vw] text-left rounded-md">
-                <p className="comic-neue-bold text-md text-black dark:text-white">{x.parts[0].text}</p>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md">
+                <div className="comic-neue-bold text-md text-black dark:text-white" dangerouslySetInnerHTML={{__html:x.parts[0].text }}></div>
             </div>
         </div>
     )
@@ -55,12 +55,12 @@ const ChatAiLoad = ({aiImage}) => {
 const ChatUser = ({x, userImage}) => {
     return (
         <div className="flex self-end gap-1 my-3">
-            <div className="bg-[var(--secondary-color)] p-2 comic-neue-bold text-md align-right w-[70vw] md:w-[50vw] text-right rounded-md">
+            <div className="bg-[var(--secondary-color)] p-2 comic-neue-bold text-md align-right w-fit max-w-[70vw] md:max-w-[50vw] text-right rounded-md">
                 {x.parts.map((part) => {
                     return ( 
                         <div>
                             {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
-                            <p className="comic-neue-bold text-md text-black dark:text-white">{part.text}</p> 
+                            <div className="comic-neue-bold text-md text-black dark:text-white" dangerouslySetInnerHTML={{__html:part.text }}></div> 
                         </div>
                     )
                 })}

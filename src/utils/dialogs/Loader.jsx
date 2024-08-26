@@ -13,7 +13,7 @@ function Loader() {
                     duration: 0.5,
                 }
             }}
-            className="flex flex-col rounded-xl p-[20px] dialog w-screen h-screen justify-center items-center gap-[10px]">
+            className="flex flex-col rounded-xl p-[20px] dialog w-screen h-screen justify-center items-center gap-[10px] filter blur-md">
             <div id="load" className="w-14 h-14 flex mt-4 h-full items-center">
             <div></div>
             <div></div>

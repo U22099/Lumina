@@ -75,7 +75,7 @@ const InputBox = ({loading, setLoading}) => {
       <div className="flex items-center gap-4">
         <label
           htmlFor="custom-input"
-          className={(file ? "bg-[var(--secondary-color)] ": "bg-[var(--accent-color)] ") +"p-3 rounded-full outline-0 cursor-pointer"}
+          className={(file ? "bg-[var(--secondary-color)] ": "bg-gray-300 ") +"p-3 rounded-full outline-0 cursor-pointer"}
         >
           <input
             type="file"

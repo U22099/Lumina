@@ -12,7 +12,7 @@ const getChats = async (
   const stored = storage.getValue("chat_stored");
   if (stored) {
     const data = await indexedDB.getData("ChatData");
-    setChat(data);
+    setChat(data || []);
   } else {
     try {
       const url = `${origin.default.origin}/chat?token=${getToken('__A')}`;

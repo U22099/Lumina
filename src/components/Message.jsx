@@ -14,7 +14,6 @@ const Message = ({ userImage, loading }) => {
 	const messageRef = useRef();
     useEffect(() => {
         getChats(setChat, navigate);
-        console.log(chat);
         //getAiImage(setAiImage);
     }, [])
 	useEffect(() => {

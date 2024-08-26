@@ -16,7 +16,7 @@ const clearChats = async (setChat, navigate) => {
         }
     } catch (err) {
         if ([401, 403].includes(err.response.status)) {
-            const res = await refresh();
+            const res = await refresh(navigate);
             if (res.status === 200) {
                 clearChats(setChat, navigate);
             } else {

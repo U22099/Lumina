@@ -5,6 +5,7 @@ import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 import { on } from 'zustand';
+import Markdown from 'react-markdown';
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -41,7 +42,7 @@ const ChatAi = ({x, aiImage}) => {
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md">
-                <div className="comic-neue-bold text-md text-black dark:text-white display" dangerouslySetInnerHTML={{__html:x.parts[0].text }}></div>
+                <Markdown className="comic-neue-bold text-md text-black dark:text-white display" >{x.parts[0].text}</Markdown>
             </div>
         </div>
     )
@@ -67,7 +68,7 @@ const ChatUser = ({x, userImage}) => {
                     return ( 
                         <div>
                             {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
-                            <div className="comic-neue-bold text-md text-black dark:text-white display" dangerouslySetInnerHTML={{__html:part.text }}></div> 
+                            <Markdown className="comic-neue-bold text-md text-black dark:text-white display">{part.text}</Markdown> 
                         </div>
                     )
                 })}

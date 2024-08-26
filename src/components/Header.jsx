@@ -58,8 +58,8 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad}/> : null}
-        {load ? <Loader/> : null}
+        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad}/> : ''}
+        {load ? <Loader/> : ''}
       </div>
       {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"} setLoad={setLoad}/> : ''}
     </header>

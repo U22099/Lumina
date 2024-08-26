@@ -41,6 +41,4 @@ const getData = (objStore, key = 1) => {
     });
 }
 
-saveData([], "ChatData");
-saveData([], "UserData");
 export default { saveData, getData}

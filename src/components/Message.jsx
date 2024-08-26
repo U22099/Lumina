@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
+import { on } from 'zustand';
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -16,9 +17,9 @@ const Message = ({ userImage, loading }) => {
         console.log(chat);
         //getAiImage(setAiImage);
     }, [])
-	useEffect(() => {
+	on(chat, () => {
         messageRef.current.scrollTop = messageRef.current.scrollHeight;
-    }, [chat])
+    });
     return (
         <div 
 	ref={messageRef}

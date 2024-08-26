@@ -63,7 +63,7 @@ const ChatUser = ({x, userImage}) => {
     return (
         <div className="flex self-end gap-1 my-3">
             <div className="bg-[var(--secondary-color)] p-2 comic-neue-bold text-md align-right w-fit max-w-[70vw] md:max-w-[50vw] text-right rounded-md">
-                {x.parts.map((part) => {
+                {x.parts?.map((part) => {
                     return ( 
                         <div>
                             {part.inlineData&&<img src={part.inlineData.data} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}

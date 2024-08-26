@@ -34,7 +34,7 @@ const ChatAi = ({x, aiImage}) => {
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md">
-                <div className="comic-neue-bold text-md text-black dark:text-white" dangerouslySetInnerHTML={{__html:x.parts[0].text }}></div>
+                <div className="comic-neue-bold text-md text-black dark:text-white display" dangerouslySetInnerHTML={{__html:x.parts[0].text }}></div>
             </div>
         </div>
     )
@@ -60,7 +60,7 @@ const ChatUser = ({x, userImage}) => {
                     return ( 
                         <div>
                             {part.image&&<img src={part.image} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
-                            <div className="comic-neue-bold text-md text-black dark:text-white" dangerouslySetInnerHTML={{__html:part.text }}></div> 
+                            <div className="comic-neue-bold text-md text-black dark:text-white display" dangerouslySetInnerHTML={{__html:part.text }}></div> 
                         </div>
                     )
                 })}

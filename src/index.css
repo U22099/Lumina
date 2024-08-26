@@ -154,5 +154,5 @@
 }
 
 .display > *{
-  @apply comic-neue-bold text-md text-black dark:text-white display
+  @apply comic-neue-bold text-md text-black dark:text-white
 }

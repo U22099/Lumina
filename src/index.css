@@ -154,9 +154,9 @@
 }
 
 .display > p{
-  @apply comic-neue-bold text-md text-black dark:text-white
+  @apply comic-neue-bold text-black dark:text-white
 }
 
 .display > a{
-  @apply comic-neue-bold text-md text-[var(--secondary-color)]
+  @apply comic-neue-bold text-[var(--secondary-color)]
 }

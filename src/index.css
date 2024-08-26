@@ -81,8 +81,11 @@
   font-family: Arial, Helvetica, sans-serif;
   z-index: 100;
 }
+.scrollbar{
+  scroll-behavior: smooth;
+}
 .scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
   border-radius: 20px;
   transition: all 1s linear;
 }

@@ -9,11 +9,10 @@ import Markdown from 'react-markdown';
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
     const navigate = useNavigate();
-    const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
 	const messageRef = useRef();
     useEffect(() => {
-        getChats(setChat, navigate);
+        getChats(chat, navigate);
         //getAiImage(setAiImage);
     }, [])
 	useEffect(() => {

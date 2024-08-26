@@ -6,13 +6,13 @@ import storage from './localStorage.js';
 import origin from '../../config/origin.json';
 
 const getChats = async (
-  setChat,
+  chat,
   navigate
 ) => {
   const stored = storage.getValue("chat_stored");
   if (stored) {
     const data = await indexedDB.getData("ChatData");
-    setChat(data || []);
+    chat.push(data);
   } else {
     try {
       const url = `${origin.default.origin}/chat?token=${getToken('__A')}`;
@@ -21,14 +21,14 @@ const getChats = async (
       });
       indexedDB.saveData(response.data.history, "ChatData");
       storage.setValue("chat_stored", true);
-      setChat(response.data.history);
+      chat.push(response.data.history);
     } catch (err) {
       console.log(err);
       if (err.response && [401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);
         if (res.status === 200) {
           getChats(
-				setChat,
+				chat,
   				navigate
           );
         } else {
@@ -40,7 +40,7 @@ const getChats = async (
       }
       if (err.message.includes("Network")) {
         getChats(
-				setChat,
+				chat,
   				navigate
           );
       }

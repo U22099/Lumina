@@ -156,6 +156,14 @@
 .display > p{
   @apply comic-neue-bold text-black dark:text-white
 }
+.display > ol,
+.display > ul{
+  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
+}
+
+.display > a{
+  @apply comic-neue-bold text-[var(--secondary-color)]
+}
 
 .display > a{
   @apply comic-neue-bold text-[var(--secondary-color)]

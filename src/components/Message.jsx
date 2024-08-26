@@ -17,7 +17,7 @@ const Message = ({ userImage, loading }) => {
         //getAiImage(setAiImage);
     }, [])
 	useEffect(() => {
-        messageRef.current.scrollTop = messageRef.current.scrollHeight;
+        //messageRef.current.scrollTop = messageRef.current.scrollHeight;
     }, [loading]);
     return (
         <div 

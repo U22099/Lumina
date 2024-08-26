@@ -24,10 +24,6 @@ const imagePrompt = async (setLoading, inputText, inputImage, chat, navigate) =>
     const updatedChat = [
       ...chat,
       {
-        role: "user",
-        parts: [{ image: inputImage}, { text: inputText }],
-      },
-      {
         role: "model",
         parts: [{ text: response.data }],
       },

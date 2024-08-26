@@ -20,10 +20,6 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
     const updatedChat = [
       ...chat,
       {
-        role: "user",
-        parts: [{ text: inputText }],
-      },
-      {
         role: "model",
         parts: [{ text: response.data }],
       },

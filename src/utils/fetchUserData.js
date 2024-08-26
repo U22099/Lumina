@@ -8,7 +8,7 @@ import origin from "../../config/origin.json";
 const fetchUserData = async (
   setLoading,
   setUserImage,
-  setUsername,
+  setUserName,
   navigate
 ) => {
   setLoading(true);
@@ -16,7 +16,7 @@ const fetchUserData = async (
   if (stored) {
     const data = await indexedDB.getData("UserData");
     setUserImage(data.image);
-    setUsername(data.username);
+    setUserName(data.username);
     setLoading(false);
   } else {
     try {
@@ -27,14 +27,14 @@ const fetchUserData = async (
       indexedDB.saveData(response.data, "UserData");
       storage.setValue("user_stored", true);
       setUserImage(response.data.image);
-      setUsername(response.data.username);
+      setUserName(response.data.username);
       if (response.status === 200) setLoading(false);
     } catch (err) {
       console.log(err);
       if (err.response && [401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);
         if (res.status === 200) {
-          fetchUserData(setLoading, setUserImage, setUsername, navigate);
+          fetchUserData(setLoading, setUserImage, setUserName, navigate);
         } else {
           storage.setValue("logged", false);
           navigate("/", { replace: true });
@@ -43,7 +43,7 @@ const fetchUserData = async (
         console.log(err);
       }
       if (err.message.includes("Network")) {
-        fetchUserData(setLoading, setUserImage, setUsername, navigate);
+        fetchUserData(setLoading, setUserImage, setUserName, navigate);
       }
     }
   }

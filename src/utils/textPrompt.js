@@ -7,12 +7,12 @@ import origin from '../../config/origin.json';
 
 
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
-  setLoading(true);
-  try {
-    chat.push({
+  chat.push({
       role: "user",
       parts: [{ text: inputText }],
     });
+  setLoading(true);
+  try {
     const url = `${origin.default.origin}/chat/text?token=${getToken('__A')}`;
     const response = await axios.post(url, { history: chat, message: inputText }, {
       withCredentials: true,
@@ -24,7 +24,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
         parts: [{ text: response.data }],
       },
     ];
-    indexedDB.saveData(updatedChat, "ChatData", indexedDB.init);
+    indexedDB.saveData(updatedChat, "ChatData");
     localStorage.setItem("chat_stored", true);
     chat.push({
       role: "model",

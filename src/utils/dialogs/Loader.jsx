@@ -12,7 +12,7 @@ function Loader() {
                     duration: 0.5,
                 }
             }}
-            className="fixed flex w-[100vw] h-[100vh] justify-center items-center backdrop-blur-sm">
+            className="fixed flex flex-col w-[100vw] h-[100vh] justify-center items-center align-center backdrop-blur-sm self-center dialog">
             <div id="load" className="w-14 h-14 flex items-center">
             <div></div>
             <div></div>

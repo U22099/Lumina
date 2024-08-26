@@ -146,14 +146,10 @@
 .display *{
   @apply comic-neue-bold text-black dark:text-white !important
 }
-.display > ol,
-.display > ul{
+.display ol,
+.display ul{
   @apply comic-neue-bold text-black dark:text-white ml-4 list-disc !important
 }
-.display > ol > *,
-.display > ul > *{
-  @apply comic-neue-bold text-black dark:text-white !important
-}
-.display > a{
+.display a{
   @apply comic-neue-bold text-[var(--secondary-color)] !important
 }

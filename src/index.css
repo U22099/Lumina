@@ -103,7 +103,7 @@
 }
 @keyframes load{
   0%{
-    opacity: .7;
+    opacity: .5;
     transform: translateY(0px);
   }
   100%{
@@ -146,12 +146,6 @@
 .display *{
   @apply comic-neue-bold text-black dark:text-white !important
 }
-.display > * > *{
-  @apply comic-neue-bold text-black dark:text-white !important
-}
-.display > * > * > *{
-  @apply comic-neue-bold text-black dark:text-white !important
-}
 .display > ol,
 .display > ul{
   @apply comic-neue-bold text-black dark:text-white ml-4 list-disc !important
@@ -161,8 +155,5 @@
   @apply comic-neue-bold text-black dark:text-white !important
 }
 .display > a{
-  @apply comic-neue-bold text-[var(--secondary-color)] !important
-}
-.display > * > a{
   @apply comic-neue-bold text-[var(--secondary-color)] !important
 }

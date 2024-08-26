@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef, useLayoutEffect} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
@@ -16,9 +16,8 @@ const Message = ({ userImage, loading }) => {
         getChats(setChat, navigate);
         //getAiImage(setAiImage);
     }, [])
-	useLayoutEffect(() => {
-	setTimeout(() => {
-        messageRef.current.scrollTop = messageRef.current.scrollHeight;}, 1000);
+	useEffect(() => {
+        messageRef.current?.scrollTop = messageRef.current?.scrollHeight;
     }, [loading]);
     return (
         <div 

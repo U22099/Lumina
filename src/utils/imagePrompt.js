@@ -19,7 +19,7 @@ const imagePrompt = async (setLoading, inputText, inputImage, chat, navigate) =>
       image: inputImage,
       message: inputText,
     }, {
-      withCredentials: true
+      withCredentials: true,
     });
     const updatedChat = [
       ...chat,

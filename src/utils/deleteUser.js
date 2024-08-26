@@ -11,6 +11,10 @@ const deleteUser = async (setLoad, navigate) => {
       const response = await axios.delete(url);
       if (response.status === 200) {
         setLoad(false);
+        storage.setValue("user_stored", false);
+        storage.setValue("chat_stored", false);
+        storage.setValue("__R", '');
+        storage.setValue("__A", '');
         await logOut();
         console.log("Deleted User Successfully");
         navigate("/", { replace: true });

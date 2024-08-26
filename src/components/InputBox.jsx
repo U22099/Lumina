@@ -29,7 +29,12 @@ const InputBox = ({loading, setLoading}) => {
           },
           { text: prompt }],
         });
-        await imagePrompt(setLoading, prompt, file, chat, navigate);
+        await imagePrompt(setLoading, prompt, { 
+          inlineData: {
+            data: file, 
+            mimeType: file.split(",")[0].split(";")[0].split(":")[1]
+          }
+        }, chat, navigate);
       } else {
         chat.push({
           role: "user",

@@ -16,6 +16,7 @@ const InputBox = ({loading, setLoading}) => {
     setFile(data);
   };
   const postPrompt = async () => {
+	 document.getElementById("input").value = "";
     if(prompt){
       if(file){
         await imagePrompt(setLoading, prompt, file, chat, navigate);
@@ -34,6 +35,7 @@ const InputBox = ({loading, setLoading}) => {
       <textarea
         rows="1"
         type="text"
+			id = "input"
         className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-7 mr-4 h-5 max-h-20"
         onKeyPress={autoResize}
 		    onKeyUp={autoResize}

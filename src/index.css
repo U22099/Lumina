@@ -1,5 +1,5 @@
 * {
-  color: white;
+  color: black;
 }
 .comic-neue-regular {
   font-family: "Comic Neue", serif;
@@ -61,6 +61,9 @@
   animation: load .4s infinite linear alternate;
 }
 @media (prefers-color-scheme: dark){
+  * {
+	 color: white;
+  }
   #load > div{
     background-color: white;
   }
@@ -140,26 +143,26 @@
 .btn {
   @apply flex justify-center items-center mt-[20px] w-[88%] mx-auto cursor-pointer text-center font-bold text-black bg-[var(--secondary-color)] border-none outline-none rounded-[10px] text-[1.3em]
 }
-.display > *{
-  @apply comic-neue-bold text-black dark:text-white
+.display *{
+  @apply comic-neue-bold text-black dark:text-white !important
 }
 .display > * > *{
-  @apply comic-neue-bold text-black dark:text-white
+  @apply comic-neue-bold text-black dark:text-white !important
 }
 .display > * > * > *{
-  @apply comic-neue-bold text-black dark:text-white
+  @apply comic-neue-bold text-black dark:text-white !important
 }
 .display > ol,
 .display > ul{
-  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
+  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc !important
 }
 .display > ol > *,
 .display > ul > *{
-  @apply comic-neue-bold text-black dark:text-white
+  @apply comic-neue-bold text-black dark:text-white !important
 }
 .display > a{
-  @apply comic-neue-bold text-[var(--secondary-color)]
+  @apply comic-neue-bold text-[var(--secondary-color)] !important
 }
 .display > * > a{
-  @apply comic-neue-bold text-[var(--secondary-color)]
+  @apply comic-neue-bold text-[var(--secondary-color)] !important
 }

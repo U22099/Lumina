@@ -58,7 +58,7 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu menu={menu} setDel={setDel}/> : null}
+        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad}/> : null}
         {load ? <Loader/> : null}
       </div>
       {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"} setLoad={setLoad}/> : ''}
@@ -66,7 +66,7 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
   );
 };
 
-const Menu = ({ menu, setDel}) => {
+const Menu = ({ menu, setDel, setLoad}) => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
   return(
@@ -92,8 +92,8 @@ const Menu = ({ menu, setDel}) => {
 }
 Menu.propTypes = {
   menu: PropTypes.bool,
-  del: PropTypes.bool,
-  setDel: PropTypes.func
+  setDel: PropTypes.func,
+  setLoad: PropTypes.func,
 };
 Header.propTypes = {
   userName: PropTypes.string,

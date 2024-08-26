@@ -29,6 +29,14 @@ const InputBox = ({loading, setLoading}) => {
           },
           { text: prompt }],
         });
+        console.log({
+          role: "user",
+          parts: [{ 
+            inlineData: {
+              data: file, 
+              mimeType: file.split(",")[0].split(";")[0].split(":")[1]
+            }
+          }]});
         await imagePrompt(setLoading, prompt, { 
           inlineData: {
             data: file, 

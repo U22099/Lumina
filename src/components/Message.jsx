@@ -29,10 +29,10 @@ const Message = ({ userImage, loading }) => {
                 <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot. What's on your mind?</p>
             </div>
-            {chat?.map(x => {
+            {chat.map(x => {
                 return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
             })}
-            {loading ? <ChatAiLoad aiImage={aiImage} /> : null}
+            {loading ? <ChatAiLoad aiImage={aiImage} /> : ''}
         </div>
     )
 }

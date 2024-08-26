@@ -19,8 +19,16 @@ const InputBox = ({loading, setLoading}) => {
 	 document.getElementById("input").value = "";
     if(prompt){
       if(file){
+    chat.push({
+      role: "user",
+      parts: [{ image: file }, { text: prompt }],
+    });
         await imagePrompt(setLoading, prompt, file, chat, navigate);
       } else {
+        chat.push({
+          role: "user",
+          parts: [{ text: prompt }],
+        });
         await textPrompt(setLoading, prompt, chat, navigate);
       }
     }

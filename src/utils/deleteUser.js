@@ -4,11 +4,13 @@ import refresh from './refresh.js';
 import {getToken} from './token.js';
 import storage from "./localStorage.js";
 
-const deleteUser = async (navigate) => {
+const deleteUser = async (setLoad, navigate) => {
+  setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__R')}`;
+      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
       const response = await axios.delete(url);
       if (response.status === 200) {
+        setLoad(false);
         await logOut();
         console.log("Deleted User Successfully");
         navigate("/", { replace: true });

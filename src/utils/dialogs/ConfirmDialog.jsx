@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function ConfirmDialog({var2, callback, msg}) {
+function ConfirmDialog({var2, callback, msg, setLoad}) {
 	 const navigate = useNavigate();
     const [show, setShow] = useState(true)
     function ans(x) {
         setShow(false);
         var2(false);
-        x ? callback(navigate) : "";
+        x ? callback(setLoad, navigate) : "";
     }
     if (show) {
         return (

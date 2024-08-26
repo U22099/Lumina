@@ -13,6 +13,7 @@ import clearChats from '../utils/clearChats.js';
 import getAiImage from '../utils/getAiImage.js';
 import fetchUserData from '../utils/fetchUserData';
 import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
+import Loader from '../utils/dialogs/Loader.jsx';
 
 const Header = ({userName, userImage, setUserName, setUserImage}) => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
   const [menu, setMenu] = useState(false);
   const [del, setDel] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(false);
 
   useEffect(()=>{
     fetchUserData(setLoading, setUserImage, setUserName, navigate);
@@ -41,13 +43,13 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
           <div id="load" className="w-14 h-14 flex mt-4 h-full items-center">
             <div></div>
             <div></div>
-            <div></div> 
+            <div></div>
           </div>
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
         }
         <div className="flex justify-start items-center md:gap-4">
-          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
-          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
+          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
+          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
           {
           menu ? 
@@ -56,9 +58,10 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
           <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu menu={menu} setDel={setDel}/> : ''}
+        {menu ? <Menu menu={menu} setDel={setDel}/> : null}
+        {load ? <Loader/> : null}
       </div>
-      {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"}/> : ''}
+      {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"} setLoad={setLoad}/> : ''}
     </header>
   );
 };
@@ -80,8 +83,8 @@ const Menu = ({ menu, setDel}) => {
           type: "spring"
         }}
         key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
-            <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
-            <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
+            <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
+            <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
             <span title="Delete User"><MdDelete className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
         </motion.div>
 

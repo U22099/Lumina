@@ -7,10 +7,6 @@ import origin from '../../config/origin.json';
 
 
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
-  chat.push({
-      role: "user",
-      parts: [{ text: inputText }],
-    });
   setLoading(true);
   try {
     const url = `${origin.default.origin}/chat/text?token=${getToken('__A')}`;

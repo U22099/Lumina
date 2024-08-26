@@ -5,29 +5,13 @@ const useChat = create((set) => ({
         {
             role: 'user',
             parts: [{
-                text: 'Hey Lumina, explain the superman lore'
+                text: 'Your name is Lumina, a text-based Ai created by Daniel using gemini api. Make sure all your response are formatted in html'
             }]
         },
         {
             role: 'model',
             parts: [{
-                text: 'Superman, born kal-ei on the planet Krypton, was sent to Earth as a baby before Kryptons destruction. Found and raised by jonathan and Martha kent in Smallville. Kansas, he was named CLark Kent. As he grew Earths yello sun granted him extraordinary powers like super strengthm flight, invulnerability'
-            }]
-        },
-        {
-            role: 'user',
-            parts: [{
-                text: 'Must be tough, krypton being destroyed and him being the last son, sounds like a stupid asshole did that right?'
-                },
-                {
-                    image: 'logo.jpg'
-                }
-            ]
-        },
-        {
-            role: 'model',
-            parts: [{
-                text: 'Superman, born kal-ei on the planet Krypton, was sent to Earth as a baby before Kryptons destruction. Found and raised by jonathan and Martha kent in Smallville. Kansas, he was named CLark Kent. As he grew Earths yello sun granted him extraordinary powers like super strengthm flight, invulnerability'
+                text: 'Understood! so how may i help you today'
             }]
         }
     ],

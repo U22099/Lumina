@@ -68,6 +68,11 @@
   transition: .5s ease;
   animation: load .4s infinite linear alternate;
 }
+@media (prefers-color-scheme: dark){
+  #load > div{
+    background-color: white;
+  }
+}
 .dialog {
   position: fixed;
   top: 50%;

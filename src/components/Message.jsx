@@ -5,14 +5,13 @@ import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 
-const Message = ({ userImage }) => {
+const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const setChat = useChat((state) => state.setChat);
     const chat = useChat((state) => state.chat);
     useEffect(() => {
-        //getChats(setLoading, setChat, navigate);
+        //getChats(setChat, navigate);
         console.log(chat);
         //getAiImage(setAiImage);
     }, [])
@@ -25,20 +24,34 @@ const Message = ({ userImage }) => {
             {chat.map(x => {
                 return (x.role === "model") ? <ChatAi x={x} aiImage={aiImage}/> : <ChatUser x={x} userImage={userImage}/> 
             })}
+            {loading ? <ChatAiLoad/> : null}
         </div>
     )
 }
 
 const ChatAi = ({x, aiImage}) => {
     return (
-        <div className="flex items-start gap-1 my-3">
-            <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-12 h-12 md:w-14 md:h-14"/>
+        <div className="flex self-start gap-1 my-3">
+            <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-[70vw] md:w-[50vw] text-left rounded-md">
                 <p className="comic-neue-bold text-md text-black dark:text-white">{x.parts[0].text}</p>
             </div>
         </div>
     )
 }
+const ChatAiLoad = () => {
+    return (
+        <div className="flex self-start gap-1 my-3">
+            <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
+            <div id="load" className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 w-[30vw] md:w-[20vw] rounded-md text-[1.5em]">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    )
+}
+
 const ChatUser = ({x, userImage}) => {
     return (
         <div className="flex self-end gap-1 my-3">
@@ -52,7 +65,7 @@ const ChatUser = ({x, userImage}) => {
                     )
                 })}
             </div>
-            <img src={userImage} alt="Lumina" className="rounded-full mx-auto w-12 h-12 md:w-14 md:h-14"/>
+            <img src={userImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
         </div>
     )
 }

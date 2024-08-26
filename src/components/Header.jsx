@@ -14,12 +14,13 @@ import getAiImage from '../utils/getAiImage.js';
 import fetchUserData from '../utils/fetchUserData';
 import ConfirmDialog from '../utils/dialogs/ConfirmDialog.jsx';
 
-const Header = ({userName, userImage, loading, setUserName, setUserImage, setLoading}) => {
+const Header = ({userName, userImage, setUserName, setUserImage}) => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
   const [aiImage, setAiImage] = useState("logo.jpg");
   const [menu, setMenu] = useState(false);
   const [del, setDel] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(()=>{
     fetchUserData(setLoading, setUserImage, setUserName, navigate);
@@ -78,7 +79,7 @@ const Menu = ({ menu, setDel}) => {
         transition={{
           type: "spring"
         }}
-        key={menu} className="absolute top-[8%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
+        key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
             <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setChat, navigate)}/></span>
             <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(navigate)} /></span>
             <span title="Delete User"><MdDelete className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>
@@ -92,10 +93,8 @@ Menu.propTypes = {
   setDel: PropTypes.func
 };
 Header.propTypes = {
-  loading: PropTypes.bool,
   userName: PropTypes.string,
   userImage: PropTypes.string,
-  setLoading: PropTypes.func,
   setUserName: PropTypes.func,
   setUserImage: PropTypes.func,
 }

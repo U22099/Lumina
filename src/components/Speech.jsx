@@ -1,5 +1,5 @@
 import Recorder from './Recorder';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Speech = ({setListening, setSpeaking, setProcessing}) => {
     const [prompt, setPrompt] = useState();

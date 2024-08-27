@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {AiOutlineClear} from 'react-icons/ai';
 import { MdLogout, MdDelete } from "react-icons/md";
+import { FaMicrophoneLines } from 'react-icons/fa6';
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa';
 import Avatar from "./Avatar";
 import useChat from '../store.js';
@@ -48,6 +49,7 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} setLoad={setLoad}/>
         }
         <div className="flex justify-start items-center md:gap-4">
+          <span title="Audio Input"><FaMicrophoneLines className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {}}/></span>
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
           <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
           <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
@@ -83,6 +85,7 @@ const Menu = ({ menu, setDel, setLoad}) => {
           type: "spring"
         }}
         key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
+            <span title="Audio Input"><FaMicrophoneLines className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {}}/></span>
             <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
             <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
             <span title="Delete User"><MdDelete className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>

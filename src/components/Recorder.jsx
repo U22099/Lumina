@@ -1,5 +1,6 @@
 import Mic from './Mic';
 import React from 'react';
+import 'regenerator-runtime/runtime';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const Recorder = ({setListening, setPrompt}) => {

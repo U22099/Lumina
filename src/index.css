@@ -146,6 +146,9 @@
 .display *{
   @apply comic-neue-bold text-black dark:text-white !important
 }
+.display code{
+	@apply font-monospace text-black dark:text-white !important
+}
 .display ol,
 .display ul{
   @apply comic-neue-bold text-black dark:text-white ml-4 list-disc !important

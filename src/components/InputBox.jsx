@@ -16,8 +16,8 @@ const InputBox = ({loading, setLoading}) => {
     setFile(data);
   };
   const postPrompt = async () => {
-	 document.getElementById("input").value = "";
-	document.getElementById("input").style.height = "20px";
+	  document.getElementById("input").value = "";
+	  document.getElementById("input").style.height = "20px";
     document.getElementById("input").style.height = `${document.getElementById("input").scrollHeight}px`;
     if(prompt){
       if(file){
@@ -25,7 +25,7 @@ const InputBox = ({loading, setLoading}) => {
           role: "user",
           parts: [{ 
             inlineData: {
-              data: file, 
+              data: file.split(",")[1], 
               mimeType: file.split(",")[0].split(";")[0].split(":")[1]
             }
           },
@@ -35,16 +35,17 @@ const InputBox = ({loading, setLoading}) => {
           role: "user",
           parts: [{ 
             inlineData: {
-              data: file, 
+              data: file.split(",")[1], 
               mimeType: file.split(",")[0].split(";")[0].split(":")[1]
             }
           }]});
-        await imagePrompt(setLoading, prompt, { 
+        const data = { 
           inlineData: {
-            data: file, 
+            data: file.split(",")[1], 
             mimeType: file.split(",")[0].split(";")[0].split(":")[1]
           }
-        }, chat, navigate);
+        }
+        await imagePrompt(setLoading, prompt, data, chat, navigate);
       } else {
         chat.push({
           role: "user",

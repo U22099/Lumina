@@ -63,7 +63,7 @@ const ChatUser = ({x, userImage}) => {
                 {x.parts.map((part) => {
                     return ( 
                         <div>
-                            {part.inlineData&&<img src={part.inlineData.data} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
+                            {part.inlineData&&<img src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Lumina" className="rounded-md w-40 h-40 mx-auto"/>}
                             <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit" dangerouslySetInnerHTML={{__html: part.text}}/> 
                         </div>
                     )

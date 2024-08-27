@@ -4,10 +4,12 @@ import {getToken} from './token.js';
 import storage from "./localStorage.js";
 
 
-const updateImage = async (image, navigate) => {
+const updateImage = async (setLoad, image, navigate) => {
+  setLoad(true);
     try {
       const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
       const response = await axios.patch(url, {image});
+      setLoad(false);
     } catch (err) {
       if ([401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);

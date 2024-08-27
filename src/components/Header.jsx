@@ -45,7 +45,7 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
             <div></div>
             <div></div>
           </div>
-          : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage}/>
+          : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} setLoad={setLoad}/>
         }
         <div className="flex justify-start items-center md:gap-4">
           <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>

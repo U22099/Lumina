@@ -3,13 +3,13 @@ import toBase64 from '../utils/base64';
 import { useNavigate } from 'react-router-dom';
 import updateImage from '../utils/updateImage';
 
-const Avatar = ({ userImage, userName, setUserImage}) => {
+const Avatar = ({ setLoad, userImage, userName, setUserImage}) => {
   const navigate = useNavigate();
   const handleFileChange = async (e) => {
     console.log(e.target.files[0].name);
     const data = await toBase64(e.target.files[0]);
     setUserImage(data);
-    await updateImage(data, navigate);
+    await updateImage(setLoad, data, navigate);
   };
   return (
     <div className="flex items-center justify-between">
@@ -31,7 +31,8 @@ const Avatar = ({ userImage, userName, setUserImage}) => {
 Avatar.propTypes = {
   userImage: PropTypes.string,
   userName: PropTypes.string,
-  setUserImage: PropTypes.func
+  setUserImage: PropTypes.func,
+  setLoad: PropTypes.func
 };
 
 export default Avatar;

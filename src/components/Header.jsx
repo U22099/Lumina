@@ -49,15 +49,15 @@ const Header = ({userName, userImage, setUserName, setUserImage}) => {
           : <Avatar userName={userName} userImage={userImage} setUserImage={setUserImage} setLoad={setLoad}/>
         }
         <div className="flex justify-start items-center md:gap-4">
-          <span title="Audio Input"><FaMicrophoneLines className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {}}/></span>
-          <span title="Clear chat"><AiOutlineClear className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
-          <span title="Log Out"><MdLogout className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
-          <span title="Delete User"><MdDelete className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
+          <span title="Audio Input"><FaMicrophoneLines className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {}}/></span>
+          <span title="Clear chat"><AiOutlineClear className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
+          <span title="Log Out"><MdLogout className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
+          <span title="Delete User"><MdDelete className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setDel(true)}/></span>
           {
           menu ? 
-          <FaAngleRight arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(false)}/> 
+          <FaAngleRight arial-label="Open Menu" className="w-7 h-7 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(false)}/> 
           : 
-          <FaAngleLeft arial-label="Open Menu" className="w-6 h-6 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
+          <FaAngleLeft arial-label="Open Menu" className="w-7 h-7 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
         {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad}/> : ''}
@@ -85,7 +85,7 @@ const Menu = ({ menu, setDel, setLoad}) => {
           type: "spring"
         }}
         key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
-            <span title="Audio Input"><FaMicrophoneLines className="w-6 h-6 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {}}/></span>
+            <span title="Audio Input"><FaMicrophoneLines className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => {}}/></span>
             <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
             <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
             <span title="Delete User"><MdDelete className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setDel(true)}/></span>

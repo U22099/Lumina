@@ -13,11 +13,10 @@ const Message = ({ userImage, loading }) => {
 	const messageRef = useRef();
     useEffect(() => {
         getChats(setChat, navigate);
+			messageRef.current.scrollTop = messageRef.current.scrollHeight;
     }, [])
 	useLayoutEffect(() => {
-        if(messageRef.current){
             messageRef.current.scrollTop = messageRef.current.scrollHeight;
-        }
     }, [loading]);
     return (
         <div 

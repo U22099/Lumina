@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const Text = ({ speaking, listening }) => {
+const Text = ({ speaking, listening, processing }) => {
     const container = {
         hidden: {opacity: 0.2},
         visible: {
@@ -22,6 +22,10 @@ const Text = ({ speaking, listening }) => {
     } else if(listening){
         return(
             <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Listening...</motion.h1>
+        )
+    } else if(processing){
+        return(
+            <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Processing...</motion.h1>
         )
     }
   return (

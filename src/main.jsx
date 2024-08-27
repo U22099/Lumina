@@ -7,6 +7,7 @@ import ForgotPassword from "./ForgotPassword.jsx";
 import EmailSent from "./EmailSent.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
+import 'regenerator-runtime/runtime';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

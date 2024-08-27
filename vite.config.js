@@ -7,10 +7,5 @@ export default defineConfig({
   assetsInclude: ["**/*.{JPG,PNG,jpg,png}"],
   optimizeDeps:{
     override: true
-  },
-  resolve: {
-    alias: {
-      regeneratorRuntime: 'regenerator-runtime',
-    }
   }
 })

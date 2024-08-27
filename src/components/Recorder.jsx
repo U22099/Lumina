@@ -1,4 +1,5 @@
 import Mic from './Mic';
+import React from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const Recorder = ({setListening, setPrompt}) => {
@@ -15,7 +16,7 @@ const Recorder = ({setListening, setPrompt}) => {
     }
   return (
     <div>
-        <Mic start={SpeechRecognition.startListening} stop={SpeechRecognition.stopListening} reset={resetTranscript} transcipt={transcipt} listening={listening} setListening={setListening} setPrompt={setPrompt}/>
+        <Mic start={SpeechRecognition.startListening} stop={SpeechRecognition.stopListening} reset={resetTranscript} transcipt={transcript} listening={listening} setListening={setListening} setPrompt={setPrompt}/>
     </div>
   )
 }

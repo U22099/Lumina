@@ -4,16 +4,16 @@ import { FaMicrophoneLines, FaMicrophoneLinesSlash } from 'react-icons/fa6';
 
 const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt}) => {
     const [anim, setAnim] = useState(false);
-    const startRecording = () => {
+    const startRecording = async () => {
         setAnim(true);
-        reset();
-        start();
+        await reset();
+        await start();
         setListening(true);
     }
-    const stopRecording = () => {
+    const stopRecording = async () => {
         setAnim(false);
         setPrompt(transcript);
-        stop();
+        await stop();
         setListening(false);
     }
   return (

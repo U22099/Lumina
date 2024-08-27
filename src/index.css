@@ -101,6 +101,37 @@
   transition: 1s;
   animation: hueRotate 3s linear infinite;
 }
+.bgRotate {
+  animation: bg-rotate 2s linear infinite;
+}
+.mic:before,
+.mic:after{
+  --pad: 0rem;
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 0;
+  background-color: #b871fddd;
+  border-radius: 50%;
+  top: var(--pad);
+  left: var(--pad);
+  right: var(--pad);
+  bottom: var(--pad);
+}
+.mic:after{
+  transition: .4s;
+}
+.mic:before{
+  transition: .2s;
+}
+.mic:hover:before,
+.mic:active:before{
+  --pad: 1rem;
+}
+.mic:hover:after,
+.mic:active:after{
+  --pad: 2rem;
+}
 @keyframes load{
   0%{
     opacity: .5;
@@ -130,7 +161,14 @@
     filter: hue-rotate(360deg);
   }
 }
-
+@keyframes bg-rotate{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
 @tailwind base;
 
 @tailwind components;
@@ -147,7 +185,7 @@
   @apply comic-neue-bold text-black dark:text-white !important
 }
 .display code{
-	@apply font-mono break-words whitespace-pre-wrap text-black dark:text-white !important
+	@apply text-[1em] font-mono break-words whitespace-pre-wrap text-black dark:text-white !important
 }
 .display ol,
 .display ul{

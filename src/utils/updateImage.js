@@ -14,7 +14,7 @@ const updateImage = async (setLoad, image, navigate) => {
       if ([401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);
         if (res.status === 200) {
-          updateImage(image, navigate);
+          updateImage(setLoad, image, navigate);
         } else {
           storage.setValue("logged", false);
           navigate("/", { replace: true });

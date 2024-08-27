@@ -74,7 +74,7 @@ const Register = () => {
     <div className="flex flex-col justify-start md:p-[30px] p-[0px] rounded-[16px] overflow-hidden overflow-y-scroll scrollbar h-[100vh] align-center w-[80%] md:w-[70%] lg:w-[50%] dark:bg-black md:border-[var(--secondary-color)] md:border-[2px] gap-[20px] my-[40px]">
       <header className="flex justify-start text-start w-[100%]">
         <h1 className="text-[2em] md:text-[3em] text-[var(--secondary-color)] comic-neue-bold">
-          Welcome to Lumina
+          Register
         </h1>
       </header>
       <main className="w-[100%] flex flex-col justify-start gap-[10px]">

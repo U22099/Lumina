@@ -1,17 +1,22 @@
 import { useState } from 'react';
+import Text from "./components/Text";
 import Header from "./components/Header";
 import Message from "./components/Message";
 import InputBox from "./components/InputBox";
+import Recorder from "./components/Recorder";
 
 const App = () => {
   const [userImage, setUserImage] = useState("");
   const [userName, setUserName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [voiceInput, setVoiceInput] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
+  const [listening, setListening] = useState(false);
   return (
-    <div className="h-screen md:h-dvh w-full dark:bg-[var(--primary-color)] bg-white mx-auto relative overflow-hidden grid grid-rows-[1fr_10fr_1.5fr]">
-      <Header userName={userName} userImage={userImage} setUserName={setUserName} setUserImage={setUserImage} />
-      <Message userImage={userImage} loading={loading}/>
-      <InputBox loading={loading} setLoading={setLoading}/>
+    <div className={(voiceInput ? "grid-rows-[1fr_8fr_3fr] " : "grid-rows-[1fr_10fr_1.5fr] ") +"h-screen md:h-dvh w-full dark:bg-[var(--primary-color)] bg-white mx-auto relative overflow-hidden grid"}>
+      <Header userName={userName} userImage={userImage} setUserName={setUserName} setUserImage={setUserImage} setVoiceInput={setVoiceInput} voiceInput={voiceInput}/>
+      {voiceInput ? <Text speaking={speaking} listening={listening}/> :<Message userImage={userImage} loading={loading}/>}
+      {voiceInput ? <Recorder /> :<InputBox loading={loading} setLoading={setLoading}/>}
     </div>
   );
 };

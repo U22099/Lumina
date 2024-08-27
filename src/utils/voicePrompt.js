@@ -1,0 +1,33 @@
+import axios from "axios";
+import refresh from "./refresh.js";
+import {getToken} from './token.js';
+import storage from "./localStorage.js";
+import origin from '../../config/origin.json';
+
+
+const voicePrompt = async (setLoading, message, navigate) => {
+  setLoading(true);
+  try {
+    const url = `${origin.default.origin}/chat/voice?token=${getToken('__A')}`;
+    const response = await axios.post(url, { message }, {
+      withCredentials: true,
+    });
+    if (response.status === 200) setLoading(false);
+    return response.data
+  } catch (err) {
+    console.log(err);
+    if (err.response && [401, 403].includes(err.response.status)) {
+      const res = await refresh(navigate);
+      if (res.status === 200) {
+        voicePrompt(setLoading, message, navigate);
+      } else {
+        storage.setValue("logged", false);
+        navigate("/", { replace: true });
+      }
+    } else {
+      console.log(err);
+    }
+  }
+};
+
+export default voicePrompt;

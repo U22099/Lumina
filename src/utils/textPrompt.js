@@ -29,7 +29,6 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
     if (response.status === 200) setLoading(false);
   } catch (err) {
     console.log(err);
-	 //if(err.response.status === 500){textPrompt(setLoading, inputText, chat, navigate)}
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {

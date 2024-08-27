@@ -17,22 +17,28 @@ const Text = ({ speaking, listening, processing }) => {
     }
     if(speaking){
         return(
-            <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Speaking...</motion.h1>
+            <motion.div variants={container} className="flex flex-col justify-center items-start w-screen h-full mt-8 p-8">
+                <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-4xl md:text-7xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Speaking...</motion.h1>
+            </motion.div>
         )
     } else if(listening){
         return(
-            <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Listening...</motion.h1>
+            <motion.div variants={container} className="flex flex-col justify-center items-start w-screen h-full mt-8 p-8">
+                <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-4xl md:text-7xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Listening...</motion.h1>
+            </motion.div>
         )
     } else if(processing){
         return(
-            <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Processing...</motion.h1>
+            <motion.div variants={container} className="flex flex-col justify-center items-start w-screen h-full mt-8 p-8">
+                <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-4xl md:text-7xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold bgRotate">Processing...</motion.h1>
+            </motion.div>
         )
     }
   return (
-    <motion.div variants={container} className="flex flex-col justify-center items-start w-fit mt-3 ml-6">
-        <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl comic-neue-bold bgRotate">Ask</motion.h1>
-        <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl animate-[bounce_2s_ease-in-out_infinite] ml-8 comic-neue-bold bgRotate">Lumina</motion.h1>
-        <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-[var(--secondary-color)] text-transparent text-3xl md:text-6xl comic-neue-bold bgRotate">Anything</motion.h1>
+    <motion.div variants={container} className="flex flex-col justify-center items-start w-screen h-full mt-8 p-8">
+        <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-4xl md:text-7xl comic-neue-bold bgRotate">Ask</motion.h1>
+        <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-6xl md:text-8xl animate-[bounce_2s_ease-in-out_infinite] ml-8 comic-neue-bold bgRotate">Lumina</motion.h1>
+        <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-4xl md:text-7xl comic-neue-bold bgRotate">Anything</motion.h1>
     </motion.div>
   )
 }

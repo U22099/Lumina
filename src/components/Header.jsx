@@ -50,9 +50,9 @@ const Header = ({setVoiceInput, voiceInput, userName, userImage, setUserName, se
         }
         <div className="flex justify-start items-center md:gap-4">
           {voiceInput ? 
-            <span title="Audio Input"><FaMessage className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {setVoiceInput(false)}}/></span>
+            <span title="Audio Input"><FaMessage className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setVoiceInput(false)}/></span>
           :
-            <span title="Audio Input"><FaMicrophoneLines className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => {setVoiceInput(true)}}/></span>            
+            <span title="Audio Input"><FaMicrophoneLines className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={() => setVoiceInput(true)}/></span>            
           }
           <span title="Clear chat"><AiOutlineClear className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
           <span title="Log Out"><MdLogout className="w-8 h-8 fill-black dark:fill-white hidden md:flex cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>
@@ -88,11 +88,11 @@ const Menu = ({ setVoiceInput, voiceInput, menu, setDel, setLoad}) => {
         transition={{
           type: "spring"
         }}
-        key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2">
+        key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2 z-20">
             {voiceInput ? 
-              <span title="Text Input"><FaMessage className="w-8 h-8 fill-black dark:fill-white cursor-pointer" onClick={() => {setVoiceInput(false)}}/></span>
+              <span title="Text Input"><FaMessage className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setVoiceInput(false)}/></span>
             :
-              <span title="Audio Input"><FaMicrophoneLines className="w-8 h-8 fill-black dark:fill-white cursor-pointer" onClick={() => {setVoiceInput(true)}}/></span>            
+              <span title="Audio Input"><FaMicrophoneLines className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setVoiceInput(true)}/></span>            
             }
             <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
             <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>

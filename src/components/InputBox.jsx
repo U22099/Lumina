@@ -61,7 +61,7 @@ const InputBox = ({loading, setLoading}) => {
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
   return (
-    <div className="bg-gray-100 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
+    <div className="bg-gray-100 active:bg-gray-200 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
       <textarea
         rows="1"
         type="text"

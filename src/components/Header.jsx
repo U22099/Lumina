@@ -102,12 +102,14 @@ const Menu = ({ setVoiceInput, voiceInput, menu, setDel, setLoad}) => {
   )
 }
 Menu.propTypes = {
+  setVoiceInput: PropTypes.func,
+  voiceInput: PropTypes.bool,
   menu: PropTypes.bool,
   setDel: PropTypes.func,
   setLoad: PropTypes.func,
 };
 Header.propTypes = {
-  setoiceInput: PropTypes.func,
+  setVoiceInput: PropTypes.func,
   voiceInput: PropTypes.bool,
   userName: PropTypes.string,
   userImage: PropTypes.string,

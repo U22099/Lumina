@@ -147,7 +147,7 @@
   @apply comic-neue-bold text-black dark:text-white !important
 }
 .display code{
-	@apply font-monospace text-black dark:text-white !important
+	@apply font-mono break-words whitespace-pre-wrap text-black dark:text-white !important
 }
 .display ol,
 .display ul{

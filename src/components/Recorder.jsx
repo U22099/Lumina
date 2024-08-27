@@ -15,7 +15,7 @@ const Recorder = ({setListening, setPrompt}) => {
     }
   return (
     <div>
-        <Mic start={SpeechRecognition.startListening} stop={SpeechRecognition.stopListening} reset={resetTranscript} listening={listening} setListening={setListening} setPrompt={setPrompt}/>
+        <Mic start={SpeechRecognition.startListening} stop={SpeechRecognition.stopListening} reset={resetTranscript} transcipt={transcipt} listening={listening} setListening={setListening} setPrompt={setPrompt}/>
     </div>
   )
 }

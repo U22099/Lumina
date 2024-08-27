@@ -16,7 +16,7 @@ const Avatar = ({ setLoad, userImage, userName, setUserImage}) => {
       <label htmlFor="user-image">
         <input type="file" id="user-image" hidden onChange={async (e) => await handleFileChange(e)}/>
         <img
-          className="inline-block h-12 w-12 md:h-14 md:w-14 cursor-pointer rounded-full"
+          className="inline-block h-11 w-11 md:h-14 md:w-14 cursor-pointer rounded-full"
           src={
             userImage
           }

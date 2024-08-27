@@ -34,7 +34,7 @@ const Header = ({setVoiceInput, voiceInput, userName, userImage, setUserName, se
       <div className="flex items-center">
         <img
           src={aiImage}
-          className="w-10 h-10 object-cover rounded-md"
+          className="w-11 h-11 md:w-14 md:h-14 object-cover rounded-md"
           alt="Lumina logo"
         />
         <span className="text-black dark:text-white comic-neue-bold block ml-4">Lumina AI</span>
@@ -64,7 +64,7 @@ const Header = ({setVoiceInput, voiceInput, userName, userImage, setUserName, se
           <FaAngleLeft arial-label="Open Menu" className="w-7 h-7 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad}/> : ''}
+        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad} voiceInput={voiceInput} setVoiceInput={setVoiceInput} /> : ''}
         {load ? <Loader/> : ''}
       </div>
       {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"} setLoad={setLoad}/> : ''}
@@ -72,7 +72,7 @@ const Header = ({setVoiceInput, voiceInput, userName, userImage, setUserName, se
   );
 };
 
-const Menu = ({ menu, setDel, setLoad}) => {
+const Menu = ({ setVoiceInput, voiceInput, menu, setDel, setLoad}) => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
   return(

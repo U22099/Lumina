@@ -6,7 +6,7 @@ export default {
       keyframes: {
         pulsar: {
           '0%': {scale: 0.5, opacity: 1},
-          '100%': {scale: 1, opacity: 0}
+          '100%': {scale: 2, opacity: 0.5}
         }
       },
       animation: {

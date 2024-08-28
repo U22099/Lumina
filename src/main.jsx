@@ -10,7 +10,6 @@ import "./index.css";
 import 'regenerator-runtime/runtime';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
       <BrowserRouter basename="/Lumina">
         <Routes>
           <Route path="/" element={<LogIn />} />
@@ -20,5 +19,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="emailSent" element={<EmailSent />} />
         </Routes>
       </BrowserRouter>
-  </React.StrictMode>
 );

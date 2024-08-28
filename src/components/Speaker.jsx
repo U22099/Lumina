@@ -15,7 +15,7 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
             start();
             setStopSpeaking(stop);
         }
-    },[text])
+    },[text]);
     return(
         <div>
             <iframe src="https://gifer.com/embed/Cad" width="100%" height="100%"></iframe>

@@ -16,11 +16,14 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
             setSpeaking(true);
             start();
             setStopSpeaking(stop);
-        } else if (speechStatus === 'ended'){
+        }
+    },[text]);
+    useEffect(() => {
+        if (speechStatus === 'ended'){
             setSpeaking(false);
             stop();
 		}
-    },[text]);
+    }, [speechStatus])
     return(
         <div>
 			<Text />

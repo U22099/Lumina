@@ -6,18 +6,19 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking, setStart}) 
 		  text: returnedText,
         speechStatus,
         start,
-        stop
+        stop,
+		  utterance
     } = useSpeech({text});
 
     useEffect(()=>{
-        if(speechStatus !== "started"){
+        if(speechStatus !== "started"&&utterance.text !== ''){
             console.log(text);
             setProcessing(false);
             setSpeaking(true);
             start();
             setStopSpeaking(stop);
         }
-    },[text]);
+    },[utterance.text]);
     useEffect(() => {
         if ((speechStatus === 'ended') || (speechStatus === 'stopped')){
             setSpeaking(false);

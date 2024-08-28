@@ -14,6 +14,7 @@ utterance.text = text;
                 setSpeechStatus("ended");
             }
             utterance.onerror = () => {
+alert("error");
                 setSpeechStatus("error");
             }
 				const voices = speech.getVoices();

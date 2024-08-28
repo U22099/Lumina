@@ -101,9 +101,6 @@
   transition: 1s;
   animation: hueRotate 3s linear infinite;
 }
-.bgRotate {
-  animation: bg-rotate 2s linear infinite;
-}
 .mic:before,
 .mic:after{
   --pad: 0rem;
@@ -159,14 +156,6 @@
   }
   100% {
     filter: hue-rotate(360deg);
-  }
-}
-@keyframes bg-rotate{
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
   }
 }
 @tailwind base;

@@ -20,7 +20,8 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     },[prompt])
 	useEffect(() => {
 		if(result){
-            setProcessing(false)
+            setProcessing(false);
+            setSpeaking(true);
 		    setStart(true);
 		}
 	}, [result])

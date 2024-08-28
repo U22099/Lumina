@@ -39,7 +39,7 @@ const Speaker = ({ setSpeaking, text, setStart }) => {
             {returnedText}
         </p>
         </div>
-        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-4 bg-[var(--secondary-color)] rounded-md shadow-md">Skip</p>
+        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-4 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => speech.cancel()}>Skip</p>
     </>
   );
 };

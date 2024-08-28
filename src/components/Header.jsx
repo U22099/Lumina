@@ -72,7 +72,7 @@ const Header = ({setVoiceInput, voiceInput, userName, userImage, setUserName, se
   );
 };
 
-const Menu = ({ setVoiceInput, voiceInput, menu, setDel, setLoad}) => {
+const Menu = ({ setVoiceInput, voiceInput, menu, setDel, setLoad, setMenu}) => {
   const navigate = useNavigate();
   const setChat = useChat((state) => state.setChat);
   return(

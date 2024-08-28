@@ -14,9 +14,14 @@ const Mic = ({speaking, start, stop, reset, listening, transcript, setListening,
     const stopRecording = async () => {
         setAnim(false);
         setPrompt(transcript);
-        await stop();
         setListening(false);
+        await stop();
     }
+    useEffect(()=> {
+        if(!listening&&anim){
+            stopRecording();
+        }
+    }, [listening])
   return (
     <motion.div
         initial={{opacity: 0.5}}
@@ -24,7 +29,7 @@ const Mic = ({speaking, start, stop, reset, listening, transcript, setListening,
         className="flex flex-col justify-between gap-10 select-none"
     >
         <div className="flex flex-col items-center justify-center mx-auto z-10">{!listening ? <FaMicrophoneLines className="w-20 h-20 md:w-32 md:h-32 fill-black dark:fill-white cursor-pointer bg-[var(--secondary-color)] rounded-full p-6 md:p-10 text-[1.7em] md:text-[3em] mic shadow-md " onClick={startRecording}/> : <FaMicrophoneLinesSlash className="w-20 h-20 md:w-32 md:h-32 fill-black dark:fill-white cursor-pointer bg-[var(--secondary-color)] rounded-full p-4 md:p-8 text-[1.7em] md:text-[3em] mic shadow-md" onClick={stopRecording}/>}
-        <p className="text-black dark:text-white comic-neue-bold mt-3 select-none">Hold to record</p>
+        <p className="text-black dark:text-white comic-neue-bold mt-3 select-none">Tap to record</p>
         </div>
         <motion.div 
             initial={{scale: 0}}

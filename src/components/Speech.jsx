@@ -14,6 +14,7 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     useEffect(()=>{
         if(prompt){
             setProcessing(true);
+            console.log(prompt);
             const text = voicePrompt(setLoading, prompt, navigate);
             setResult(text);
             setStart(true);

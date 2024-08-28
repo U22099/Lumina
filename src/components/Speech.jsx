@@ -3,6 +3,7 @@ import Speaker from './Speaker';
 import { useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 import voicePrompt from '../utils/voicePrompt';
+import {motion} from 'framer-motion';
 
 const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     const navigate = useNavigate();

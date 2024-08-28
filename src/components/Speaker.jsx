@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 
 const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
     const {
-			Text,
+		Text,
         speechStatus,
         start,
         stop
@@ -11,18 +11,19 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
 
     useEffect(()=>{
         if(speechStatus !== "started"){
+            console.log(text);
             setProcessing(false);
             setSpeaking(true);
             start();
             setStopSpeaking(stop);
-        } else if(speechStatus === 'ended'){
+        } else if (speechStatus === 'ended'){
             setSpeaking(false);
             stop();
-			}
+		}
     },[text]);
     return(
         <div>
-				<Text />
+			<Text />
             {/*<iframe src="https://gifer.com/embed/Cad" width="100%" height="100%"></iframe>*/}
         </div>
     )

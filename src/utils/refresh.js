@@ -15,23 +15,10 @@ const refresh = async (navigate) => {
       err.response &&
       (err.response.status === 403 || err.response.status === 401)
     ) {
-      logOut(navigate);
-      return err.response;
+      storage.setValue("logged", false);
+      navigate("/", { replace: true });
     }
   }
-};
-
-const logOut = async (navigate) => {
-    try {
-      const url = `${origin.default.origin}/logout?token=${getToken('__A')}`;
-      const response = await axios.post(url,{});
-      if (response.status === 200) {
-        storage.setValue("logged", false);
-        navigate("/", { replace: true });
-      }
-    } catch (err) {
-      console.log(err);
-    }
 };
 
 export default refresh;

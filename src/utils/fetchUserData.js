@@ -39,11 +39,6 @@ const fetchUserData = async (
           storage.setValue("logged", false);
           navigate("/", { replace: true });
         }
-      } else {
-        console.log(err);
-      }
-      if (err.message.includes("Network")) {
-        fetchUserData(setLoading, setUserImage, setUserName, navigate);
       }
     }
   }

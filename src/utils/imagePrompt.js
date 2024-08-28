@@ -41,11 +41,6 @@ const imagePrompt = async (setLoading, inputText, inputImage, chat, navigate) =>
         storage.setValue("logged", false);
         navigate("/", { replace: true });
       }
-    } else {
-      console.log(err);
-    }
-    if (err.message.includes("Network")) {
-      imagePrompt(setLoading, inputText, inputImage, chat, navigate);
     }
   }
 };

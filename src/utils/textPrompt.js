@@ -37,8 +37,6 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
         storage.setValue("logged", false);
         navigate("/", { replace: true });
       }
-    } else {
-      console.log(err);
     }
   }
 };

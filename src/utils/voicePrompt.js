@@ -24,8 +24,6 @@ const voicePrompt = async (setLoading, message, navigate, setResult) => {
         storage.setValue("logged", false);
         navigate("/", { replace: true });
       }
-    } else {
-      console.log(err);
     }
   }
 };

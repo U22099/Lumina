@@ -1,4 +1,4 @@
-import { useSpeech } from 'react-text-to-speech';
+import { useSpeech } from '../hooks/useSpeech';
 import {useEffect} from 'react';
 
 const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
@@ -7,7 +7,7 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
         speechStatus,
         start,
         stop
-    } = useSpeech({text, preserveUtteranceQueue: false});
+    } = useSpeech({text});
 
     useEffect(()=>{
         if(speechStatus !== "started"){
@@ -22,12 +22,15 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
         if (speechStatus === 'ended'){
             setSpeaking(false);
             stop();
+		} else if (speechStatus === 'stopped'){
+            setSpeaking(false);
+		} else if (speechStatus === 'error'){
+            setTimeout(() => setSpeaking(false), 3000);
 		}
-    }, [speechStatus])
+    }, [speechStatus]);
     return(
         <div>
 			<Text />
-            {/*<iframe src="https://gifer.com/embed/Cad" width="100%" height="100%"></iframe>*/}
         </div>
     )
 }

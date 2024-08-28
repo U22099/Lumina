@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 
 const useSpeech = ({text}) => {
-    const [utterance, setUtterance] = useState();
+    const [utterance, setUtterance] = useState(new SpeechSynthesisUtterance());
     const [speechStatus, setSpeechStatus] = useState("");
 	if(!('speechSynthesis' in window)){
 		return { start: ()=>{}, stop: ()=>{}, speechStatus: 'null', text: 'Web Speech Api not supported by browser'}
@@ -9,21 +9,18 @@ const useSpeech = ({text}) => {
 	const speech = window.speechSynthesis || speechSynthesis;
     useEffect(() => {
         if(text){
-            const uttr = new SpeechSynthesisUtterance();
-
-            uttr.onend = () => {
+utterance.text = text;
+            utterance.onend = () => {
                 setSpeechStatus("ended");
             }
-            uttr.onerror = () => {
+            utterance.onerror = () => {
                 setSpeechStatus("error");
             }
 				const voices = speech.getVoices();
 				
 				if(voices.length > 0){
-            uttr.voice = getFemaleVoice(voices);
+            utterance.voice = getFemaleVoice(voices);
 }
-uttr.text = text;
-            setUtterance(uttr);
         }
     }, [text])
 

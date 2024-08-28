@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 
 const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
     const {
-		Text,
+		  text: returnedText,
         speechStatus,
         start,
         stop
@@ -27,7 +27,9 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
     }, [speechStatus]);
     return(
         <div className="flex items-center justify-center overflow-hidden overflow-y-auto scrollbar bg-gray-100 shadow-md rounded-md w-fit max-w-[80vw] h-fit max-h-[50vh] md:max-w-[60vw] break-words whitespace-wrap">
-			<Text />
+			<p className="comic-neue-bold text-black dark:text-white break-words whitespace-wrap">
+                {returnedText}
+            </p>
         </div>
     )
 }

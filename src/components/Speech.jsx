@@ -11,7 +11,6 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     const [result, setResult] = useState();
     const [loading, setLoading] = useState(false);
     const [start, setStart] = useState(false);
-    const [stopSpeaking, setStopSpeaking] = useState();
     useEffect(()=>{
         if(prompt){
             setProcessing(true);
@@ -21,14 +20,15 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     },[prompt])
 	useEffect(() => {
 		if(result){
-			setStart(true);
+            setProcessing(false)
+		    setStart(true);
 		}
 	}, [result])
   return (
     <div className="flex justify-center items-center w-screen h-full mx-auto">
-        {!speaking&&!loading ?  <Recorder setListening={setListening} setPrompt={setPrompt} stopSpeaking={stopSpeaking} speaking={speaking}/> : ''}
+        {!speaking&&!loading ?  <Recorder setListening={setListening} setPrompt={setPrompt}/> : ''}
         {loading ? <Loader /> : ''}
-        {start ? <Speaker text={result} setStart={setStart} setSpeaking={setSpeaking} setProcessing={setProcessing} setStopSpeaking={setStopSpeaking}/> : ''}
+        {start ? <Speaker text={result} setStart={setStart} setSpeaking={setSpeaking}/> : ''}
     </div>
   )
 }

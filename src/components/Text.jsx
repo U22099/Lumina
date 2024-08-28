@@ -18,7 +18,7 @@ const Text = ({ speaking, listening, processing }) => {
     if(speaking){
         return(
             <motion.div variants={container} className="flex flex-col justify-center items-start w-screen h-full p-8 pt-3">
-                <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-4xl md:text-8xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold">Speaking...</motion.h1>
+                <motion.h1 variants={item} className="bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent text-6xl md:text-8xl animate-[pulse_1s_ease-in-out_infinite] comic-neue-bold">Speaking...</motion.h1>
             </motion.div>
         )
     } else if(listening){

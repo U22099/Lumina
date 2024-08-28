@@ -17,9 +17,13 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
             setProcessing(true);
             console.log(prompt);
              voicePrompt(setLoading, prompt, navigate, setResult);
-            setStart(true);
         }
     },[prompt])
+	useEffect(() => {
+		if(result){
+			setStart(true);
+		}
+	}, [result])
   return (
     <div className="flex justify-center items-center w-screen h-full mx-auto">
         {!speaking&&!loading ?  <Recorder setListening={setListening} setPrompt={setPrompt} stopSpeaking={stopSpeaking} speaking={speaking}/> : ''}

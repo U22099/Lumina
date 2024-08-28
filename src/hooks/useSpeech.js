@@ -44,7 +44,7 @@ alert("error");
 
     return femaleVoices[0] || voices[0];
 }
-    return { start, stop, speechStatus, text}
+    return { start, stop, speechStatus, text, utterance}
 }
 
 export default useSpeech

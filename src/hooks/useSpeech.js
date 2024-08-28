@@ -16,7 +16,11 @@ const useSpeech = ({text}) => {
             speech.onerror = () => {
                 setSpeechStatus("error");
             }
-            speech.voice = getFemaleVoice();
+				const voices = window.speechSynthesis.getVoices();
+				
+				if(voices.length > 0){
+            speech.voice = getFemaleVoice(voices);
+}
             setUtterance(speech);
         }
     }, [text])
@@ -35,8 +39,7 @@ const useSpeech = ({text}) => {
         }
     };
 
-    function getFemaleVoice(){
-    const voices = window.speechSynthesis.getVoices();
+    function getFemaleVoice(voices){
 
     const femaleVoices = voices.filter(voice => voice.lang === 'en-Us' && voice.gender === 'female');
 

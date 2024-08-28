@@ -64,7 +64,7 @@ const Header = ({setVoiceInput, voiceInput, userName, userImage, setUserName, se
           <FaAngleLeft arial-label="Open Menu" className="w-7 h-7 fill-black dark:fill-white flex md:hidden cursor-pointer" onClick={()=> setMenu(true)}/>
           }
         </div>
-        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad} voiceInput={voiceInput} setVoiceInput={setVoiceInput} /> : ''}
+        {menu ? <Menu menu={menu} setDel={setDel} setLoad={setLoad} voiceInput={voiceInput} setVoiceInput={setVoiceInput} setMenu={setMenu}/> : ''}
         {load ? <Loader/> : ''}
       </div>
       {del ? <ConfirmDialog var2={setDel} callback={deleteUser} msg={"Are you sure ?"} setLoad={setLoad}/> : ''}
@@ -90,9 +90,9 @@ const Menu = ({ setVoiceInput, voiceInput, menu, setDel, setLoad}) => {
         }}
         key={menu} className="absolute top-[10%] flex gap-4 bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-2 z-20">
             {voiceInput ? 
-              <span title="Text Input"><FaMessage className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setVoiceInput(false)}/></span>
+              <span title="Text Input"><FaMessage className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => {setVoiceInput(false); setMenu(false)}}/></span>
             :
-              <span title="Audio Input"><FaMicrophoneLines className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => setVoiceInput(true)}/></span>            
+              <span title="Audio Input"><FaMicrophoneLines className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={() => {setVoiceInput(true); setMenu(false)}}/></span>            
             }
             <span title="Clear chat"><AiOutlineClear className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await clearChats(setLoad, setChat, navigate)}/></span>
             <span title="Log Out"><MdLogout className="w-7 h-7 fill-black dark:fill-white cursor-pointer" onClick={async () => await logOut(setLoad, navigate)} /></span>

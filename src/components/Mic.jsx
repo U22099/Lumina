@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMicrophoneLines, FaMicrophoneLinesSlash } from 'react-icons/fa6';
 
-const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt, stopSpeaking}) => {
+const Mic = ({speaking, start, stop, reset, listening, transcript, setListening, setPrompt, stopSpeaking}) => {
     const [anim, setAnim] = useState(false);
     const startRecording = async () => {
-        stopSpeaking();
+        if(speaking) stopSpeaking();
         setAnim(true);
         await reset();
         await start();

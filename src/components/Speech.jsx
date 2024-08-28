@@ -21,7 +21,7 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     },[prompt])
   return (
     <div className="flex justify-center items-center w-screen h-full mx-auto">
-        {!speaking&&!loading ?  <Recorder setListening={setListening} setPrompt={setPrompt} stopSpeaking={stopSpeaking}/> : ''}
+        {!speaking&&!loading ?  <Recorder setListening={setListening} setPrompt={setPrompt} stopSpeaking={stopSpeaking} speaking={speaking}/> : ''}
         {loading ? <Loader /> : ''}
         {start ? <Speaker text={result} setSpeaking={setSpeaking} setProcessing={setProcessing} setStopSpeaking={setStopSpeaking}/> : ''}
     </div>

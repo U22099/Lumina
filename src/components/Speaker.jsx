@@ -19,17 +19,14 @@ const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {
         }
     },[text]);
     useEffect(() => {
-        if (speechStatus === 'ended'){
-            setSpeaking(false);
-            stop();
-		} else if (speechStatus === 'stopped'){
+        if ((speechStatus === 'ended') || (speechStatus === 'stopped')){
             setSpeaking(false);
 		} else if (speechStatus === 'error'){
             setTimeout(() => setSpeaking(false), 3000);
 		}
     }, [speechStatus]);
     return(
-        <div>
+        <div className="flex items-center justify-center overflow-hidden overflow-y-auto scrollbar bg-gray-100 shadow-md rounded-md w-fit max-w-[80vw] h-fit max-h-[50vh] md:max-w-[60vw] break-words whitespace-wrap">
 			<Text />
         </div>
     )

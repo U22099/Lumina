@@ -32,9 +32,9 @@ const useSpeech = ({text}) => {
     };
     function Text(){
         return(
-            <div>
+            <p className="comic-neue-bold text-black dark:text-white break-words whitespace-wrap">
                 {text}
-            </div>
+            </p>
         )
     }
     return { start, stop, speechStatus, Text}

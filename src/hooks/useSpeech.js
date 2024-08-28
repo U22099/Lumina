@@ -9,10 +9,13 @@ const useSpeech = ({text}) => {
 	const speech = window.speechSynthesis || speechSynthesis;
     useEffect(() => {
         if(text){
-utterance.text = text;
+utterance.text = "Testing Api to check if its working";
             utterance.onend = () => {
                 setSpeechStatus("ended");
             }
+  utterance.onerror = () => {
+                setSpeechStatus("error");
+        }
 				const voices = speech.getVoices();
 				
 				if(voices.length > 0){

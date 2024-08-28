@@ -19,10 +19,30 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     },[prompt])
   return (
     <div className="flex justify-center items-center w-screen h-full mx-auto">
-        {!speaking ? <Recorder setListening={setListening} setPrompt={setPrompt} stopSpeaking={stopSpeaking}/> : ''}
+        {!speaking || !loading ? <Recorder setListening={setListening} setPrompt={setPrompt} stopSpeaking={stopSpeaking}/> : ''}
         {loading ? <Loader /> : <Speaker text={result} setSpeaking={setSpeaking} setProcessing={setProcessing} setStopSpeaking={setStopSpeaking}/>}
     </div>
   )
 }
-
+function Loader() {
+    return (
+        <motion.div
+            initial={{
+                opacity: 0,
+            }}
+            animate={{
+                opacity: 1,
+                transition: {
+                    duration: 0.5,
+                }
+            }}
+            className="flex flex-col justify-center items-center align-center self-center">
+            <div id="load" className="w-14 h-14 flex items-center">
+            <div></div>
+            <div></div>
+            <div></div> 
+          </div>
+        </motion.div>
+    )
+}
 export default Speech

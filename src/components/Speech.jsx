@@ -13,7 +13,7 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     useEffect(()=>{
         if(prompt){
             setProcessing(true);
-            const text = await voicePrompt(setLoading, prompt, navigate);
+            const text = voicePrompt(setLoading, prompt, navigate);
             setResult(text);
         }
     },[prompt])

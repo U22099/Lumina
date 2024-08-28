@@ -20,9 +20,6 @@ const voicePrompt = async (setLoading, message, navigate, setResult) => {
       const res = await refresh(navigate);
       if (res.status === 200) {
         voicePrompt(setLoading, message, navigate, setResult);
-      } else {
-        storage.setValue("logged", false);
-        navigate("/", { replace: true });
       }
     }
   }

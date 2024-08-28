@@ -37,9 +37,6 @@ const imagePrompt = async (setLoading, inputText, inputImage, chat, navigate) =>
       const res = await refresh(navigate);
       if (res.status === 200) {
         imagePrompt(setLoading, inputText, inputImage, chat, navigate);
-      } else {
-        storage.setValue("logged", false);
-        navigate("/", { replace: true });
       }
     }
   }

@@ -31,9 +31,6 @@ const getChats = async (
 				setChat,
   				navigate
           );
-        } else {
-          storage.setValue("logged", false);
-          navigate("/", { replace: true });
         }
       }
     }

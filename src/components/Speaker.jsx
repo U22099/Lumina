@@ -42,7 +42,8 @@ const Speaker = ({ setSpeaking, text, setStart }) => {
             {returnedText}
         </p>
         </div>
-        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-4 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false)}}>Skip</p>
+        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.speak(utterance)}}>Replay</p>
+        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false)}}>Skip</p>
     </div>
   );
 };

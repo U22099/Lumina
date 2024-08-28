@@ -6,36 +6,37 @@ const useSpeech = ({text}) => {
 	if(!('speechSynthesis' in window)){
 		return { start: ()=>{}, stop: ()=>{}, speechStatus: 'null', text: 'Web Speech Api not supported by browser'}
 	}
-	const Speech = window.speechSynthesis || speechSynthesis;
+	const speech = window.speechSynthesis || speechSynthesis;
     useEffect(() => {
         if(text){
-            const speech = new SpeechSynthesisUtterance(text);
+            const uttr = new SpeechSynthesisUtterance();
 
-            speech.onend = () => {
+            uttr.onend = () => {
                 setSpeechStatus("ended");
             }
-            speech.onerror = () => {
+            uttr.onerror = () => {
                 setSpeechStatus("error");
             }
-				const voices = Speech.getVoices();
+				const voices = speech.getVoices();
 				
 				if(voices.length > 0){
-            speech.voice = getFemaleVoice(voices);
+            uttr.voice = getFemaleVoice(voices);
 }
-            setUtterance(speech);
+uttr.text = text;
+            setUtterance(uttr);
         }
     }, [text])
 
     const start = () => {
         if(utterance){
             setSpeechStatus("speaking");
-            Speech.speak(utterance);
+            speech.speak(utterance);
         }
     };
     const stop = () => {
         if(utterance){
             setSpeechStatus("stopped");
-            Speech.cancel();
+            speech.cancel();
         }
     };
 

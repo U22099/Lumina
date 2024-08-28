@@ -10,7 +10,7 @@ export default {
         }
       },
       animation: {
-        pulsar: 'pulsar 1s ease-in-out infinite alternate-reverse'
+        pulsar: 'pulsar 1s ease-in-out infinite alternate'
       }
     },
   },

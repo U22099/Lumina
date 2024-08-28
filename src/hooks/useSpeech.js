@@ -3,6 +3,9 @@ import {useState, useEffect} from 'react';
 const useSpeech = ({text}) => {
     const [utterance, setUtterance] = useState();
     const [speechStatus, setSpeechStatus] = useState("stopped");
+	if(!('speechSynthesis' in window)){
+		return { start: ()=>{}, stop: ()=>{}, speechStatus: 'null', text: 'Web Speech Api not supported by browser'}
+	}
     useEffect(() => {
         if(text){
             const speech = new SpeechSynthesisUtterance(text);
@@ -21,32 +24,25 @@ const useSpeech = ({text}) => {
     const speech = window.speechSynthesis;
     const start = () => {
         if(utterance){
-            setUtterance("speaking");
+            setSpeechStatus("speaking");
             speech.speak(utterance);
         }
     };
     const stop = () => {
         if(utterance){
-            setUtterance("stopped");
+            setSpeechStatus("stopped");
             speech.cancel();
         }
     };
-    function Text(){
-        return(
-            <p className="comic-neue-bold text-black dark:text-white break-words whitespace-wrap">
-                {text}
-            </p>
-        )
-    }
-    return { start, stop, speechStatus, Text}
-}
 
-function getFemaleVoice(){
+    function getFemaleVoice(){
     const voices = window.speechSynthesis.getVoices();
 
     const femaleVoices = voices.filter(voice => voice.lang === 'en-Us' && voice.gender === 'female');
 
     return femaleVoices[0] || voices[0];
+}
+    return { start, stop, speechStatus, text}
 }
 
 export default useSpeech

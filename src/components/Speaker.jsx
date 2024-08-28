@@ -1,4 +1,4 @@
-import { useSpeech } from '../hooks/useSpeech';
+import useSpeech  from '../hooks/useSpeech';
 import {useEffect} from 'react';
 
 const Speaker = ({setProcessing, setSpeaking, text, setStopSpeaking}) => {

@@ -5,15 +5,15 @@ import storage from "./localStorage.js";
 import origin from '../../config/origin.json';
 
 
-const voicePrompt = async (setLoading, message, navigate) => {
+const voicePrompt = async (setLoading, message, navigate, setResult) => {
   setLoading(true);
   try {
     const url = `${origin.default.origin}/chat/voice?token=${getToken('__A')}`;
     const response = await axios.post(url, { message }, {
       withCredentials: true,
     });
+	  setResult(response.data);
     if (response.status === 200) setLoading(false);
-    return response.data
   } catch (err) {
     console.log(err);
     if (err.response && [401, 403].includes(err.response.status)) {

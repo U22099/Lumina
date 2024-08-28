@@ -12,12 +12,11 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     const [loading, setLoading] = useState(false);
     const [start, setStart] = useState(false);
     const [stopSpeaking, setStopSpeaking] = useState();
-    useEffect(async ()=>{
+    useEffect(()=>{
         if(prompt){
             setProcessing(true);
             console.log(prompt);
-            const text = await voicePrompt(setLoading, prompt, navigate);
-            setResult(text);
+             voicePrompt(setLoading, prompt, navigate, setResult);
             setStart(true);
         }
     },[prompt])

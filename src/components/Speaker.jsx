@@ -16,7 +16,10 @@ const Speaker = ({ setSpeaking, text, setStart }) => {
     utterance.text = text;
     const voices = speech.getVoices();
     if (voices.length > 0) {
-      utterance.voice = getFemaleVoice(voices);
+      const voice = getFemaleVoice(voices);
+      if(voice){
+        utterance.voice = voice;
+      }
     }
     utterance.onend = () => {
       setSpeaking(false);
@@ -33,20 +36,20 @@ const Speaker = ({ setSpeaking, text, setStart }) => {
     speech.speak(utterance);
   }, [text]);
   return (
-    <>
-        <div className="flex flex-col items-center justify-center overflow-hidden overflow-y-scroll scrollbar bg-gray-100 shadow-md rounded-md w-fit max-w-[80vw] h-fit max-h-[50vh] md:max-w-[60vw] break-words whitespace-wrap p-3 mx-auto">
+    <div className="flex flex-col items-center justify-center max-w-[80vw] md:max-w-[60vw] mx-auto">
+        <div className="flex items-center justify-center overflow-hidden overflow-y-scroll scrollbar bg-gray-100 shadow-md rounded-md w-fit max-w-[80vw] h-fit max-h-[50vh] md:max-w-[60vw] break-words whitespace-wrap p-3 mx-auto">
         <p className="comic-neue-bold text-black dark:text-white">
             {returnedText}
         </p>
         </div>
-        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-4 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => speech.cancel()}>Skip</p>
-    </>
+        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-4 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false)}}>Skip</p>
+    </div>
   );
 };
 
 function getFemaleVoice(voices) {
   const femaleVoices = voices.filter(
-    (voice) => voice.lang === "en-Us" && voice.gender === "female"
+    voice => voice.lang === "en-Us" && voice.gender === "female"
   );
   return femaleVoices[0] || voices[0];
 }

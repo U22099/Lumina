@@ -13,10 +13,6 @@ const Message = ({ userImage, loading }) => {
     useEffect(() => {
         getChats(setChat, navigate);
     }, [])
-	useLayoutEffect(() => {
-        const body = document.getElementById("body");
-        body.scrollTop = body.scrollHeight;
-    }, [loading]);
     return (
         <div 
         id="body"
@@ -31,6 +27,11 @@ const Message = ({ userImage, loading }) => {
             {loading ? <ChatAiLoad aiImage={aiImage} /> : ''}
         </div>
     )
+    
+	useLayoutEffect(() => {
+        const body = document.getElementById("body");
+        body.scrollTop = body.scrollHeight;
+    }, [loading]);
 }
 
 const ChatAi = ({x, aiImage}) => {

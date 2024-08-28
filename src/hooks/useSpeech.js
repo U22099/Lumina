@@ -13,10 +13,6 @@ utterance.text = text;
             utterance.onend = () => {
                 setSpeechStatus("ended");
             }
-            utterance.onerror = () => {
-alert("error");
-                setSpeechStatus("error");
-            }
 				const voices = speech.getVoices();
 				
 				if(voices.length > 0){

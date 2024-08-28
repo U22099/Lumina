@@ -12,11 +12,11 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     const [loading, setLoading] = useState(false);
     const [start, setStart] = useState(false);
     const [stopSpeaking, setStopSpeaking] = useState();
-    useEffect(()=>{
+    useEffect(async ()=>{
         if(prompt){
             setProcessing(true);
             console.log(prompt);
-            const text = voicePrompt(setLoading, prompt, navigate);
+            const text = await voicePrompt(setLoading, prompt, navigate);
             setResult(text);
             setStart(true);
         }
@@ -41,7 +41,7 @@ function Loader() {
                     duration: 0.5,
                 }
             }}
-            className="flex flex-col justify-center items-center align-center self-center">
+            className="flex flex-col justify-center items-center align-center self-center mx-auto">
             <div id="load" className="w-14 h-14 flex items-center">
             <div></div>
             <div></div>

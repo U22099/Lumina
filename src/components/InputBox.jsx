@@ -38,8 +38,8 @@ const InputBox = ({loading, setLoading}) => {
     setFile(data);
   };
   const postPrompt = async () => {
-	  document.getElementById("input").value = "";
-	  document.getElementById("input").style.height = "20px";
+    document.getElementById("input").value = "";
+    document.getElementById("input").style.height = "20px";
     document.getElementById("input").style.height = `${document.getElementById("input").scrollHeight}px`;
     if(prompt){
       if(file){
@@ -88,7 +88,7 @@ const InputBox = ({loading, setLoading}) => {
       setPrompt(transcript);
       input.style.height = "20px";
       input.style.height = `{input.scrollHeight}px`;
-      input.scrollTop = input.scrollHeight;
+      if(input.style.height === "80px") input.scrollTop = input.scrollHeight;
     }
   }, [transcript])
   useEffect(()=>{

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaMicrophoneLines, FaMicrophoneLinesSlash } from 'react-icons/fa6';
 
-const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt}) => {
+const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt, listen}) => {
     const [anim, setAnim] = useState(false);
     const startRecording = async () => {
         setAnim(true);
@@ -21,6 +21,11 @@ const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt
             stopRecording();
         }
     }, [listening])
+    useEffect(()=> {
+        if(listen){
+            startRecording();
+        }
+    }, [listen])
   return (
     <motion.div
         initial={{opacity: 0.5}}

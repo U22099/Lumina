@@ -3,7 +3,7 @@ import React from 'react';
 import 'regenerator-runtime/runtime';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
-const Recorder = ({setListening, setPrompt}) => {
+const Recorder = ({setListening, setPrompt, listen}) => {
     const {
         transcript,
         listening,
@@ -17,7 +17,7 @@ const Recorder = ({setListening, setPrompt}) => {
     }
   return (
     <div>
-        <Mic start={SpeechRecognition.startListening} stop={SpeechRecognition.stopListening} reset={resetTranscript} transcript={transcript} listening={listening} setListening={setListening} setPrompt={setPrompt}/>
+        <Mic start={SpeechRecognition.startListening} stop={SpeechRecognition.stopListening} reset={resetTranscript} transcript={transcript} listening={listening} setListening={setListening} setPrompt={setPrompt} listen={listen}/>
     </div>
   )
 }

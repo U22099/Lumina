@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Speaker = ({ initSpeech, setInitSpeech, setSpeaking, text, setStart }) => {
+const Speaker = ({ initSpeech, setInitSpeech, setSpeaking, text, setStart , setListening}) => {
   const [returnedText, setReturnedText] = useState(text);
   if (!("speechSynthesis" in window)) {
     setReturnedText("Web Speech Api not supported by browser");
@@ -24,6 +24,7 @@ const Speaker = ({ initSpeech, setInitSpeech, setSpeaking, text, setStart }) => 
     utterance.onend = () => {
       setSpeaking(false);
       setStart(false);
+      setListening(true);
     };
     utterance.onerror = (error) => {
         console.log(error)
@@ -43,7 +44,7 @@ const Speaker = ({ initSpeech, setInitSpeech, setSpeaking, text, setStart }) => 
         </p>
         </div>
         {!initSpeech ? <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center mb-4 transition-all duration-500" onClick={() => {speech.speak(utterance); setInitSpeech(true)}}>Init Speech</p> : ''}
-        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false)}}>Skip</p>
+        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false); setListening(true);}}>Skip</p>
     </div>
   );
 };

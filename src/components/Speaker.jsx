@@ -43,7 +43,7 @@ const Speaker = ({ initSpeech, setInitSpeech, setSpeaking, text, setStart , setL
             {returnedText}
         </p>
         </div>
-        {!initSpeech ? <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center mb-4 transition-all duration-500" onClick={() => {speech.speak(utterance); setInitSpeech(true)}}>Init Speech</p> : ''}
+        {!initSpeech ? <p className="md:hidden comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center mb-4 transition-all duration-500" onClick={() => {speech.speak(utterance); setInitSpeech(true)}}>Init Speech</p> : ''}
         <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false); setListening(true);}}>Skip</p>
     </div>
   );

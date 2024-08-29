@@ -1,5 +1,4 @@
 import axios from 'axios';
-import logOut from './logOut.js';
 import refresh from './refresh.js';
 import {getToken} from './token.js';
 import storage from "./localStorage.js";

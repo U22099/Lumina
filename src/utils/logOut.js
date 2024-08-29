@@ -11,6 +11,7 @@ const logOut = async (setLoad, navigate) => {
       if (response.status === 200) {
         setLoad(false);
         storage.setValue("logged", false);
+        storage.setValue("user_stored", false);
         navigate("/", { replace: true });
       }
     } catch (err) {

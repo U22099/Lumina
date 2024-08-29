@@ -3,6 +3,7 @@ import refresh from './refresh.js';
 import {getToken} from './token.js';
 import storage from "./localStorage.js";
 import origin from '../../config/origin.json';
+import indexedDB from "./indexedDB";
 
 const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);
@@ -10,6 +11,8 @@ const updateImage = async (setLoad, image, navigate) => {
       const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
       const response = await axios.patch(url, {image}, {withCredentials: true});
       setLoad(false);
+      const data = await indexedDB.getData("UserData");
+      indexedDB.saveData([...data, image], "UserData");
     } catch (err) {
       if ([401, 403].includes(err.response.status)) {
         const res = await refresh(navigate);

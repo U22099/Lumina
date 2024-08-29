@@ -83,14 +83,21 @@ const InputBox = ({loading, setLoading}) => {
   }, [mic])
   useEffect(()=>{
     if(mic){
-      document.getElementById("input").value = transcript;
-      document.getElementById("input").style.height = "20px";
-    document.getElementById("input").style.height = `${document.getElementById("input").scrollHeight}px`;
+      const input = document.getElementById("input");
+      input.value = transcript;
+      input.scrollTop = input.scrollHeight;
+      input.style.height = "20px";
+      input.style.height = `{input.scrollHeight}px`;
     }
   }, [transcript])
+  useEffect(()=>{
+    if(mic&&!listening){
+      setMic(false);
+    }
+  }, [listening])
   return (
     <div className="bg-gray-100 active:bg-gray-200 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
-       <FaMicrophone className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer"} onClick={() =>  setMic(!mic)}/>
+       <FaMicrophone className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer w-5 h-5"} onClick={() =>  setMic(!mic)}/>
       <textarea
         rows="1"
         type="text"

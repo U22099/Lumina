@@ -15,6 +15,7 @@ const deleteUser = async (setLoad, navigate) => {
         storage.setValue("chat_stored", false);
         storage.setValue("__R", '');
         storage.setValue("__A", '');
+        storage.setValue("logged", false);
         setLoad(false);
         console.log("Deleted User Successfully");
         navigate("/", { replace: true });

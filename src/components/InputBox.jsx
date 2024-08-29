@@ -97,7 +97,9 @@ const InputBox = ({loading, setLoading}) => {
   }, [listening])
   return (
     <div className="bg-gray-100 active:bg-gray-200 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
-       <FaMicrophone className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer w-5 h-5"} onClick={() =>  setMic(!mic)}/>
+       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-4 rounded-full cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
+           <FaMicrophone  className="w-4 h-4" />
+       </div>
       <textarea
         rows="1"
         type="text"

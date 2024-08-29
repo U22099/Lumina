@@ -13,6 +13,7 @@ function ConfirmDialog({var2, callback, msg, setLoad}) {
     }
     if (show) {
         return (
+            <div className="fixed flex flex-col w-[100vw] h-[100vh] justify-center items-center align-center backdrop-blur-sm self-center dia">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -23,7 +24,7 @@ function ConfirmDialog({var2, callback, msg, setLoad}) {
                         duration: 0.5,
                     }
                 }}
-                className="flex flex-col bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-8 dialog md:w-[40vw] w-[80vw] justify-center items-center gap-2">
+                className="flex flex-col bg-gray-100 dark:bg-[var(--accent-color)] rounded-md shadow-md p-8  md:w-[40vw] w-[80vw] justify-center items-center gap-2">
                 <div className="w-[100%] flex justify-center items-center">
                     <GiConfirmed className="text-red-600 text-bold text-[5em]" />
                 </div>
@@ -37,6 +38,7 @@ function ConfirmDialog({var2, callback, msg, setLoad}) {
                 </div>
 
             </motion.div>
+            </div>
         )
     } else { return '' }
 }

@@ -5,8 +5,14 @@ export default {
     extend: {
       keyframes: {
         pulsar: {
-          '0%': {scale: 0.5, opacity: 1},
-          '100%': {scale: 2, opacity: 0.5}
+          '0%': {
+            transform: 'scale(0.5) translateY(-10px)',
+            opacity: 1
+          },
+          '100%': {
+            transform: 'scale(2) translateY(-50px)', 
+            opacity: 0.5
+          }
         }
       },
       animation: {

@@ -8,7 +8,7 @@ const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);
     try {
       const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
-      const response = await axios.patch(url, {image});
+      const response = await axios.patch(url, {image}, {withCredentials: true});
       setLoad(false);
     } catch (err) {
       if ([401, 403].includes(err.response.status)) {

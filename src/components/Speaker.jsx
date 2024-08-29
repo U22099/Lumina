@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-const Speaker = ({ setSpeaking, text, setStart }) => {
+const Speaker = ({ initSpeech, setInitSpeech, setSpeaking, text, setStart }) => {
   const [returnedText, setReturnedText] = useState(text);
-  const [initSpeech, setInitSpeech] = useState(false);
   if (!("speechSynthesis" in window)) {
     setReturnedText("Web Speech Api not supported by browser");
     setTimeout(() => {

@@ -71,7 +71,7 @@ const InputBox = ({loading, setLoading}) => {
     setFile('');
   }
   const autoResize = (e) => {
-	  e.target.style.height = "20px";
+    e.target.style.height = "20px";
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
   useEffect(()=>{
@@ -86,9 +86,9 @@ const InputBox = ({loading, setLoading}) => {
       const input = document.getElementById("input");
       input.value = transcript;
       setPrompt(transcript);
-      input.scrollTop = input.scrollHeight;
       input.style.height = "20px";
       input.style.height = `{input.scrollHeight}px`;
+      input.scrollTop = input.scrollHeight;
     }
   }, [transcript])
   useEffect(()=>{

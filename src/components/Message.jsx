@@ -46,7 +46,7 @@ const ChatAi = ({x, aiImage}) => {
 const ChatAiLoad = ({aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
-            <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
+            <img src={aiImage} alt="User" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
             <div id="load" className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 w-fit h-6 rounded-md text-[1.5em]">
                 <div></div>
                 <div></div>
@@ -63,10 +63,10 @@ const ChatUser = ({x, userImage}) => {
                 {x.parts.map((part) => {
                     return ( 
                         <div>
-                            {part.inlineData.mimeType.includes("image")&&<img src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Image" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
-                            {part.inlineData.mimeType.includes("audio")&&<audio src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Audio" className="rounded-md w-full h-40 mx-auto " controls/>}
-                            {part.inlineData.mimeType.includes("video")&&<video src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Video" className="rounded-md w-40 h-40 mx-auto object-cover" controls/>}
-                            {part.inlineData.mimeType.includes("application")&&<embed src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="PDF" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
+                            {part.inlineData?.mimeType.includes("image")&&<img src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Image" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
+                            {part.inlineData?.mimeType.includes("audio")&&<audio src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Audio" className="rounded-md w-full h-40 mx-auto " controls/>}
+                            {part.inlineData?.mimeType.includes("video")&&<video src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Video" className="rounded-md w-40 h-40 mx-auto object-cover" controls/>}
+                            {part.inlineData?.mimeType.includes("application")&&<embed src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="PDF" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
                             <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden" dangerouslySetInnerHTML={{__html: part.text}}/> 
                         </div>
                     )

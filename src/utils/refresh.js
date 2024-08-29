@@ -6,7 +6,9 @@ import origin from '../../config/origin.json';
 const refresh = async (navigate) => {
   try {
     const url = `${origin.default.origin}/refresh?token=${getToken('__R')}`;
-    const response = await axios.post(url, {});
+    const response = await axios.post(url, {}, {
+      withCredentials: true,
+    });
     const token = response.data.token;
     setToken('__A', token);
     if (response.status === 200) return response;

@@ -35,9 +35,6 @@ const fetchUserData = async (
         const res = await refresh(navigate);
         if (res.status === 200) {
           fetchUserData(setLoading, setUserImage, setUserName, navigate);
-        } else {
-          storage.setValue("logged", false);
-          navigate("/", { replace: true });
         }
       }
     }

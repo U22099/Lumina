@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import voicePrompt from '../utils/voicePrompt';
 import {motion} from 'framer-motion';
 
-const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
+const Speech = ({ initSpeech, setInitSpeech, speaking, setListening, setSpeaking, setProcessing}) => {
     const navigate = useNavigate();
     const [prompt, setPrompt] = useState();
     const [result, setResult] = useState();
@@ -29,7 +29,7 @@ const Speech = ({speaking, setListening, setSpeaking, setProcessing}) => {
     <div className="flex justify-center items-center w-screen h-full mx-auto">
         {!speaking&&!loading ?  <Recorder setListening={setListening} setPrompt={setPrompt}/> : ''}
         {loading ? <Loader /> : ''}
-        {start ? <Speaker text={result} setStart={setStart} setSpeaking={setSpeaking}/> : ''}
+        {start ? <Speaker text={result} setStart={setStart} setSpeaking={setSpeaking} initSpeech={initSpeech} setInitSpeech={setInitSpeech}/> : ''}
     </div>
   )
 }

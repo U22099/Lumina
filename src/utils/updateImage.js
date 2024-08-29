@@ -2,7 +2,7 @@ import axios from 'axios';
 import refresh from './refresh.js';
 import {getToken} from './token.js';
 import storage from "./localStorage.js";
-import origin fron '../../config/origin.json';
+import origin from '../../config/origin.json';
 
 const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);

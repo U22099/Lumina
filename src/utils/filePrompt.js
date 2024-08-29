@@ -6,12 +6,12 @@ import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
 
 
-const imagePrompt = async (setLoading, inputText, inputImage, chat, navigate) => {
+const imagePrompt = async (setLoading, inputText, inputFile, chat, navigate) => {
   setLoading(true);
   try {
     const url = `${origin.default.origin}/chat/file?token=${getToken("__A")}`;
     const response = await axios.post(url, {
-      image: inputImage,
+      file: inputFile,
       message: inputText,
     }, {
       withCredentials: true,

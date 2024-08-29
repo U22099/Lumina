@@ -69,7 +69,7 @@ const ChatUser = ({x, userImage}) => {
                     )
                 })}
             </div>
-            <img src={userImage || "user.png"} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
+            <img src={userImage || "user.jpg"} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
         </div>
     )
 }

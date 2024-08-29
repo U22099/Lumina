@@ -1,16 +1,38 @@
 import { IoMdSend, IoMdAttach } from "react-icons/io";
-import {useState} from 'react';
+import { FaMicrophone } from 'react-icons/fa6';
+import {useState, useEffect} from 'react';
 import textPrompt from '../utils/textPrompt';
 import imagePrompt from '../utils/imagePrompt';
 import {useNavigate} from 'react-router-dom';
 import useChat from '../store';
-import toBase64 from '../utils/base64'
+import toBase64 from '../utils/base64';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();
   const chat = useChat((state) => state.chat);
   const [prompt, setPrompt] = useState();
   const [file, setFile] = useState();
+  const [mic, setMic] = useState(false);
+  const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
+  const startMic = () => {
+    if(!browserSupportsSpeechRecognition){
+        alert("Speech Recognition Not Supported");
+    } else {
+        resetTranscript();
+        SpeechRecognition.startListening();
+    }
+  }
+  const stopMic = () => {
+    if(listening){
+      SpeechRecognition.stopListening();
+    }
+  }
   const handleFileChange = async (e) => {
 	 const data = await toBase64(e.target.files[0])
     setFile(data);
@@ -31,14 +53,6 @@ const InputBox = ({loading, setLoading}) => {
           },
           { text: prompt }],
         });
-        console.log({
-          role: "user",
-          parts: [{ 
-            inlineData: {
-              data: file.split(",")[1], 
-              mimeType: file.split(",")[0].split(";")[0].split(":")[1]
-            }
-          }]});
         const data = { 
           inlineData: {
             data: file.split(",")[1], 
@@ -60,15 +74,30 @@ const InputBox = ({loading, setLoading}) => {
 	  e.target.style.height = "20px";
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
+  useEffect(()=>{
+    if(mic){
+      startMic();
+    } else {
+      stopMic();
+    }
+  }, [mic])
+  useEffect(()=>{
+    if(mic){
+      document.getElementById("input").value = transcript;
+      document.getElementById("input").style.height = "20px";
+    document.getElementById("input").style.height = `${document.getElementById("input").scrollHeight}px`;
+    }
+  }, [transcript])
   return (
     <div className="bg-gray-100 active:bg-gray-200 rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
+       <FaMicrophone className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer"} onClick={() =>  setMic(!mic)}/>
       <textarea
         rows="1"
         type="text"
-			id = "input"
-        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white mx-7 mr-4 h-5 max-h-20"
+        id = "input"
+        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white ml-5 mr-4 h-5 max-h-20"
         onKeyPress={autoResize}
-		    onKeyUp={autoResize}
+        onKeyUp={autoResize}
         onChange={(e) => setPrompt(e.target.value)}
         autoComplete="off"
         placeholder="Message Lumina"

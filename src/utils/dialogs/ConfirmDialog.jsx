@@ -13,7 +13,7 @@ function ConfirmDialog({var2, callback, msg, setLoad}) {
     }
     if (show) {
         return (
-            <div className="fixed flex flex-col w-[100vw] h-[100vh] justify-center items-center align-center backdrop-blur-sm self-center dia">
+            <div className="fixed flex flex-col w-[100vw] h-[100vh] justify-center items-center align-center backdrop-blur-sm self-center dialog z-20">
             <motion.div
                 initial={{
                     opacity: 0,

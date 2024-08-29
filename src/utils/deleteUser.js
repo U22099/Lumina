@@ -7,7 +7,7 @@ import storage from "./localStorage.js";
 const deleteUser = async (setLoad, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
+      const url = `${origin.default.origin}/user/delete?token=${getToken('__A')}`;
       const response = await axios.post(url, {}, {withCredentials: true});
       if (response.status === 200) {
         setLoad(false);

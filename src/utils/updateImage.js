@@ -7,7 +7,7 @@ import storage from "./localStorage.js";
 const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
+      const url = `${origin.default.origin}/user/update?token=${getToken('__A')}`;
       const response = await axios.post(url, {image}, {withCredentials: true});
       setLoad(false);
     } catch (err) {

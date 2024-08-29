@@ -18,7 +18,7 @@ const Avatar = ({ setLoad, userImage, userName, setUserImage}) => {
         <img
           className="inline-block h-11 w-11 md:h-14 md:w-14 cursor-pointer rounded-full"
           src={
-            userImage
+            userImage || "user.png"
           }
           alt="user avatar"
         />

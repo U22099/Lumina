@@ -2,7 +2,7 @@ import { IoMdSend, IoMdAttach } from "react-icons/io";
 import { FaMicrophone } from 'react-icons/fa6';
 import {useState, useEffect} from 'react';
 import textPrompt from '../utils/textPrompt';
-import imagePrompt from '../utils/imagePrompt';
+import filePrompt from '../utils/filePrompt';
 import {useNavigate} from 'react-router-dom';
 import useChat from '../store';
 import toBase64 from '../utils/base64';
@@ -59,7 +59,7 @@ const InputBox = ({loading, setLoading}) => {
             mimeType: file.split(",")[0].split(";")[0].split(":")[1]
           }
         }
-        await imagePrompt(setLoading, prompt, data, chat, navigate);
+        await filePrompt(setLoading, prompt, data, chat, navigate);
       } else {
         chat.push({
           role: "user",
@@ -120,7 +120,7 @@ const InputBox = ({loading, setLoading}) => {
         >
           <input
             type="file"
-            accept="image/jpeg, image/png, image/jpg"
+            accept="image/jpeg,image/png,image/jpg,audio/mp3,audio/mpeg,video/mp4,video/ogg,application/pdf"
             id="custom-input"
             onChange={async (e) => await handleFileChange(e)}
             hidden

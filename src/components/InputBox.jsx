@@ -85,6 +85,7 @@ const InputBox = ({loading, setLoading}) => {
     if(mic){
       const input = document.getElementById("input");
       input.value = transcript;
+      setPrompt(transcript);
       input.scrollTop = input.scrollHeight;
       input.style.height = "20px";
       input.style.height = `{input.scrollHeight}px`;

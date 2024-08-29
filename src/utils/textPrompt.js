@@ -10,7 +10,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
   setLoading(true);
   try {
     const url = `${origin.default.origin}/chat/text?token=${getToken('__A')}`;
-    const response = await axios.post(url, { history: chat, message: inputText }, {
+    const response = await axios.post(url, { message: inputText }, {
       withCredentials: true,
     });
     const updatedChat = [

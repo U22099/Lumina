@@ -36,8 +36,8 @@ const Speaker = ({ setSpeaking, text, setStart }) => {
     speech.speak(utterance);
   }, [text]);
   return (
-    <div className="flex flex-col items-center justify-center max-w-[80vw] md:max-w-[60vw] mx-auto gap-2 overflow-hidden overflow-y-scroll scrollbar">
-        <div className="flex items-center justify-center overflow-hidden overflow-y-scroll scrollbar bg-gray-100 shadow-md rounded-md w-fit max-w-[80vw] h-fit max-h-[50vh] md:max-w-[60vw] break-words whitespace-wrap p-3 mx-auto mt-8">
+    <div className="flex flex-col items-start justify-start max-w-[80vw] md:max-w-[60vw] mx-auto gap-2 overflow-hidden overflow-y-scroll scrollbar">
+        <div className="flex items-start justify-start overflow-hidden overflow-y-scroll scrollbar bg-gray-100 shadow-md rounded-md w-fit max-w-[80vw] h-fit max-h-[50vh] md:max-w-[60vw] break-words whitespace-wrap p-3 mx-auto mt-8">
         <p className="comic-neue-bold text-black dark:text-white">
             {returnedText}
         </p>

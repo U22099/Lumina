@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const Speaker = ({ setSpeaking, text, setStart }) => {
   const [returnedText, setReturnedText] = useState(text);
+  const [initSpeech, setInitSpeech] = useState(false);
   if (!("speechSynthesis" in window)) {
     setReturnedText("Web Speech Api not supported by browser");
     setTimeout(() => {
@@ -42,7 +43,7 @@ const Speaker = ({ setSpeaking, text, setStart }) => {
             {returnedText}
         </p>
         </div>
-        <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center mb-4" onClick={() => {speech.speak(utterance)}}>Replay</p>
+        {!initSpeech ? <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center mb-4" onClick={() => {speech.speak(utterance); setInitSpeech(true)}}>Init Speech</p> : ''}
         <p className="comic-neue-bold text-black dark:text-white w-[80vw] md:w-[60vw] h-fit py-3 bg-[var(--secondary-color)] rounded-md shadow-md flex justify-center items-center" onClick={() => {speech.cancel(); setSpeaking(false); setStart(false)}}>Skip</p>
     </div>
   );

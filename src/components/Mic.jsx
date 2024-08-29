@@ -22,7 +22,7 @@ const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt
         }
     }, [listening])
     useEffect(()=> {
-        if(listen){
+        if(listen&&!listening){
             startRecording();
         }
     }, [listen])

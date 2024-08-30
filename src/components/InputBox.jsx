@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import useChat from '../store';
 import toBase64 from '../utils/base64';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import checkPWA from '../utils/confirmPWA';
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const InputBox = ({loading, setLoading}) => {
         browserSupportsSpeechRecognition
     } = useSpeechRecognition();
   const startMic = () => {
+    if(checkPWA()) alert("Speech Recognition Not Comfigured For PWA");
     if(!browserSupportsSpeechRecognition){
         alert("Speech Recognition Not Supported");
     } else {

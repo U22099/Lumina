@@ -42,8 +42,4 @@ const getData = (objStore, key = 1) => {
 }
 
 
-if (window.matchMedia('(display-mode: standalone)').matches) {
-  alert("This is running as standalone.");
-}
-
 export default { saveData, getData}

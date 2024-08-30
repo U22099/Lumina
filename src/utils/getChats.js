@@ -4,13 +4,14 @@ import {getToken} from './token.js';
 import indexedDB from "./indexedDB";
 import storage from './localStorage.js';
 import origin from '../../config/origin.json';
+import checkPWA from './confirmPWA';
 
 const getChats = async (
   setChat,
   navigate
 ) => {
   const stored = storage.getValue("chat_stored");
-  if (stored) {
+  if (stored&&!checkPWA()) {
     const data = await indexedDB.getData("ChatData");
     setChat(data);
   } else {

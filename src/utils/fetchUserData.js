@@ -4,6 +4,7 @@ import {getToken} from './token.js';
 import indexedDB from "./indexedDB";
 import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
+import checkPWA from './confirmPWA';
 
 const fetchUserData = async (
   setLoading,
@@ -13,7 +14,7 @@ const fetchUserData = async (
 ) => {
   setLoading(true);
   const stored = storage.getValue("user_stored");
-  if (stored) {
+  if (stored&&!checkPWA()) {
     const data = await indexedDB.getData("UserData");
     setUserImage(data.image);
     setUserName(data.username);

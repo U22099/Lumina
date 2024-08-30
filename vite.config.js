@@ -7,13 +7,12 @@ export default defineConfig({
   plugins: [react(),
   VitePWA({
       manifest: {
-        name: 'Lumina',
-        short_name: 'lumina',
+        name: 'Lumina AI',
+        short_name: 'Lumina',
         description: 'Lumina Ai chatbot',
         background_color: '#1c1c22', 
         display: 'standalone', 
         start_url: '/',
-        scope: '/',
         orientation: 'portrait',
         theme_color: '#1c1c22',
         permissions: ['microphone', 'speechSynthesis'],

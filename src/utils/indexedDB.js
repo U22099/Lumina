@@ -3,7 +3,7 @@ const init = (version = 1) => {
     opendb.onupgradeneeded = (event) => {
         const db = event.target.result;
         if(event.oldVersion < 2 ){
-		    db.createObjectStore("AI_Image");
+            db.createObjectStore("AI_Image");
         } else {
             db.createObjectStore("ChatData");
             db.createObjectStore("UserData");
@@ -39,6 +39,11 @@ const getData = (objStore, key = 1) => {
             }
         }
     });
+}
+
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  alert("This is running as standalone.");
 }
 
 export default { saveData, getData}

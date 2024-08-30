@@ -26,6 +26,13 @@ const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt
             startRecording();
         }
     }, [listen])
+    navigator.mediaSession.addEventListener('mediacontrols', (event) => {
+  if (event.type === 'play') {
+    startRecording()
+  } else if (event.type === 'pause') {
+    stopRecording()
+  }
+});
   return (
     <motion.div
         initial={{opacity: 0.5}}

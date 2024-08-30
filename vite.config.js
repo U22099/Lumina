@@ -6,6 +6,7 @@ export default defineConfig({
   base: "/Lumina",
   plugins: [react(),
   VitePWA({
+      registerType: 'autoUpdate',
       manifest: {
         name: 'Lumina AI',
         short_name: 'Lumina',

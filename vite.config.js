@@ -10,6 +10,11 @@ export default defineConfig({
         name: 'Lumina',
         short_name: 'lumina',
         description: 'Lumina Ai chatbot',
+        background_color: '#1c1c22', 
+        display: 'standalone', 
+        start_url: '/',
+        scope: '/',
+        orientation: 'portrait',
         theme_color: '#1c1c22',
         icons: [ 
 	{ src: "pwa-64x64.png", sizes: "64x64", type: "image/png" }, 

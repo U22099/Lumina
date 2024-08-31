@@ -7,19 +7,15 @@ import getAiImage from '../utils/getAiImage';
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
-    const [scroll, setScroll] = useState();
     const navigate = useNavigate();
     const setChat = useChat((state) => state.setChat)
     const chat = useChat((state) => state.chat);
     useEffect(() => {
         getChats(setChat, navigate);
-        setScroll(true);
     }, [])
     useLayoutEffect(() => {
-        if(chat[-1].role === "user"){
             const body = document.getElementById("body");
             body.scrollTop = body.scrollHeight;
-        }
     }, [loading. chat]);
     return (
         <div 

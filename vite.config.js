@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'prompt',
       workbox: {
       	globPatterns: [],
-      }
+      },
       manifest: {
         name: 'Lumina AI',
         short_name: 'Lumina',

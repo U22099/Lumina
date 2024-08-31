@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaMicrophoneLines, FaMicrophoneLinesSlash } from 'react-icons/fa6';
-import checkPWA from '../utils/confirmPWA';
 
 const Mic = ({start, stop, reset, listening, transcript, setListening, setPrompt, listen}) => {
     const [anim, setAnim] = useState(false);
     const startRecording = async () => {
-      if(checkPWA()) alert("Speech Recognition Not Comfigured For PWA")
+
         setAnim(true);
         await reset();
         await start();

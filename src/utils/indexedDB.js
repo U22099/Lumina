@@ -2,12 +2,9 @@ const init = (version = 1) => {
     const opendb = indexedDB.open("Lumina", version);
     opendb.onupgradeneeded = (event) => {
         const db = event.target.result;
-        if(event.oldVersion < 2 ){
-            db.createObjectStore("AI_Image");
-        } else {
-            db.createObjectStore("ChatData");
-            db.createObjectStore("UserData");
-        }
+        db.createObjectStore("AI_Image");
+        db.createObjectStore("ChatData");
+        db.createObjectStore("UserData");
     }
     return opendb;
 }

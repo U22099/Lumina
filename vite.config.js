@@ -7,9 +7,6 @@ export default defineConfig({
   plugins: [react(),
   VitePWA({
       registerType: 'auto',
-      workbox: {
-      	globPatterns: [],
-      },
       manifest: {
         name: 'Lumina AI',
         short_name: 'Lumina',

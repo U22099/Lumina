@@ -16,15 +16,11 @@ const Message = ({ userImage, loading }) => {
         setScroll(true);
     }, [])
     useLayoutEffect(() => {
-        const body = document.getElementById("body");
-        if(body) body.scrollTop = body.scrollHeight;
-    }, [scroll])
-    useLayoutEffect(() => {
         if(chat[-1].role === "user"){
             const body = document.getElementById("body");
             body.scrollTop = body.scrollHeight;
         }
-    }, [loading]);
+    }, [loading. chat]);
     return (
         <div 
         id="body"

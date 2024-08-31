@@ -8,6 +8,9 @@ export default defineConfig({
   VitePWA({
       registerType: 'auto',
       workbox: false,
+      buildOptions: {
+      	generateSW: false,
+      },
       manifest: {
         name: 'Lumina AI',
         short_name: 'Lumina',

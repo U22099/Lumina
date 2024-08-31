@@ -6,13 +6,9 @@ export default defineConfig({
   base: "/Lumina",
   plugins: [react(),
   VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'auto',
       workbox: {
-      	globPatterns: [
- 	     '**/*.{js,css,html,png,jpg,jpeg,svg,gif}',
-              '**/favicon.ico',
-             '**/manifest.webmanifest'
-      	],
+      	globPatterns: [],
       },
       manifest: {
         name: 'Lumina AI',
@@ -21,7 +17,7 @@ export default defineConfig({
         background_color: '#1c1c22', 
         display: 'standalone', 
         start_url: '/',
-        scope: '/Lumina',
+        scope: '/',
         orientation: 'portrait',
         theme_color: '#1c1c22',
         permissions: ['microphone', 'speechSynthesis'],

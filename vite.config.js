@@ -14,7 +14,7 @@ export default defineConfig({
         description: 'Lumina Ai chatbot',
         background_color: '#1c1c22', 
         display: 'standalone', 
-        start_url: '/',
+        start_url: '/Lumina',
         scope: '/',
         orientation: 'portrait',
         theme_color: '#1c1c22',

@@ -21,7 +21,7 @@ export default defineConfig({
         background_color: '#1c1c22', 
         display: 'standalone', 
         start_url: '/',
-        scope: '/',
+        scope: '/Lumina',
         orientation: 'portrait',
         theme_color: '#1c1c22',
         permissions: ['microphone', 'speechSynthesis'],

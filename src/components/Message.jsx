@@ -12,11 +12,13 @@ const Message = ({ userImage, loading }) => {
     const chat = useChat((state) => state.chat);
     useEffect(() => {
         getChats(setChat, navigate);
-    }, [])
-    
-	useLayoutEffect(() => {
         const body = document.getElementById("body");
         body.scrollTop = body.scrollHeight;
+    }, [])
+    useLayoutEffect(() => {
+        if(chat[-1].role === "user")
+            const body = document.getElementById("body");
+            body.scrollTop = body.scrollHeight;
     }, [loading]);
     return (
         <div 

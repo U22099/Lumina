@@ -16,7 +16,7 @@ const Message = ({ userImage, loading }) => {
     useLayoutEffect(() => {
             const body = document.getElementById("body");
             body.scrollTop = body.scrollHeight;
-    }, [loading. chat]);
+    }, [loading, chat]);
     return (
         <div 
         id="body"

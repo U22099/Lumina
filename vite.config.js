@@ -6,7 +6,7 @@ export default defineConfig({
   base: "/Lumina",
   plugins: [react(),
   VitePWA({
-      registerType: 'auto',
+      registerType: 'autoUpdate',
       workbox: false,
       buildOptions: {
       	generateSW: false,

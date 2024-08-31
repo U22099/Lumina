@@ -15,10 +15,10 @@ function setToken(name, token){
     storage.setValue(name, result);
 }
 //for test
-// const text = 'eych094[@3kThis_is$tes099tkdanieldanieldanieladnaeiladadadadadadaadadadadadadadadadadadaadadadadadadadada556dadadaadadadadadadadada';
-// console.log(text);
-// const encrypted = encrypt(text);
-// console.log('Encrypted: ',encrypted);
-// console.log('Decrypted: ',  decrypt(encrypted));
+const text = 'eych094[@3kThis_is$tes099tkdanieldanieldanieladnaeiladadadadadadaadadadadadadadadadadadaadadadadadadadadadadadadadadadadsdsfsfsdsdsdadsdadadaadadadadadadadada';
+console.log(text);
+const encrypted = encrypt(text);
+console.log('Encrypted: ',encrypted);
+console.log('Decrypted: ',  decrypt(encrypted));
 
 export { getToken, setToken }

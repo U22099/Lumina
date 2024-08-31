@@ -6,9 +6,13 @@ export default defineConfig({
   base: "/Lumina",
   plugins: [react(),
   VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       workbox: {
-      	globPatterns: [],
+      	globPatterns: [
+ 	     '**/*.{js,css,html,png,jpg,jpeg,svg,gif}',
+              '**/favicon.ico',
+             '**/manifest.webmanifest'
+      	],
       },
       manifest: {
         name: 'Lumina AI',

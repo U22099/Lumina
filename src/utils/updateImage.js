@@ -7,7 +7,7 @@ import indexedDB from "./indexedDB";
 const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`&_id=${getToken('_ID');
+      const url = `${origin.default.origin}/user?token=${getToken('__A')}&_id=${getToken('_ID')`;
 
     = await patcimage}, {withCredentials: true});
       stLoad(fals    cost data = await indexedDBta("UserData");

@@ -2,13 +2,13 @@ function init() {
   const oldData = JSON.parse(localStorage.getItem("Lumina"));
   let lumina;
   if (oldData) {
-    if(!oldData._ID){
+    if(oldData._ID === "" || !oldData._ID){
       lumina = {
         ...oldData,
         logged: false,
         _ID: ""
       };
-   }
+    }
   } else {
     lumina = {
       ai_image: false,

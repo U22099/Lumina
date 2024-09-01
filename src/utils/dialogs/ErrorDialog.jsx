@@ -18,9 +18,9 @@ function ErrorDialog({setError, msg}) {
                 <div className="w-[100%] flex justify-center items-center">
                     <MdError className="fill-[var(--secondary-color)] text-bold text-[5em]" />
                 </div>
-                <h1 className="text-[2.5em] display flex w-[100%] justify-center items-center dark:text-white text-black">Gemini Server Error</h1>
+                <h1 className="comic-neue-bold text-[2em] md:text-[2.5em] display flex w-[100%] justify-center items-center dark:text-white text-black">Gemini Server Error</h1>
                 <div className=" w-[80%] text-center items-center text-[1.3em]">
-                    <div className="dark:text-white text-black">{msg}<a href="mailto:nifemiolaniyi4@gmail.com" className="text-[var(--secondary-color)]"> Daniel </a></div>
+                    <div className="comic-neue-regular dark:text-white text-black">{msg}<a href="mailto:nifemiolaniyi4@gmail.com" className="comic-neue-bold text-[var(--secondary-color)]"> Daniel </a></div>
                 </div>
                 <div className="flex w-[100%] mx-auto gap-[10px]">
                     <button className="w-[80%] bg-[var(--secondary-color)] rounded-md text-[2em] shadow-[2px_2px_5px_3px_rgba(0,0,0,0.5)]" onClick={() => setError(false)}>Ok</button>

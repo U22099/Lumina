@@ -31,7 +31,7 @@ const App = () => {
       {voiceInput ? <Text speaking={speaking} listening={listening} processing={processing}/> :<Message userImage={userImage} loading={loading}/>}
       {voiceInput ? <Speech listen={listening} setListening={setListening} setSpeaking={setSpeaking} setProcessing={setProcessing} speaking={speaking} initSpeech={initSpeech} setInitSpeech={setInitSpeech}/> :<InputBox loading={loading} setLoading={setLoading}/>}
       
-      {error ? <ErrorDialog setError={setError} msg="Please refresh the page and try again, if problem persists conatact the developer at: "/>}
+      {error ? <ErrorDialog setError={setError} msg="Please refresh the page and try again, if problem persists conatact the developer at: "/> : ""}
     </div>
   );
 };

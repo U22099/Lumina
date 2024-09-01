@@ -9,7 +9,7 @@ import origin from "../../config/origin.json";
 const imagePrompt = async (setLoading, inputText, inputFile, chat, navigate) => {
   setLoading(true);
   try {
-    const url = `${origin.default.origin}/chat/file?token=${getToken("__A")}`;
+    const url = `${origin.default.origin}/chat/file?token=${getToken("__A")}&_id=${getToken("_ID")}`;
     const response = await axios.post(url, {
       file: inputFile,
       message: inputText,

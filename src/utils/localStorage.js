@@ -8,7 +8,6 @@ function init() {
         logged: false,
         _ID: ""
       };
-      alert(lumina);
     } else {
       lumina = oldData;
     }

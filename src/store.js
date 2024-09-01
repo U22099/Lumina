@@ -9,7 +9,7 @@ const useChat = create((set) => ({
 
 
 export const useError = create((set) => ({
-    error: true,
+    error: false,
     setError: (data) => {
         set({error: data});
     }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 import voicePrompt from '../utils/voicePrompt';
 import {motion} from 'framer-motion';
+import {useError} from '../store.js';
 
 const Speech = ({ initSpeech, setInitSpeech, speaking, setListening, setSpeaking, setProcessing, listen}) => {
     const navigate = useNavigate();
@@ -11,11 +12,13 @@ const Speech = ({ initSpeech, setInitSpeech, speaking, setListening, setSpeaking
     const [result, setResult] = useState();
     const [loading, setLoading] = useState(false);
     const [start, setStart] = useState(false);
+    const setError = useError((state) => state.setError);
     useEffect(()=>{
         if(prompt){
             setProcessing(true);
             console.log(prompt);
-            voicePrompt(setLoading, prompt, navigate, setResult);
+            voicePrompt(setLoading, prompt, navigate, setResult, setError);
+            
         }
     },[prompt])
 	useEffect(() => {

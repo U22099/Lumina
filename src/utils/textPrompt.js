@@ -5,7 +5,7 @@ import { getToken } from "./token.js";
 import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
 
-const textPrompt = async (setLoading, inputText, chat, navigate) => {
+const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
   setLoading(true);
   try {
     const url = `${origin.default.origin}/chat/text?token=${getToken("__A")}&_id=${getToken("_ID")}`;
@@ -32,6 +32,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
     if (response.status === 200) setLoading(false);
   } catch (err) {
     console.log(err);
+          if(err.response?.status === 500) setError(true);
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {

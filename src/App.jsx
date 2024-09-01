@@ -6,9 +6,12 @@ import Speech from "./components/Speech";
 import Header from "./components/Header";
 import Message from "./components/Message";
 import InputBox from "./components/InputBox";
+import ErrorDialog from './utils/dialog/ErrorDialog';
+import {useError} from './store.js';
 
 const App = () => {
   const navigate = useNavigate();
+  const {error, setError} = useError();
   const [userImage, setUserImage] = useState("");
   const [userName, setUserName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,6 +30,8 @@ const App = () => {
       <Header userName={userName} userImage={userImage} setUserName={setUserName} setUserImage={setUserImage} setVoiceInput={setVoiceInput} voiceInput={voiceInput}/>
       {voiceInput ? <Text speaking={speaking} listening={listening} processing={processing}/> :<Message userImage={userImage} loading={loading}/>}
       {voiceInput ? <Speech listen={listening} setListening={setListening} setSpeaking={setSpeaking} setProcessing={setProcessing} speaking={speaking} initSpeech={initSpeech} setInitSpeech={setInitSpeech}/> :<InputBox loading={loading} setLoading={setLoading}/>}
+      
+      {error ? <ErrorDialog setError={setError} msg="Please refresh the page and try again, if problem persists conatact the developer at: "/>}
     </div>
   );
 };

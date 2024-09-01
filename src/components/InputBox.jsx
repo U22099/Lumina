@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import useChat from '../store';
 import toBase64 from '../utils/base64';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import {useError} from '../store.js';
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const InputBox = ({loading, setLoading}) => {
   const [prompt, setPrompt] = useState();
   const [file, setFile] = useState();
   const [mic, setMic] = useState(false);
+  const setError = useError((state) => state.setError);
   const {
         transcript,
         listening,
@@ -59,13 +61,13 @@ const InputBox = ({loading, setLoading}) => {
             mimeType: file.split(",")[0].split(";")[0].split(":")[1]
           }
         }
-        await filePrompt(setLoading, prompt, data, chat, navigate);
+        await filePrompt(setLoading, prompt, data, chat, navigate, setError);
       } else {
         chat.push({
           role: "user",
           parts: [{ text: prompt }],
         });
-        await textPrompt(setLoading, prompt, chat, navigate);
+        await textPrompt(setLoading, prompt, chat, navigate. setError);
       }
     }
     setFile('');

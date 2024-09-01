@@ -9,7 +9,7 @@ import origin from '../../config/origin.json';
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
   setLoading(true);
   try {
-    const url = `${origin.default.origin}/chat/text?token=${getToken('__A')}`;
+    const url = `${origin.default.origin}/chat/text?token=${getToken('__A')}&_id=${getToken('_ID')}`;
     const response = await axios.post(url, { message: inputText }, {
       withCredentials: true,
     });

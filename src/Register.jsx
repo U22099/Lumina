@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
-import storage from './utils/localStorage.js';
-import origin from '../config/origin.json';
-import {setToken} from './utils/token.js';
+import storage from "./utils/localStorage.js";
+import origin from "../config/origin.json";
+import { setToken } from "./utils/token.js";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -18,11 +18,13 @@ const Register = () => {
     const input = document.getElementById("input");
     if (username && email && pwd && input) {
       try {
-        setText(<div id="load">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>);
+        setText(
+          <div id="load">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        );
         const DATA = {
           username: username.value,
           email: email.value,
@@ -38,8 +40,9 @@ const Register = () => {
         });
         const Atoken = response.data.accessToken;
         const Rtoken = response.data.refreshToken;
-        setToken('__A', Atoken);
-        setToken('__R', Rtoken);
+        setToken("__A", Atoken);
+        setToken("__R", Rtoken);
+        setToken("_ID", response.data._id);
         if (response.status === 200) {
           storage.setValue("logged", true);
           navigate("/homepage", { replace: true, state: { fromRoute: true } });
@@ -108,7 +111,12 @@ const Register = () => {
             Add Photo
           </label>
         </div>
-        <input className="input comic-neue-bold" type="email" id="email" placeholder="Email" />
+        <input
+          className="input comic-neue-bold"
+          type="email"
+          id="email"
+          placeholder="Email"
+        />
         <input
           className="input comic-neue-bold"
           type="text"

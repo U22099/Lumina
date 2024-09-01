@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import storage from './utils/localStorage.js';
-import origin from '../config/origin.json';
-import { setToken } from './utils/token.js'
+import storage from "./utils/localStorage.js";
+import origin from "../config/origin.json";
+import { setToken } from "./utils/token.js";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -21,11 +21,13 @@ const LogIn = () => {
     const check = document.getElementById("checkbox").checked;
     if (input && pwd) {
       try {
-        setText(<div id="load">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>);
+        setText(
+          <div id="load">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        );
         const url = `${origin.default.origin}/auth`;
         const response = await axios.post(
           url,
@@ -43,8 +45,9 @@ const LogIn = () => {
         );
         const Atoken = response.data.accessToken;
         const Rtoken = response.data.refreshToken;
-        setToken('__A', Atoken);
-        setToken('__R', Rtoken);
+        setToken("__A", Atoken);
+        setToken("__R", Rtoken);
+        setToken("_ID", response.data._id);
         if (response.status === 200) {
           storage.setValue("logged", true);
           navigate("/homepage", { replace: true });

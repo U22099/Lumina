@@ -8,7 +8,7 @@ import origin from '../../config/origin.json';
 const clearChats = async (setLoad, setChat, navigate) => {
     setLoad(true);
     try {
-        const url = `${origin.default.origin}/chat?token=${getToken('__A')}`;
+        const url = `${origin.default.origin}/chat?token=${getToken('__A')}&_id=${getToken('_ID')}`;
         const response = await axios.delete(url, {withCredentials: true});
         if (response.status === 200) {
             setLoad(false);

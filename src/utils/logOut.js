@@ -6,7 +6,7 @@ import {getToken} from './token.js';
 const logOut = async (setLoad, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/logout?token=${getToken('__A')}`;
+      const url = `${origin.default.origin}/logout?_id=${getToken('_ID')}`;
       const response = await axios.post(url, {});
       if (response.status === 200) {
         setLoad(false);

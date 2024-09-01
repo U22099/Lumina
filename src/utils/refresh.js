@@ -5,7 +5,7 @@ import origin from '../../config/origin.json';
 
 const refresh = async (navigate) => {
   try {
-    const url = `${origin.default.origin}/refresh?token=${getToken('__R')}`;
+    const url = `${origin.default.origin}/refresh?token=${getToken('__R')}&_id=${getToken('_ID')}`;
     const response = await axios.post(url, {}, {
       withCredentials: true,
     });

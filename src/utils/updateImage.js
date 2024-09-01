@@ -8,7 +8,7 @@ import indexedDB from "./indexedDB";
 const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
+      const url = `${origin.default.origin}/user?token=${getToken('__A')}`&_id=${getToken('_ID')};
       const response = await axios.patch(url, {image}, {withCredentials: true});
       setLoad(false);
       const data = await indexedDB.getData("UserData");

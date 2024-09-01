@@ -7,7 +7,7 @@ import origin from '../../config/origin.json';
 const deleteUser = async (setLoad, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`;
+      const url = `${origin.default.origin}/user?token=${getToken('__A')}&_id=${getToken('_ID')}`;
       const response = await axios.delete(url, {withCredentials: true});
       if (response.status === 200) {
         storage.setValue("user_stored", false);

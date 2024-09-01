@@ -6,7 +6,7 @@ import Speech from "./components/Speech";
 import Header from "./components/Header";
 import Message from "./components/Message";
 import InputBox from "./components/InputBox";
-import ErrorDialog from './utils/dialog/ErrorDialog';
+import ErrorDialog from './utils/dialogs/ErrorDialog';
 import {useError} from './store.js';
 
 const App = () => {

@@ -1,18 +1,21 @@
 import axios from "axios";
 import refresh from "./refresh.js";
 import indexedDB from "./indexedDB";
-import {getToken} from './token.js';
+import { getToken } from "./token.js";
 import storage from "./localStorage.js";
-import origin from '../../config/origin.json';
-
+import origin from "../../config/origin.json";
 
 const textPrompt = async (setLoading, inputText, chat, navigate) => {
   setLoading(true);
   try {
-    const url = `${origin.default.origin}/chat/text?token=${getToken('__A')}&_id=${getToken('_ID')}`;
-    const response = await axios.post(url, { message: inputText }, {
-      withCredentials: true,
-    });
+    const url = `${origin.default.origin}/chat/text?token=${getToken("__A")}&_id=${getToken("_ID")}`;
+    const response = await axios.post(
+      url,
+      { message: inputText },
+      {
+        withCredentials: true,
+      }
+    );
     const updatedChat = [
       ...chat,
       {
@@ -21,7 +24,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate) => {
       },
     ];
     indexedDB.saveData(updatedChat, "ChatData");
-    localStorage.setItem("chat_stored", true);
+    storage.setValue("chat_stored", true);
     chat.push({
       role: "model",
       parts: [{ text: response.data }],

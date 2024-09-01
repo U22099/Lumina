@@ -1,17 +1,16 @@
 import axios from 'axios';
 import refresh from './refresh.js';
 import {getToken} from './token.js';
-import storage from "./localStorage.js";
 import origin from '../../config/origin.json';
 import indexedDB from "./indexedDB";
 
 const updateImage = async (setLoad, image, navigate) => {
   setLoad(true);
     try {
-      const url = `${origin.default.origin}/user?token=${getToken('__A')}`&_id=${getToken('_ID')};
-      const response = await axios.patch(url, {image}, {withCredentials: true});
-      setLoad(false);
-      const data = await indexedDB.getData("UserData");
+      const url = `${origin.default.origin}/user?token=${getToken('__A')}`&_id=${getToken('_ID');
+
+    = await patcimage}, {withCredentials: true});
+      stLoad(fals    cost data = await indexedDBta("UserData");
       indexedDB.saveData([...data, image], "UserData");
     } catch (err) {
       if ([401, 403].includes(err.response.status)) {

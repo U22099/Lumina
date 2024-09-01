@@ -2,10 +2,13 @@ function init() {
   const oldData = JSON.parse(localStorage.getItem("Lumina"));
   let lumina;
   if (oldData) {
-    lumina = {
-      ...oldData,
-      _ID: "",
-    };
+    if(!oldData._ID){
+      lumina = {
+        ...oldData,
+        logged: false,
+        _ID: ""
+      };
+   }
   } else {
     lumina = {
       ai_image: false,
@@ -14,6 +17,7 @@ function init() {
       logged: false,
       __R: "",
       __A: "",
+      _ID: ""
     };
   }
   localStorage.setItem("Lumina", JSON.stringify(lumina));

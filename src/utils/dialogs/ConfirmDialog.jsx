@@ -33,8 +33,8 @@ function ConfirmDialog({var2, callback, msg, setLoad}) {
                     <p className="comic-neue-regular dark:text-white text-black">{msg}</p>
                 </div>
                 <div className="flex w-[100%] mx-auto gap-[10px]">
-                    <button className="comic-neue-bold w-[50%] bg-[var(--secondary-color)] rounded-md text-[2em] shadow-[2px_2px_5px_3px_rgba(0,0,0,0.5)] text-white dark:black" onClick={() => ans(true)}>Delete</button>
-                    <button className="comic-neue-bold w-[50%] bg-black dark:bg-white text-white dark:black rounded-md text-[2em] shadow-[2px_2px_5px_3px_rgba(0,0,0,0.5)]" onClick={() => ans(false)}>Cancel</button>
+                    <button className="comic-neue-bold w-[50%] bg-[var(--secondary-color)] rounded-md text-[2em] shadow-[2px_2px_5px_3px_rgba(0,0,0,0.5)] text-white dark:text-black" onClick={() => ans(true)}>Delete</button>
+                    <button className="comic-neue-bold w-[50%] bg-black dark:bg-white text-white dark:text-black rounded-md text-[2em] shadow-[2px_2px_5px_3px_rgba(0,0,0,0.5)]" onClick={() => ans(false)}>Cancel</button>
                 </div>
 
             </motion.div>

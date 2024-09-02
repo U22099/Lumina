@@ -33,7 +33,7 @@ const LogIn = () => {
           url,
           {
             input: input.value.trim(),
-            password: pwd.value.trim(),
+            password: pwd.value,
             rememberMe: check,
           },
           {

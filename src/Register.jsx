@@ -26,8 +26,8 @@ const Register = () => {
           </div>
         );
         const DATA = {
-          username: username.value,
-          email: email.value,
+          username: username.value.trim(),
+          email: email.value.trim(),
           password: pwd.value,
           image: image,
         };

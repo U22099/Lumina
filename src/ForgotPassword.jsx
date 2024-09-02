@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         const response = await axios.post(
           url,
           {
-            input: input.value,
+            input: input.value.trim(),
           },
           {
             withCredentials: true,

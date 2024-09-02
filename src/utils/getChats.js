@@ -21,9 +21,9 @@ const getChats = async (setChat, navigate) => {
       const response = await axios.get(url, {
         withCredentials: true,
       });
+            setChat(response.data.history);
       indexedDB.saveData(response.data.history, "ChatData");
       storage.setValue("chat_stored", true);
-      setChat(response.data.history);
     } catch (err) {
       console.log(err);
       if (err.response && [401, 403].includes(err.response.status)) {

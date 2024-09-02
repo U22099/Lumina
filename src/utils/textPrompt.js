@@ -16,6 +16,11 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
         withCredentials: true,
       }
     );
+    chat.push({
+      role: "model",
+      parts: [{ text: response.data }],
+    });
+    if (response.status === 200) setLoading(false);
     const updatedChat = [
       ...chat,
       {
@@ -25,11 +30,6 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
     ];
     indexedDB.saveData(updatedChat, "ChatData");
     storage.setValue("chat_stored", true);
-    chat.push({
-      role: "model",
-      parts: [{ text: response.data }],
-    });
-    if (response.status === 200) setLoading(false);
   } catch (err) {
     console.log(err);
           if(err.response?.status === 500) setError(true);

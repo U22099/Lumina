@@ -32,8 +32,8 @@ const LogIn = () => {
         const response = await axios.post(
           url,
           {
-            input: input.value,
-            password: pwd.value,
+            input: input.value.trim(),
+            password: pwd.value.trim(),
             rememberMe: check,
           },
           {

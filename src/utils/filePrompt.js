@@ -5,7 +5,6 @@ import { getToken } from "./token.js";
 import storage from "./localStorage.js";
 import origin from "../../config/origin.json";
 
-
 const imagePrompt = async (setLoading, inputText, inputFile, chat, navigate, setError) => {
   setLoading(true);
   try {

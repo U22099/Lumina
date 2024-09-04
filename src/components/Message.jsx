@@ -14,8 +14,10 @@ const Message = ({ userImage, loading }) => {
         getChats(setChat, navigate);
     }, [])
     useLayoutEffect(() => {
+        if((loading === null || loading === undefined) || (chat[(chat.length - 1)]?.role === "user")){
             const body = document.getElementById("body");
             body.scrollTop = body.scrollHeight;
+        }
     }, [loading, chat]);
     return (
         <div 

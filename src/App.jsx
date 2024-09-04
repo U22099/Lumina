@@ -14,7 +14,7 @@ const App = () => {
   const {error, setError} = useError();
   const [userImage, setUserImage] = useState("");
   const [userName, setUserName] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState();
   const [voiceInput, setVoiceInput] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [listening, setListening] = useState(false);

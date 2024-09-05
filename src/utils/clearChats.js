@@ -30,5 +30,25 @@ const clearChats = async (setLoad, setChat, navigate) => {
         }
     }
 }
+const reset = async () => {
+    try {
+      localStorage.setItem("resetLumina", "yes");
+      storage.setValue("user_stored", false);
+      storage.setValue("chat_stored", false);
+      const url = `${origin.default.origin}/chat?token=${getToken('__A')}&_id=${getToken('_ID')}`;
+        const response = await axios.delete(url, {withCredentials: true});
+        if (response.status === 200) {
+            indexedDB.saveData([], "ChatData");
+        }
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+
+if(!(localStorage.getItem("resetLumina") === "yes")&&storage.getValue("logged")){
+    if(localStorage.getItem("reset")) localStorage.removeItem("reset");
+  reset()
+}
 
 export default clearChats;

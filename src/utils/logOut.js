@@ -19,26 +19,4 @@ const logOut = async (setLoad, navigate) => {
     }
 };
 
-const reset = async () => {
-    try {
-      localStorage.setItem("reset", "yes");
-      const url = `${origin.default.origin}/logout?_id=${getToken('_ID')}`;
-      const response = await axios.post(url, {});
-      if (response.status === 200) {
-        storage.setValue("user_stored", false);
-        storage.setValue("chat_stored", false);
-        storage.setValue("__R", '');
-        storage.setValue("__A", '');
-        storage.setValue("logged", false);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-};
-
-
-if(!(localStorage.getItem("reset") === "yes")&&storage.getValue("logged")){
-  reset()
-}
-
 export default logOut

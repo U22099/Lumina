@@ -35,17 +35,14 @@ const reset = async () => {
       localStorage.setItem("resetLumina", "yes");
       storage.setValue("user_stored", false);
       storage.setValue("chat_stored", false);
+      indexedDB.saveData([], "ChatData");
+      indexedDB.saveData([], "UserData");
       const url = `${origin.default.origin}/chat?token=${getToken('__A')}&_id=${getToken('_ID')}`;
-        const response = await axios.delete(url, {withCredentials: true});
-        if (response.status === 200) {
-            indexedDB.saveData([], "ChatData");
-        }
+      const response = await axios.delete(url, {withCredentials: true});
     } catch (err) {
       console.log(err);
     }
 };
-
-
 if(!(localStorage.getItem("resetLumina") === "yes")&&storage.getValue("logged")){
     if(localStorage.getItem("reset")) localStorage.removeItem("reset");
   reset()

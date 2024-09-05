@@ -5,6 +5,7 @@ import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 import Markdown from 'markdown-parser-react';
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -41,8 +42,7 @@ const ChatAi = ({x, aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden"><Markdown content={x.parts[0].text}/></div>
-        </div>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={marked.parse(x.parts[0].text)}/>
     )
 }
 const ChatAiLoad = ({aiImage}) => {

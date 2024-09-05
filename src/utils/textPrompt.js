@@ -21,14 +21,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
       parts: [{ text: response.data }],
     });
     if (response.status === 200) setLoading(false);
-    const updatedChat = [
-      ...chat,
-      {
-        role: "model",
-        parts: [{ text: response.data }],
-      },
-    ];
-    indexedDB.saveData(updatedChat, "ChatData");
+    indexedDB.saveData(chat, "ChatData");
     storage.setValue("chat_stored", true);
   } catch (err) {
     console.log(err);

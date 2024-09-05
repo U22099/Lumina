@@ -15,7 +15,7 @@ const fetchUserData = async (
   const stored = storage.getValue("user_stored");
   if (stored) {
     const data = await indexedDB.getData("UserData");
-    if(data){
+    if(data&&data.image&&data.username){
       setUserImage(data.image);
       setUserName(data.username);
       setLoading(false);

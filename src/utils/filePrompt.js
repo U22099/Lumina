@@ -15,20 +15,14 @@ const imagePrompt = async (setLoading, inputText, inputFile, chat, navigate, set
     }, {
       withCredentials: true,
     });
-    const updatedChat = [
-      ...chat,
-      {
-        role: "model",
-        parts: [{ text: response.data }],
-      },
-    ];
-    indexedDB.saveData(updatedChat, "ChatData");
-    storage.setValue("chat_stored", true);
-    chat.push({
+	chat.push({
       role: "model",
       parts: [{ text: response.data }],
     });
     if (response.status === 200) setLoading(false);
+    indexedDB.saveData(chat, "ChatData");
+    storage.setValue("chat_stored", true);
+
   } catch (err) {
     console.log(err);
           if(err.response?.status === 500) setError(true);

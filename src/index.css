@@ -173,8 +173,11 @@
 .display *{
   @apply comic-neue-bold text-black dark:text-white !important
 }
+.display code {
+	@apply text-[.89em] font-mono text-black dark:text-white bg-gray-300 rounded-md p-1 !important
+}
 .display code *{
-	@apply text-[.89em] font-mono break-words text-black dark:text-white bg-gray-300 rounded-md p-1 !important
+	@apply text-[.89em] font-mono break-words text-black dark:text-white !important
 }
 .display ol,
 .display ul{

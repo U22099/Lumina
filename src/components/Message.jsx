@@ -59,8 +59,7 @@ const ChatAi = ({x, aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={() => 
-                 return md.render(x.parts[0].text)}></div>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={{_html: md.render(x.parts[0].text),}}></div>
 		</div>
     )
 }

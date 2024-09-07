@@ -5,7 +5,7 @@ import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 import { Remarkable } from 'remarkable';
-import hljs from "highlight";
+import hljs from "highlight.js";
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -47,7 +47,7 @@ const ChatAi = ({x, aiImage}) => {
         highlight: function(str, lang){
             if(lang && hljs.getLanguage(lang)){
                 try{
-                    return hljs.highlight(lang, str).value;
+                    return hljs.highlight(str, {language: lang}).value;
                 } catch(e){ console.log(e) }
             } 
             try{

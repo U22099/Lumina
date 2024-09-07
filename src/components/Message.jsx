@@ -4,7 +4,7 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
-import Markdown from 'markdown-parser-react';
+import Markdown from 'react-markdown';
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -41,7 +41,7 @@ const ChatAi = ({x, aiImage}) => {
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden"><Markdown content={x.parts[0].text} /></div>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden"><Markdown>{x.parts[0].text}</Markdown></div>
 		</div>
     )
 }
@@ -69,7 +69,7 @@ const ChatUser = ({x, userImage}) => {
                             {part.inlineData?.mimeType.includes("audio")&&<audio src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Audio" className="rounded-md w-fit h-14 mx-auto " controls/>}
                             {part.inlineData?.mimeType.includes("video")&&<video src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Video" className="rounded-md w-40 h-40 mx-auto object-cover" controls/>}
                             {part.inlineData?.mimeType.includes("application")&&<embed src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="PDF" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
-                            <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden" >{part.text} </div>
+                            <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden" >{part.text}</div>
                         </div>
                     )
                 })}

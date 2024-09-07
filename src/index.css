@@ -174,15 +174,15 @@
   @apply comic-neue-bold text-black dark:text-white !important
 }
 .display code {
-	@apply w-[100%] text-[.89em] font-mono whitespace-pre-wrap  text-black dark:text-white !important
+	@apply w-[100%] text-[.89em] font-mono whitespace-pre-wrap  text-black dark:text-white
 }
 .display code *{
-	@apply text-[.89em] font-mono break-words whitespace-pre-wrap text-black dark:text-white !important
+	@apply text-[.89em] font-mono break-words whitespace-pre-wrap text-black dark:text-white
 }
 .display ol,
 .display ul{
-  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc !important
+  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc 
 }
 .display a{
-  @apply comic-neue-bold text-[var(--secondary-color)] !important
+  @apply comic-neue-bold text-[var(--secondary-color)]
 }

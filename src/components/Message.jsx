@@ -4,7 +4,8 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import useChat from '../store';
 import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
-import Markdown from 'react-markdown';
+import { Remarkable } from 'remarkable';
+import hljs from "highlight";
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -38,10 +39,27 @@ const Message = ({ userImage, loading }) => {
 }
 
 const ChatAi = ({x, aiImage}) => {
+    const md = new Remarkable({
+        html: true,
+        xhtmlOut: true,
+        breaks: true,
+        typographer: true,
+        highlight: function(str, lang){
+            if(lang && hljs.getLanguage(lang)){
+                try{
+                    return hljs.highlight(lang, str).value;
+                } catch(e){ console.log(e) }
+            } 
+            try{
+                return hljs.highlightAuto(str).value;
+            } catch(e){ console.log(e) }
+            return '';
+        }
+    });
     return (
         <div className="flex self-start gap-1 my-3">
             <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
-            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden"><Markdown>{x.parts[0].text}</Markdown></div>
+            <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden">{md.render(x.parts[0].text)}</div>
 		</div>
     )
 }

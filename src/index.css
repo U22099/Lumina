@@ -173,13 +173,13 @@
 .display *{
   @apply comic-neue-bold text-black dark:text-white !important
 }
-/* .display code{
-	@apply text-[.8em] font-mono break-words whitespace-pre-wrap text-black dark:text-white !important
-} */
-/* .display ol,
+.display code{
+	@apply text-[.9em] font-mono break-words whitespace-pre-wrap text-black dark:text-white bg-gray-300 rounded-md p-2 !important
+}
+.display ol,
 .display ul{
   @apply comic-neue-bold text-black dark:text-white ml-4 list-disc !important
-} */
+}
 .display a{
   @apply comic-neue-bold text-[var(--secondary-color)] !important
 }

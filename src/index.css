@@ -174,7 +174,7 @@
   @apply comic-neue-bold text-black dark:text-white !important
 }
 .display code {
-	@apply w-[100%] text-[.89em] font-mono whitespace-pre-wrap  text-black dark:text-white
+	@apply w-[100%] text-[1em] text-[1.3em] font-mono break-words  whitespace-pre-wrap text-black dark:text-white
 }
 .display code *{
 	@apply text-[1em] text-[1.3em] font-mono break-words whitespace-pre-wrap text-black dark:text-white

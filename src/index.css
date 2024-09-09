@@ -177,7 +177,7 @@
 	@apply w-[100%] text-[.89em] font-mono whitespace-pre-wrap  text-black dark:text-white
 }
 .display code *{
-	@apply text-[.89em] font-mono break-words whitespace-pre-wrap text-black dark:text-white
+	@apply text-[1em] text-[1.3em] font-mono break-words whitespace-pre-wrap text-black dark:text-white
 }
 .display ol,
 .display ul{

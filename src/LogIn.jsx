@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import storage from "./utils/localStorage.js";
 import origin from "../config/origin.json";
-import { setToken } from "./utils/token.js";
+import { setToken, getToken } from "./utils/token.js";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -47,7 +47,11 @@ const LogIn = () => {
         const Rtoken = response.data.refreshToken;
         setToken("__A", Atoken);
         setToken("__R", Rtoken);
-        setToken("_ID", response.data._id);
+        if(!(getToken("_ID") === response.data._id)){
+          setToken("_ID", response.data._id);
+          storage.setValue("chat_stored", false);
+          storage.setValue("user_stored", false);
+        }
         if (response.status === 200) {
           storage.setValue("logged", true);
           navigate("/homepage", { replace: true });

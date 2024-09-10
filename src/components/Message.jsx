@@ -87,7 +87,7 @@ const ChatUser = ({x, userImage}) => {
                             {part.inlineData?.mimeType.includes("audio")&&<audio src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Audio" className="rounded-md w-fit h-14 mx-auto " controls/>}
                             {part.inlineData?.mimeType.includes("video")&&<video src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Video" className="rounded-md w-40 h-40 mx-auto object-cover" controls/>}
                             {part.inlineData?.mimeType.includes("application")&&<embed src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="PDF" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
-                            <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden" >{part.text}</div>
+                            <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden display" dangerouslySetInnerHTML={{__html: md.render(part.text)}}></div>
                         </div>
                     )
                 })}

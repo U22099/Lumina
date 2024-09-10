@@ -6,6 +6,7 @@ import getChats from '../utils/getChats';
 import getAiImage from '../utils/getAiImage';
 import { Remarkable } from 'remarkable';
 import hljs from "highlight.js";
+import 'highlight.js/styles/github.css';
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");

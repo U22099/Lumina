@@ -77,6 +77,23 @@ const ChatAiLoad = ({aiImage}) => {
 }
 
 const ChatUser = ({x, userImage}) => {
+		const md = new Remarkable({
+        html: true,
+        xhtmlOut: true,
+        breaks: true,
+        typographer: true,
+        highlight: function(str, lang){
+            if(lang && hljs.getLanguage(lang)){
+                try{
+                    return hljs.highlight(str, {language: lang}).value;
+                } catch(e){ console.log(e) }
+            } 
+            try{
+                return hljs.highlightAuto(str).value;
+            } catch(e){ console.log(e) }
+            return '';
+        }
+    });
     return (
         <div className="flex self-end gap-1 my-3">
             <div className="bg-[var(--secondary-color)] p-2 comic-neue-bold align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md">

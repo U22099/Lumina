@@ -1,14 +1,3 @@
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { IoMdSend, IoMdAttach } from "react-icons/io";
-import { FaMicrophone } from 'react-icons/fa6';
-import textPrompt from '../utils/textPrompt';
-import filePrompt from '../utils/filePrompt';
-import {useNavigate} from 'react-router-dom';
-import {useState, useEffect} from 'react';
-import { LuCode2 } from "react-icons/lu";
-import toBase64 from '../utils/base64';
-import {useError} from '../store.js';
-import useChat from '../store';
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();
@@ -42,7 +31,7 @@ const InputBox = ({loading, setLoading}) => {
     setFile(data);
   };
   const postPrompt = async () => {
-	 setCode(false);
+	  setCode(false);
     const e = document.getElementById("input");
     e.value = "";
     e.style.height = "30px";
@@ -78,11 +67,8 @@ const InputBox = ({loading, setLoading}) => {
   } 
   const autoResize = (e) => {
     e.target.style.height = "30px";
+    e.target.classList.add("md:mb-[90px]");
     e.target.style.height = `${e.target.scrollHeight}px`;
-    const space = parseInt(e.target.style.marginBottom, 10) + parseInt(e.target.style.height)/2;
-    if(space && space < 15){
-      e.target.style.marginBottom = `${space}px`;
-    }
   }
   const setCodeEnv = () => {
     const e = document.getElementById("input");
@@ -111,6 +97,7 @@ const InputBox = ({loading, setLoading}) => {
       input.value = transcript;
       setPrompt(transcript);
       input.style.height = '60px';
+      input.classList.add("md:mb-5");
       input.scrollTop = input.scrollHeight;
     }
   }, [transcript])
@@ -120,7 +107,7 @@ const InputBox = ({loading, setLoading}) => {
     }
   }, [listening])
   return (
-    <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-lg border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[95%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
+    <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-lg border-0 ring-1 ring-inset ring-transparent focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[95%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
        <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
            <FaMicrophone  className="w-4 h-4" />
        </div>
@@ -160,7 +147,7 @@ const InputBox = ({loading, setLoading}) => {
         </button>
         <button
           tabIndex={0}
-          className="bg-[var(--secondary-color)] px-6 md:px-8 py-2 rounded-lg outline-0"
+          className="bg-[var(--secondary-color)] px-4 md:px-8 py-2 rounded-lg outline-0"
           onClick={async () => await postPrompt()}
         >
           <IoMdSend className="w-5 h-5" />
@@ -171,3 +158,4 @@ const InputBox = ({loading, setLoading}) => {
 };
 
 export default InputBox;
+

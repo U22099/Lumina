@@ -90,7 +90,7 @@ const InputBox = ({loading, setLoading}) => {
       const langIndexStart = codeInitText.indexOf('[');
       const langIndexStop = codeInitText.indexOf(']');
       e.value = codeInitText;
-      e.setSelectionRange(langIndexStart, langIndexStop);
+      e.setSelectionRange(langIndexStart, langIndexStop+1);
       e.focus();
     } else {
       e.value = '';
@@ -119,8 +119,8 @@ const InputBox = ({loading, setLoading}) => {
     }
   }, [listening])
   return (
-    <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[95%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
-       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-2 rounded-lg cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
+    <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-lg border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[95%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
+       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
            <FaMicrophone  className="w-4 h-4" />
        </div>
       <textarea
@@ -135,15 +135,8 @@ const InputBox = ({loading, setLoading}) => {
         placeholder="Message Lumina"
         tabIndex={0}
       />
-
-      <button
-        tabIndex={0}
-        className={(code ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"px-3 md:px-6 py-2 rounded-lg outline-0"}
-        onClick={setCodeEnv}
-      >
-        <LuCode2 className="w-4 h-4" />
-      </button>
-      <div className="flex items-center gap-4">
+      
+      <div className="flex items-center gap-2 md:gap-4">
         <label
           htmlFor="custom-input"
           className={(file ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full outline-0 cursor-pointer"}
@@ -157,7 +150,13 @@ const InputBox = ({loading, setLoading}) => {
           />
           <IoMdAttach className="scale-x-[-1] w-4 h-4" />
         </label>
-
+        <button
+          tabIndex={0}
+          className={(code ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"px-3 md:px-6 py-2 rounded-lg outline-0"}
+          onClick={setCodeEnv}
+        >
+          <LuCode2 className="w-5 h-5" />
+        </button>
         <button
           tabIndex={0}
           className="bg-[var(--secondary-color)] px-6 md:px-8 py-2 rounded-lg outline-0"

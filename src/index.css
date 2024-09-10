@@ -171,18 +171,18 @@
   @apply flex justify-center items-center mt-[20px] w-[88%] mx-auto cursor-pointer text-center font-bold text-black bg-[var(--secondary-color)] border-none outline-none rounded-[10px] text-[1.3em]
 }
 .display *{
-  @apply comic-neue-bold text-black dark:text-white !important
+  @apply comic-neue-bold text-black dark:text-white
 }
 .display code {
-	@apply w-[100%] text-[.9em] font-mono break-words  whitespace-pre-wrap text-black dark:text-white !important
+	@apply break-words  whitespace-pre-wrap
 }
 .display code *{
-	@apply text-[.9em] font-mono break-words whitespace-pre-wrap text-black dark:text-white !important
+	@apply break-words whitespace-pre-wrap
 }
 .display ol,
 .display ul{
-  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc  !important
+  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
 }
 .display a{
-  @apply comic-neue-bold text-[var(--secondary-color)] !important
+  @apply comic-neue-bold text-[var(--secondary-color)] 
 }

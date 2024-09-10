@@ -27,7 +27,7 @@ const Message = ({ userImage, loading }) => {
         id="body"
 	    className="h-full overflow-hidden overflow-y-scroll flex flex-col px-4 scrollbar">
             <div className="flex flex-col mx-auto h-fit justify-center items-center text-center mt-12 gap-3 max-w-48 md:max-w-56 mb-8">
-                <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48"/>
+                <img src={aiImage} alt="Lumina" className="rounded-full mx-auto w-40 h-40 md:w-48 md:h-48 object-cover"/>
                 <p className="comic-neue-bold md:text-[1.5em] text-black dark:text-white text-center max-w-48 md:max-w-56 flex">Hi there! I'm Lumina, your friendly AI chatbot</p>
             </div>
             {chat.map(x => {
@@ -59,7 +59,7 @@ const ChatAi = ({x, aiImage}) => {
     });
     return (
         <div className="flex self-start gap-1 my-3">
-            <img src={aiImage} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
+            <img src={aiImage} alt="Lumina" className="rounded-full object-cover w-12 h-12 md:w-14 md:h-14"/>
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={{__html: md.render(x.parts[0].text)}}></div>
 		</div>
     )
@@ -101,7 +101,7 @@ const ChatUser = ({x, userImage}) => {
                 {x.parts.map((part) => {
                     return ( 
                         <div>
-                            {part.inlineData?.mimeType.includes("image")&&<img src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Image" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
+                            {part.inlineData?.mimeType.includes("image")&&<img src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Image" className="rounded-md object-cover w-40 h-40 mx-auto object-cover"/>}
                             {part.inlineData?.mimeType.includes("audio")&&<audio src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Audio" className="rounded-md w-fit h-14 mx-auto " controls/>}
                             {part.inlineData?.mimeType.includes("video")&&<video src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Video" className="rounded-md w-40 h-40 mx-auto object-cover" controls/>}
                             {part.inlineData?.mimeType.includes("application")&&<embed src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="PDF" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
@@ -110,7 +110,7 @@ const ChatUser = ({x, userImage}) => {
                     )
                 })}
             </div>
-            <img src={userImage || "user.jpg"} alt="Lumina" className="rounded-full w-12 h-12 md:w-14 md:h-14"/>
+            <img src={userImage || "user.jpg"} alt="Lumina" className="rounded-full object-cover w-12 h-12 md:w-14 md:h-14"/>
         </div>
     )
 }

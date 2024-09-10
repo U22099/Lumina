@@ -1,13 +1,14 @@
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { IoMdSend, IoMdAttach } from "react-icons/io";
 import { FaMicrophone } from 'react-icons/fa6';
-import {useState, useEffect} from 'react';
 import textPrompt from '../utils/textPrompt';
 import filePrompt from '../utils/filePrompt';
 import {useNavigate} from 'react-router-dom';
-import useChat from '../store';
+import {useState, useEffect} from 'react';
+import { LuCode2 } from "react-icons/lu";
 import toBase64 from '../utils/base64';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import {useError} from '../store.js';
+import useChat from '../store';
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const InputBox = ({loading, setLoading}) => {
   const [prompt, setPrompt] = useState();
   const [file, setFile] = useState();
   const [mic, setMic] = useState(false);
+  const [code, setCode] = useState(false);
   const setError = useError((state) => state.setError);
   const {
         transcript,
@@ -40,9 +42,10 @@ const InputBox = ({loading, setLoading}) => {
     setFile(data);
   };
   const postPrompt = async () => {
-    document.getElementById("input").value = "";
-    document.getElementById("input").style.height = "20px";
-    document.getElementById("input").style.height = `${document.getElementById("input").scrollHeight}px`;
+    const e = document.getElementById("input");
+    e.value = "";
+    e.style.height = "20px";
+    e.style.height = `${e.scrollHeight}px`;
     if(prompt){
       if(file){
         chat.push({
@@ -75,6 +78,24 @@ const InputBox = ({loading, setLoading}) => {
   const autoResize = (e) => {
     e.target.style.height = "20px";
     e.target.style.height = `${e.target.scrollHeight}px`;
+    const space = parseInt(e.target.style.marginBottom, 10) + parseInt(e.target.style.height)/2;
+    if(space && space < 10){
+      e.target.style.marginBottom = `${space}px`;
+    }
+  }
+  const setCodeEnv = () => {
+    const e = document.getElementById("input");
+    if(!code){
+      const codeInitText = '```[language]\n\n```';
+      const langIndexStart = codeInitText.indexOf('[');
+      const langIndexStop = codeInitText.indexOf(']');
+      e.value = codeInitText;
+      e.setSelectionRange(langIndexStart, langIndexStop);
+      e.focus();
+    } else {
+      e.value = '';
+    }
+    setCode(!code);
   }
   useEffect(()=>{
     if(mic){
@@ -98,15 +119,15 @@ const InputBox = ({loading, setLoading}) => {
     }
   }, [listening])
   return (
-    <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[90%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
-       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
+    <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-full border-0 ring-1 ring-inset ring-transparent  focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[95%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
+       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-2 rounded-lg cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
            <FaMicrophone  className="w-4 h-4" />
        </div>
       <textarea
         rows="1"
         type="text"
         id = "input"
-        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white ml-5 mr-4 h-5 max-h-20"
+        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white ml-4 mr-4 h-5 max-h-20"
         onKeyPress={autoResize}
         onKeyUp={autoResize}
         onChange={(e) => setPrompt(e.target.value)}
@@ -115,6 +136,13 @@ const InputBox = ({loading, setLoading}) => {
         tabIndex={0}
       />
 
+      <button
+        tabIndex={0}
+        className={(code ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"px-3 md:px-6 py-2 rounded-lg outline-0"}
+        onClick={setCodeEnv}
+      >
+        <LuCode2 className="w-4 h-4" />
+      </button>
       <div className="flex items-center gap-4">
         <label
           htmlFor="custom-input"
@@ -132,7 +160,7 @@ const InputBox = ({loading, setLoading}) => {
 
         <button
           tabIndex={0}
-          className="bg-[var(--secondary-color)] px-6 md:px-8 py-2 rounded-[2rem] outline-0"
+          className="bg-[var(--secondary-color)] px-6 md:px-8 py-2 rounded-lg outline-0"
           onClick={async () => await postPrompt()}
         >
           <IoMdSend className="w-5 h-5" />

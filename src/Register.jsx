@@ -45,6 +45,8 @@ const Register = () => {
         setToken("_ID", response.data._id);
         if (response.status === 200) {
           storage.setValue("logged", true);
+          storage.setValue("chat_stored", false);
+          storage.setValue("user_stored", false);
           navigate("/homepage", { replace: true, state: { fromRoute: true } });
           setError("");
         }
@@ -94,7 +96,7 @@ const Register = () => {
             {image ? (
               <img
                 src={image}
-                className="w-[200px] h-[200px] rounded-[100%]  cursor-pointer"
+                className="w-[200px] h-[200px] rounded-[100%] object-cover cursor-pointer"
                 onClick={() => document.getElementById("input").click()}
               />
             ) : (

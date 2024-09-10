@@ -42,9 +42,10 @@ const InputBox = ({loading, setLoading}) => {
     setFile(data);
   };
   const postPrompt = async () => {
+	 setCode(false);
     const e = document.getElementById("input");
     e.value = "";
-    e.style.height = "20px";
+    e.style.height = "30px";
     e.style.height = `${e.scrollHeight}px`;
     if(prompt){
       if(file){
@@ -76,10 +77,10 @@ const InputBox = ({loading, setLoading}) => {
     setFile('');
   } 
   const autoResize = (e) => {
-    e.target.style.height = "20px";
+    e.target.style.height = "30px";
     e.target.style.height = `${e.target.scrollHeight}px`;
     const space = parseInt(e.target.style.marginBottom, 10) + parseInt(e.target.style.height)/2;
-    if(space && space < 10){
+    if(space && space < 15){
       e.target.style.marginBottom = `${space}px`;
     }
   }

@@ -170,7 +170,7 @@
 .btn {
   @apply flex justify-center items-center mt-[20px] w-[88%] mx-auto cursor-pointer text-center font-bold text-black bg-[var(--secondary-color)] border-none outline-none rounded-[10px] text-[1.3em]
 }
-.display *:not(code){
+.display *:not(code, code *){
   @apply comic-neue-bold text-black dark:text-white
 }
 .display code {

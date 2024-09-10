@@ -174,10 +174,10 @@
   @apply comic-neue-bold text-black dark:text-white
 }
 .display code {
-	@apply break-words  whitespace-pre-wrap
+	@apply comic-neue-bold break-words  whitespace-pre-wrap
 }
 .display code *{
-	@apply break-words whitespace-pre-wrap
+	@apply comic-neue-bold break-words whitespace-pre-wrap
 }
 .display ol,
 .display ul{

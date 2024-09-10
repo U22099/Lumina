@@ -1,3 +1,14 @@
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { IoMdSend, IoMdAttach } from "react-icons/io";
+import { FaMicrophone } from 'react-icons/fa6';
+import textPrompt from '../utils/textPrompt';
+import filePrompt from '../utils/filePrompt';
+import {useNavigate} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import { LuCode2 } from "react-icons/lu";
+import toBase64 from '../utils/base64';
+import {useError} from '../store.js';
+import useChat from '../store';
 
 const InputBox = ({loading, setLoading}) => {
   const navigate = useNavigate();

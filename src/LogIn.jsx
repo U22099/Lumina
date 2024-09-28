@@ -58,7 +58,7 @@ const LogIn = () => {
         }
       } catch (err) {
         console.log(err);
-        const data = err.response.data;
+        const data = err.response.data || {message: "Network Error"};
         setError(data.message);
         setText("Log in");
       }

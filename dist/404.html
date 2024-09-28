@@ -10,12 +10,13 @@
   </script>
   <style>
     body{
-      background: hsl(0, 2%, 0%);
+      background: white;
       color: #b871fd;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      height: 100vh;
     }
     h1{
       animation: glow 1s infinite alternate;
@@ -26,6 +27,11 @@
       }
       100%{
         opacity: 1;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      body{
+        background: hsl(0, 2%, 0%);
       }
     }
   </style>

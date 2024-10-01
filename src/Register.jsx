@@ -52,9 +52,9 @@ const Register = () => {
         }
       } catch (err) {
         console.log(err);
-        const data = err.response.data || {message: "Network Error"};
-        setError(data.message);
+        const data = err?.response?.data || {message: "Network Error"};
         setText("Sign up");
+        setError(data.message);
       }
     } else {
       setError("An Error occured");

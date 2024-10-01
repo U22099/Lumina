@@ -19,7 +19,7 @@ const LogIn = () => {
     const input = document.getElementById("input");
     const pwd = document.getElementById("pwd");
     const check = document.getElementById("checkbox").checked;
-    if (input && pwd) {
+    if (input.value && pwd.value) {
       try {
         setText(
           <div id="load">
@@ -43,12 +43,12 @@ const LogIn = () => {
             },
           }
         );
-        if(!(getToken("_ID") === response.data._id)){
-          setToken("_ID", response.data._id);
-          storage.setValue("chat_stored", false);
-          storage.setValue("user_stored", false);
-        }
         if (response.status === 200) {
+          if(getToken("_ID") !== response.data._id){
+            setToken("_ID", response.data._id);
+            storage.setValue("chat_stored", false);
+            storage.setValue("user_stored", false);
+          }
           const Atoken = response.data.accessToken;
           const Rtoken = response.data.refreshToken;
           setToken("__A", Atoken);
@@ -58,7 +58,7 @@ const LogIn = () => {
         }
       } catch (err) {
         console.log(err);
-        const data = err.response.data || {message: "Network Error"};
+        const data = err?.response?.data || { message: "Network Error" };
         setText("Log in");
         setError(data.message);
       }

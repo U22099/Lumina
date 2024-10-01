@@ -38,12 +38,12 @@ const Register = () => {
             "Content-Type": "application/json",
           },
         });
-        const Atoken = response.data.accessToken;
-        const Rtoken = response.data.refreshToken;
-        setToken("__A", Atoken);
-        setToken("__R", Rtoken);
-        setToken("_ID", response.data._id);
         if (response.status === 200) {
+          const Atoken = response.data.accessToken;
+          const Rtoken = response.data.refreshToken;
+          setToken("__A", Atoken);
+          setToken("__R", Rtoken);
+          setToken("_ID", response.data._id);
           storage.setValue("logged", true);
           storage.setValue("chat_stored", false);
           storage.setValue("user_stored", false);

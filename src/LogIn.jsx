@@ -43,24 +43,24 @@ const LogIn = () => {
             },
           }
         );
-        const Atoken = response.data.accessToken;
-        const Rtoken = response.data.refreshToken;
-        setToken("__A", Atoken);
-        setToken("__R", Rtoken);
         if(!(getToken("_ID") === response.data._id)){
           setToken("_ID", response.data._id);
           storage.setValue("chat_stored", false);
           storage.setValue("user_stored", false);
         }
         if (response.status === 200) {
+          const Atoken = response.data.accessToken;
+          const Rtoken = response.data.refreshToken;
+          setToken("__A", Atoken);
+          setToken("__R", Rtoken);
           storage.setValue("logged", true);
           navigate("/homepage", { replace: true });
         }
       } catch (err) {
         console.log(err);
         const data = err.response.data || {message: "Network Error"};
-        setError(data.message);
         setText("Log in");
+        setError(data.message);
       }
     } else {
       setError("No username or password");

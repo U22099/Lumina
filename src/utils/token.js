@@ -5,6 +5,8 @@ import decrypt from './TokenDecryptionAndEncryption/decrypt.js'
 function getToken(name){
     const token = storage.getValue(name);
 
+    if(!token) return null;
+    
     const result = decrypt(token);
     return result;
 }

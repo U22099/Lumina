@@ -88,6 +88,7 @@ const LogIn = () => {
           type="text"
           id="input"
           placeholder="Email or username"
+          tabIndex={0}
         />
         <div className="relative text-center w-[100%] flex justify-start align-center">
           <input
@@ -95,6 +96,7 @@ const LogIn = () => {
             id="pwd"
             type={show ? "text" : "password"}
             placeholder="Password"
+            tabIndex={1}
           />
           {show ? (
             <FaEyeSlash

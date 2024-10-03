@@ -114,18 +114,21 @@ const Register = () => {
           </label>
         </div>
         <input
+          tabIndex={0}
           className="input comic-neue-bold"
           type="email"
           id="email"
           placeholder="Email"
         />
         <input
+          tabIndex={1}
           className="input comic-neue-bold"
           type="text"
           id="username"
           placeholder="Username"
         />
         <input
+          tabIndex={2}
           className="input comic-neue-bold"
           type="password"
           id="pwd"
@@ -139,6 +142,7 @@ const Register = () => {
           {error}
         </p>
         <button
+          tabIndex={3}
           onClick={register}
           className="mt-[20px] w-[88%] mx-auto hover:cursor-pointer justify-center text-center text-bold flex text-black bg-[var(--secondary-color)] border-0 py-2 px-6 focus:outline-none rounded-[10px] text-[1.5em] comic-neue-bold"
           id="submit"

@@ -87,8 +87,9 @@ const InputBox = ({loading, setLoading}) => {
       const codeInitText = '```[language]\n\n```';
       const langIndexStart = codeInitText.indexOf('[');
       const langIndexStop = codeInitText.indexOf(']');
-      e.value = codeInitText;
-      e.setSelectionRange(langIndexStart, langIndexStop+1);
+      const pre = e.value+"\n";
+      e.value = pre+codeInitText;
+      e.setSelectionRange(pre.length+langIndexStart, pre.length+langIndexStop+1);
       e.focus();
     } else {
       e.value = '';
@@ -119,8 +120,8 @@ const InputBox = ({loading, setLoading}) => {
   }, [listening])
   return (
     <div className="bg-gray-100 focus:bg-gray-200 dark:focus:bg-[var(--accent-color)] rounded-lg border-0 ring-1 ring-inset ring-transparent focus:ring-inset focus:ring-indigo-600 focus:ring-3 focus-within:ring-inset focus-within:ring-[var(--secondary-color)] dark:bg-[var(--accent-color)] w-[95%] py-2 px-4 min-h-5 flex m-auto h-fit items-center">
-       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
-           <FaMicrophone  className="w-4 h-4" />
+       <div className={(mic ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-2 rounded-full cursor-pointer flex items-center justify-center"} onClick={() =>  setMic(!mic)}>
+           <FaMicrophone  className="w-4 h-4 md:w-5 md:h-5" />
        </div>
       <textarea
         rows="1"
@@ -138,7 +139,7 @@ const InputBox = ({loading, setLoading}) => {
       <div className="flex items-center gap-2 md:gap-4">
         <label
           htmlFor="custom-input"
-          className={(file ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-3 rounded-full outline-0 cursor-pointer"}
+          className={(file ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"p-2 rounded-full outline-0 cursor-pointer"}
         >
           <input
             type="file"
@@ -147,21 +148,21 @@ const InputBox = ({loading, setLoading}) => {
             onChange={async (e) => await handleFileChange(e)}
             hidden
           />
-          <IoMdAttach className="scale-x-[-1] w-4 h-4" />
+          <IoMdAttach className="scale-x-[-1] w-4 h-4 md:w-5 md:h-5" />
         </label>
         <button
           tabIndex={0}
-          className={(code ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"px-3 md:px-6 py-2 rounded-lg outline-0"}
+          className={(code ? "bg-[var(--secondary-color)] ": "bg-gray-300 dark:bg-[var(--accent-color)] ") +"px-2 md:px-5 py-2 rounded-lg outline-0"}
           onClick={setCodeEnv}
         >
-          <LuCode2 className="w-5 h-5" />
+          <LuCode2 className="w-4 h-4 md:w-6 md:h-6" />
         </button>
         <button
           tabIndex={0}
           className="bg-[var(--secondary-color)] px-4 md:px-8 py-2 rounded-lg outline-0"
           onClick={async () => await postPrompt()}
         >
-          <IoMdSend className="w-5 h-5" />
+          <IoMdSend className="w-4 h-4 md:w-6 md:h-6" />
         </button>
       </div>
     </div>

@@ -7,6 +7,7 @@ import getAiImage from '../utils/getAiImage';
 import { Remarkable } from 'remarkable';
 import hljs from "highlight.js";
 import 'highlight.js/styles/github.css';
+import markdownToTxt from 'markdown-to-txt';
 
 const Message = ({ userImage, loading }) => {
     const [aiImage, setAiImage] = useState("logo.jpg");
@@ -39,6 +40,11 @@ const Message = ({ userImage, loading }) => {
     
 }
 
+const copy = (data) => {
+  const text = markdownToTxt(data);
+  navigator.clipboard.writeText(text);
+}
+
 const ChatAi = ({x, aiImage}) => {
     const md = new Remarkable({
         html: true,
@@ -58,7 +64,7 @@ const ChatAi = ({x, aiImage}) => {
         }
     });
     return (
-        <div className="flex self-start gap-1 my-3">
+          <div className="flex self-start gap-1 my-3" onDoubleClick={() => copy(x.parts[0].text)}>
             <img src={aiImage} alt="Lumina" className="rounded-full object-cover w-12 h-12 md:w-14 md:h-14"/>
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[70vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={{__html: md.render(x.parts[0].text)}}></div>
 		</div>

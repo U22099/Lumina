@@ -19,7 +19,6 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
       role: "model",
       parts: [{ text: response.data }],
     });
-    if (response.status === 200) setLoading(false);
     indexedDB.saveData(chat, "ChatData");
     storage.setValue("chat_stored", true);
   } catch (err) {
@@ -31,6 +30,8 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
         textPrompt(setLoading, inputText, chat, navigate);
       }
     }
+  } finally {
+    setLoading(false)
   }
 };
 

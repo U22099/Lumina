@@ -16,7 +16,6 @@ const imageGen = async (setLoading, prompt, chat) => {
       parts: [{ text: result }],
     });
     
-    setLoading(false);
     indexedDB.saveData(chat, "ChatData");
     storage.setValue("chat_stored", true);
   } catch (err) {
@@ -26,9 +25,10 @@ const imageGen = async (setLoading, prompt, chat) => {
       parts: [{ text: "An error occured whike generating image" }],
     });
     
-    setLoading(false);
     indexedDB.saveData(chat, "ChatData");
     storage.setValue("chat_stored", true);
+  } finally {
+    setLoading(false)
   }
 };
 

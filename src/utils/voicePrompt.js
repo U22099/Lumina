@@ -15,7 +15,7 @@ const voicePrompt = async (setLoading, message, navigate, setResult, setError) =
       }
     );
     setResult(response.data);
-    if (response.status === 200) setLoading(false);
+
   } catch (err) {
     console.log(err);
           if(err.response?.status === 500) setError(true);
@@ -25,6 +25,8 @@ const voicePrompt = async (setLoading, message, navigate, setResult, setError) =
         voicePrompt(setLoading, message, navigate, setResult);
       }
     }
+  } finally {
+    setLoading(false)
   }
 };
 

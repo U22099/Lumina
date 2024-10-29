@@ -19,19 +19,21 @@ const imagePrompt = async (setLoading, inputText, inputFile, chat, navigate, set
       role: "model",
       parts: [{ text: response.data }],
     });
-    if (response.status === 200) setLoading(false);
+    
     indexedDB.saveData(chat, "ChatData");
     storage.setValue("chat_stored", true);
 
   } catch (err) {
     console.log(err);
-          if(err.response?.status === 500) setError(true);
+    if(err.response?.status === 500) setError(true);
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {
         imagePrompt(setLoading, inputText, inputImage, chat, navigate);
       }
     }
+  } finally {
+    setLoading(false)
   }
 };
 

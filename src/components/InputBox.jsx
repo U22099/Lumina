@@ -72,7 +72,7 @@ const InputBox = ({loading, setLoading}) => {
           role: "user",
           parts: [{ text: prompt }],
         });
-        if(prompt.splice(0, 8) === "Imagine:"){
+        if(prompt.split(":")[0] === "Imagine:"){
             await imageGen(setLoading, prompt.split(":")[1].trim(), chat, navigate. setError);
           } else {
             await textPrompt(setLoading, prompt, chat, navigate. setError);

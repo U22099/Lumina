@@ -10,8 +10,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
   try {
     const url = `${origin.default.origin}/chat/text?token=${getToken("__A")}&_id=${getToken("_ID")}`;
     const response = await axios.post(
-      url,
-      { message: inputText },
+      url, { message: inputText },
       {
         withCredentials: true,
       }
@@ -25,7 +24,7 @@ const textPrompt = async (setLoading, inputText, chat, navigate, setError) => {
     storage.setValue("chat_stored", true);
   } catch (err) {
     console.log(err);
-          if(err.response?.status === 500) setError(true);
+    if (err.response?.status === 500) setError(true);
     if (err.response && [401, 403].includes(err.response.status)) {
       const res = await refresh(navigate);
       if (res.status === 200) {

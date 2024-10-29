@@ -6,7 +6,7 @@ const imageGen = (setLoading, prompt, chat) => {
   try {
     const baseurl = "https://image.pollinations.ai/prompt/";
     const data = encodeURIComponent(prompt);
-    const seed = Math.random() * 1000000;
+    const seed = Math.floor(Math.random() * 1000000);
     const result = `image-url@${baseurl}${data}?width=640&height=640&nologo=true&enhance=true&seed=${seed}`
     console.log(result);
     chat.push({

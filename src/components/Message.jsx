@@ -44,6 +44,26 @@ const copy = (data) => {
   const text = markdownToTxt(data);
   navigator.clipboard.writeText(text);
 }
+const share = async (data) => {
+  if (navigator.share) {
+    await navigator.share({
+      title: 'Share',
+      text: '', 
+      url: data
+    }); 
+  } else {
+    console.log('Web Share API not supported');
+    download(data);
+  }
+}
+
+const download = (data) => {
+  const a = document.createElement('a');
+  a.href = data;
+  a.download = 'image.jpg';
+  a.click();
+
+}
 
 const ChatAi = ({ x, aiImage }) => {
   const md = new Remarkable({
@@ -67,6 +87,7 @@ const ChatAi = ({ x, aiImage }) => {
     <div className="flex self-start gap-1 my-3" onDoubleClick={() => copy(x.parts[0].text)}>
             <img src={aiImage} alt="Lumina" className="rounded-full object-cover w-12 h-12 md:w-14 md:h-14"/>
             {x.parts[0].text.split("@")[0] === "image-url" ? <img
+            onClick={() => download(x.parts[0].text.split("@")[1])} 
             src={x.parts[0].text.split("@")[1]}
             alt="AI Generated Image"
             className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-center h-full w-full max-w-[80vw] md:max-w-[50vw] rounded-md object-contain"/> || <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold"><b className="text-[gold] font-bold">Error sorry try again😉... </b> </div> :

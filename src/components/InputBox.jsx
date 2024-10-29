@@ -71,7 +71,7 @@ const InputBox = ({loading, setLoading}) => {
         if(prompt.split(":")[0] === "Imagine"){
           chat.push({
           role: "user",
-          parts: [{ text: "**Imagine** " + prompt.split(":")[1].trim() }],
+          parts: [{ text: `[Imagine](https://pollinations.ai) ${prompt.split(":")[1].trim()}` }],
         });
             imageGen(setLoading, prompt.split(":")[1].trim(), chat);
             

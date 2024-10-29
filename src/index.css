@@ -186,3 +186,20 @@
 .display a{
   @apply comic-neue-bold text-[var(--secondary-color)] 
 }
+
+.displayUser *:not(code, code *){
+  @apply comic-neue-bold text-black dark:text-white
+}
+.displayUser code {
+	@apply comic-neue-bold break-words  whitespace-pre-wrap
+}
+.displayUser code *{
+	@apply comic-neue-bold break-words whitespace-pre-wrap
+}
+.displayUser ol,
+.displayUser ul{
+  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
+}
+.displayUser a{
+  @apply comic-neue-bold text-[gold]
+}

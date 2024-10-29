@@ -69,7 +69,7 @@ const ChatAi = ({ x, aiImage }) => {
             {x.parts[0].text.split("@")[0] === "image-url" ? <img
             src={x.parts[0].text.split("@")[1]}
             alt="AI Generated Image"
-            className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-center h-full w-full max-w-[80vw] md:max-w-[50vw] rounded-md object-contain"/> || <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold"><b className="text-gold font-bold">Error sorry try again😉... </b> </div> :
+            className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-center h-full w-full max-w-[80vw] md:max-w-[50vw] rounded-md object-contain"/> || <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold"><b className="text-[gold] font-bold">Error sorry try again😉... </b> </div> :
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={{__html: md.render(x.parts[0].text)}}></div>}
 		</div>
   )
@@ -115,7 +115,7 @@ const ChatUser = ({ x, userImage }) => {
                             {part.inlineData?.mimeType.includes("audio")&&<audio src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Audio" className="rounded-md w-fit h-14 mx-auto " controls/>}
                             {part.inlineData?.mimeType.includes("video")&&<video src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="Video" className="rounded-md w-40 h-40 mx-auto object-cover" controls/>}
                             {part.inlineData?.mimeType.includes("application")&&<embed src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="PDF" className="rounded-md w-40 h-40 mx-auto object-cover"/>}
-                            <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden display" dangerouslySetInnerHTML={{__html: md.render(part.text)}}></div>
+                            <div className="comic-neue-bold text-black dark:text-white display text-wrap max-w-[70vw] md:max-w-[50vw] w-fit break-words whitespace-pre-wrap overflow-hidden displayUser" dangerouslySetInnerHTML={{__html: md.render(part.text)}}></div>
                         </div>
                     )
                 })}

@@ -69,17 +69,20 @@ const InputBox = ({loading, setLoading}) => {
         await filePrompt(setLoading, prompt, data, chat, navigate, setError);
       } else {
         if(prompt.split(":")[0] === "Imagine"){
+          const excludedPrompt = prompt.split(":")[1].trim();
+          console.log(prompt)
           chat.push({
-          role: "user",
-          parts: [{ text: `[Imagine](https://pollinations.ai) ${prompt.split(":")[1].trim()}` }],
-        });
-            imageGen(setLoading, prompt.split(":")[1].trim(), chat);
+            role: "user",
+            parts: [{ text: `[Imagine]() ${excludedPrompt}` }],
+          });
+          
+          await imageGen(setLoading, excludedPrompt, chat);
             
           } else {
             chat.push({
-          role: "user",
-          parts: [{ text: prompt.trim() }],
-        });
+              role: "user",
+              parts: [{ text: prompt.trim() }],
+            });
             await textPrompt(setLoading, prompt, chat, navigate, setError);
           }
       }

@@ -15,7 +15,7 @@ const imageGen = async (setLoading, inputText, chat, navigate, setError) => {
         withCredentials: true,
       }
     );
-    console.log(response.data)
+    console.log(response.data);
     chat.push({
       role: "model",
       parts: [{ text: "image-url: " + response.data }],

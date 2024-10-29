@@ -8,7 +8,7 @@ import origin from "../../config/origin.json";
 const imageGen = async (setLoading, inputText, chat, navigate, setError) => {
   setLoading(true);
   try {
-    const url = `${origin.default.origin}/chat/gen-image?_id=${getToken("_ID")}`;
+    const url = `${origin.default.origin}/chat/gen-image?token=${getToken("__A")}&_id=${getToken("_ID")}`;
     const response = await axios.post(
       url, { message: inputText },
       {

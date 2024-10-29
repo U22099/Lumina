@@ -5,7 +5,7 @@ import storage from "./localStorage.js";
 const imageGen = (setLoading, prompt, chat, navigate, setError) => {
   setLoading(true);
   try {
-    const data = `https://image.pollination.ai/prompt/${prompt}`;
+    const data = `https://image.pollinations.ai/prompt/${prompt}`;
 
     console.log(data);
 

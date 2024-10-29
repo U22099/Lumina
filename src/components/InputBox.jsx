@@ -58,7 +58,7 @@ const InputBox = ({loading, setLoading}) => {
               mimeType: file.split(",")[0].split(";")[0].split(":")[1]
             }
           },
-          { text: prompt }],
+          { text: prompt.trim() }],
         });
         const data = { 
           inlineData: {
@@ -68,14 +68,18 @@ const InputBox = ({loading, setLoading}) => {
         }
         await filePrompt(setLoading, prompt, data, chat, navigate, setError);
       } else {
-        chat.push({
-          role: "user",
-          parts: [{ text: prompt.split(":")[1].trim() }],
-        });
         if(prompt.split(":")[0] === "Imagine"){
+          chat.push({
+          role: "user",
+          parts: [{ text: "**Imagine** " + prompt.split(":")[1].trim() }],
+        });
             imageGen(setLoading, prompt.split(":")[1].trim(), chat);
             
           } else {
+            chat.push({
+          role: "user",
+          parts: [{ text: prompt.trim() }],
+        });
             await textPrompt(setLoading, prompt, chat, navigate, setError);
           }
       }

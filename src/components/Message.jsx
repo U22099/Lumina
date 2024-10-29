@@ -69,7 +69,7 @@ const ChatAi = ({ x, aiImage }) => {
             {x.parts[0].text.split("@")[0] === "image-url" ? <img
             src={x.parts[0].text.split("@")[1]}
             alt="AI Generated Image"
-            className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-center h-fit w-fit max-w-[80vw] md:max-w-[50vw] rounded-md object-cover"/> || <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold"><b className="text-gold font-bold">Error sorry try again😉... </b> </div> :
+            className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-center h-full w-full max-w-[80vw] md:max-w-[50vw] rounded-md object-contain"/> || <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold"><b className="text-gold font-bold">Error sorry try again😉... </b> </div> :
             <div className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-left w-fit max-w-[80vw] md:max-w-[50vw] text-left rounded-md comic-neue-bold text-black dark:text-white display text-wrap w-fit break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={{__html: md.render(x.parts[0].text)}}></div>}
 		</div>
   )

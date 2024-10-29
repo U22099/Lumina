@@ -4,12 +4,14 @@ import storage from "./localStorage.js";
 const imageGen = (setLoading, prompt, chat) => {
   setLoading(true);
   try {
-    const url = `https://image.pollinations.ai/prompt/${prompt}`;
-    const data = encodeURIComponent(url);
-    console.log(data);
+    const baseurl = "https://image.pollinations.ai/prompt/";
+    const data = encodeURIComponent(prompt);
+    const seed = Math.random() * 1000000;
+    const result = `image-url@${baseurl}${data}?width=600&height=320&nologo=true&enhance=true&seed=${seed}`
+    console.log(result);
     chat.push({
       role: "model",
-      parts: [{ text: "image-url:" + data }],
+      parts: [{ text: result }],
     });
     setLoading(false);
     indexedDB.saveData(chat, "ChatData");

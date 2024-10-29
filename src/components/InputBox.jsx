@@ -73,9 +73,9 @@ const InputBox = ({loading, setLoading}) => {
           parts: [{ text: prompt.split(":")[1].trim() }],
         });
         if(prompt.split(":")[0] === "Imagine"){
-            imageGen(setLoading, prompt.split(":")[1].trim(), chat, navigate. setError);
+            imageGen(setLoading, prompt.split(":")[1].trim(), chat);
           } else {
-            await textPrompt(setLoading, prompt, chat, navigate. setError);
+            await textPrompt(setLoading, prompt, chat, navigate, setError);
           }
       }
     }

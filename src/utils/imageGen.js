@@ -7,6 +7,7 @@ const imageGen = (setLoading, prompt, chat, navigate, setError) => {
   try {
     const url = `https://image.pollinations.ai/prompt/${prompt}`;
     const data = encodeURIComponent(url);
+    console.log(data);
     chat.push({
       role: "model",
       parts: [{ text: "image-url: " + data }],

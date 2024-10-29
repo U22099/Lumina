@@ -21,6 +21,14 @@ const imageGen = async (setLoading, prompt, chat) => {
     storage.setValue("chat_stored", true);
   } catch (err) {
     console.log(err);
+    chat.push({
+      role: "model",
+      parts: [{ text: "An error occured whike generating image" }],
+    });
+    
+    setLoading(false);
+    indexedDB.saveData(chat, "ChatData");
+    storage.setValue("chat_stored", true);
   }
 };
 

@@ -87,6 +87,10 @@ const ChatAi = ({ x, aiImage }) => {
     <div className="flex self-start gap-1 my-3" onDoubleClick={() => copy(x.parts[0].text)}>
             <img src={aiImage} alt="Lumina" className="rounded-full object-cover w-12 h-12 md:w-14 md:h-14"/>
             {x.parts[0].text.split("@")[0] === "image-url" ? <img
+            onLoad={() => {
+              const body = document.getElementById("body");
+              body.scrollTop = body.scrollHeight;
+            }}
             onClick={() => download(x.parts[0].text.split("@")[1])} 
             src={x.parts[0].text.split("@")[1]}
             alt="AI Generated Image"

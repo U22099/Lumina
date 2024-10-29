@@ -2,6 +2,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { IoMdSend, IoMdAttach } from "react-icons/io";
 import { FaMicrophone } from 'react-icons/fa6';
 import textPrompt from '../utils/textPrompt';
+import imageGen from '../utils/imageGen';
 import filePrompt from '../utils/filePrompt';
 import {useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
@@ -71,7 +72,11 @@ const InputBox = ({loading, setLoading}) => {
           role: "user",
           parts: [{ text: prompt }],
         });
-        await textPrompt(setLoading, prompt, chat, navigate. setError);
+        if(prompt.splice(0, 8) === "Imagine:"){
+            await imageGen(setLoading, prompt.split(":")[1].trim(), chat, navigate. setError);
+          } else {
+            await textPrompt(setLoading, prompt, chat, navigate. setError);
+          }
       }
     }
     setFile('');

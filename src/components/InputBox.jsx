@@ -68,9 +68,8 @@ const InputBox = ({loading, setLoading}) => {
         }
         await filePrompt(setLoading, prompt, data, chat, navigate, setError);
       } else {
-        if(prompt.split(":")[0] === "Imagine"){
-          const excludedPrompt = prompt.split(":")[1].trim();
-          console.log(prompt)
+        if(prompt.slice(0, 8) === "Imagine "){
+          const excludedPrompt = prompt.slice(8,).trim();
           chat.push({
             role: "user",
             parts: [{ text: `[Imagine]() ${excludedPrompt}` }],
@@ -140,11 +139,11 @@ const InputBox = ({loading, setLoading}) => {
         rows="1"
         type="text"
         id = "input"
-        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white ml-4 mr-4 h-5 max-h-20"
+        className="resize-none bg-none bg-transparent outline-none w-full placeholder:font-semibold comic-neue-bold text-black dark:text-white ml-4 mr-4 h-5 max-h-20 caret-[var(--secondary-color]"
         onKeyPress={autoResize}
         onKeyUp={autoResize}
         onChange={(e) => setPrompt(e.target.value)}
-        autoComplete="off"
+        autoComplete="on"
         placeholder="Message Lumina"
         tabIndex={0}
       />

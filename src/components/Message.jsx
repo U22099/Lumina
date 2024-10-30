@@ -48,8 +48,8 @@ const share = async (data) => {
   if (navigator.share) {
     await navigator.share({
       title: 'Share',
-      text: '', 
-      url: data
+      text: data, 
+      url: "https://u22099.github.io/Lumina"
     }); 
   } else {
     console.log('Web Share API not supported');
@@ -84,7 +84,7 @@ const ChatAi = ({ x, aiImage }) => {
     }
   });
   return (
-    <div className="flex self-start gap-1 my-3" onDoubleClick={() => copy(x.parts[0].text)}>
+    <div className="flex self-start gap-1 my-3" onDoubleClick={() => copy(x.parts[0].text)} onClick={() => share(x.parts[0].text)}>
             <img src={aiImage} alt="Lumina" className="rounded-full object-cover w-12 h-12 md:w-14 md:h-14"/>
             {x.parts[0].text.split("@")[0] === "image-url" ? <img
             
@@ -92,7 +92,7 @@ const ChatAi = ({ x, aiImage }) => {
               const body = document.getElementById("body");
               body.scrollTop = body.scrollHeight;
             }}
-            onClick={() => download(x.parts[0].text.split("@")[1])} 
+            onDoubleClick={() => download(x.parts[0].text.split("@")[1])} 
             src={x.parts[0].text.split("@")[1]}
             alt="AI Generated Image"
             className="bg-gray-100 dark:bg-[var(--accent-color)] p-2 align-center h-full w-full max-w-[80vw] md:max-w-[50vw] rounded-md object-contain"/> :

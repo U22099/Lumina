@@ -75,8 +75,8 @@ const InputBox = ({loading, setLoading}) => {
             parts: [{ text: `[Imagine]() ${excludedPrompt}` }],
           });
           
-          await imageGen(setLoading, excludedPrompt, chat);
-            
+          imageGen(setLoading, excludedPrompt, chat);
+          
           } else {
             chat.push({
               role: "user",

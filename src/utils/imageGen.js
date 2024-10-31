@@ -1,7 +1,7 @@
 import indexedDB from "./indexedDB";
 import storage from "./localStorage.js";
 
-const imageGen = async (setLoading, prompt, chat) => {
+const imageGen = (setLoading, prompt, chat) => {
   setLoading(true);
   try {
     const baseurl = "https://image.pollinations.ai/prompt/";

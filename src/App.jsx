@@ -8,7 +8,7 @@ import Message from "./components/Message";
 import InputBox from "./components/InputBox";
 import ErrorDialog from './utils/dialogs/ErrorDialog';
 import {useError} from './store.js';
-import runPwaPrompt from "./utils/pwaPrompt";
+import { runPwaPrompt } from "./utils/pwaPrompt";
 
 const App = () => {
   const navigate = useNavigate();

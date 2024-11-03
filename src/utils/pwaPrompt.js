@@ -1,5 +1,5 @@
 import AddToHomeScreen from "a2hs.js";
-export default runPwaPrompt = () => AddToHomeScreen({
+export const runPwaPrompt = () => AddToHomeScreen({
   brandName: "Lumina",
   fontFamily: "comic-neue-bold, Tahoma, sans-serif",
   backgroundColor: "white",

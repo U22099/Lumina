@@ -203,3 +203,9 @@
 .displayUser a{
   @apply comic-neue-bold text-[gold]
 }
+a2hs-container{
+  @apply rounded-md
+}
+.a2hs-container strong{
+  @apply dark:text-black
+}

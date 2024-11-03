@@ -203,9 +203,15 @@
 .displayUser a{
   @apply comic-neue-bold text-[gold]
 }
-a2hs-container{
+.a2hs__logo{
   @apply rounded-md
 }
-.a2hs-container strong{
-  @apply dark:text-black
+.a2hs__container{
+  @apply rounded-md dark:bg-black
+}
+.a2hs__text{
+  @apply dark:text-white
+}
+.a2hs__text strong{
+  @apply text-[var(--secondary-color)]
 }

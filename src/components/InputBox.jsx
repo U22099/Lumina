@@ -170,6 +170,7 @@ const InputBox = ({loading, setLoading}) => {
           <LuCode2 className="w-4 h-4 md:w-6 md:h-6" />
         </button>
         <button
+          disabled={loading}
           tabIndex={0}
           className="bg-[var(--secondary-color)] px-4 md:px-8 py-2 rounded-lg outline-0"
           onClick={async () => await postPrompt()}

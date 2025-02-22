@@ -1,6 +1,7 @@
 * {
   color: black;
 }
+
 .comic-neue-regular {
   font-family: "Comic Neue", serif;
   font-weight: 400;
@@ -12,19 +13,23 @@
   font-weight: 700;
   font-style: normal;
 }
+
 ::-webkit-scrollbar {
   width: 4px;
   border-radius: 20px;
   transition: all 1s linear;
 }
+
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
   background: var(--secondary-color);
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
   cursor: pointer;
 }
+
 :root {
   --secondary-color: #b871fd;
   --primary-color: #1c1c22;
@@ -32,26 +37,32 @@
   --accent-color-2: #3c3c46;
   --font: "helvetica" "calibri" arial;
 }
+
 .link {
   text-decoration: underline;
   margin-top: 20px;
   cursor: pointer;
 }
-#load{
+
+#load {
   display: flex;
   gap: 10px;
   margin: 10px auto;
 }
-#load :first-child{
+
+#load :first-child {
   animation-delay: 0s;
 }
-#load > :nth-child(2){
+
+#load> :nth-child(2) {
   animation-delay: .1s;
 }
-#load :last-child{
-  animation-delay:  .2s;
+
+#load :last-child {
+  animation-delay: .2s;
 }
-#load > div{
+
+#load>div {
   background-color: black;
   height: 8px;
   width: 8px;
@@ -60,14 +71,17 @@
   transition: .5s ease;
   animation: load .4s infinite linear alternate;
 }
-@media (prefers-color-scheme: dark){
+
+@media (prefers-color-scheme: dark) {
   * {
-	 color: white;
+    color: white;
   }
-  #load > div{
+  
+  #load>div {
     background-color: white;
   }
 }
+
 .dialog {
   position: fixed;
   top: 50%;
@@ -76,22 +90,27 @@
   font-family: Arial, Helvetica, sans-serif;
   z-index: 100;
 }
-.scrollbar{
+
+.scrollbar {
   scroll-behavior: smooth;
 }
+
 .scrollbar::-webkit-scrollbar {
   width: 3px;
   border-radius: 20px;
   transition: all 1s linear;
 }
+
 .scrollbar::-webkit-scrollbar-thumb {
   cursor: pointer;
   background: var(--secondary-color);
 }
+
 .scrollbar::-webkit-scrollbar-track {
   background: transparent;
   cursor: pointer;
 }
+
 .borderAnim {
   background: none;
   border-radius: 10px;
@@ -101,8 +120,9 @@
   transition: 1s;
   animation: hueRotate 3s linear infinite;
 }
+
 .mic:before,
-.mic:after{
+.mic:after {
   --pad: 0rem;
   content: '';
   display: block;
@@ -115,103 +135,135 @@
   right: var(--pad);
   bottom: var(--pad);
 }
-.mic:after{
+
+.mic:after {
   transition: .4s;
 }
-.mic:before{
+
+.mic:before {
   transition: .2s;
 }
+
 .mic:hover:before,
-.mic:active:before{
+.mic:active:before {
   --pad: 1rem;
 }
+
 .mic:hover:after,
-.mic:active:after{
+.mic:active:after {
   --pad: 2rem;
 }
-@keyframes load{
-  0%{
+
+@keyframes load {
+  0% {
     opacity: .5;
     transform: translateY(0px);
   }
-  100%{
+  
+  100% {
     opacity: 1;
     transform: translateY(-10px);
   }
 }
+
 @keyframes move {
   0% {
     transform: translateX(-40px);
   }
+  
   50% {
     transform: translateX(0px);
   }
+  
   100% {
     transform: translateX(40px);
   }
 }
+
 @keyframes hueRotate {
   0% {
     filter: hue-rotate(0deg);
   }
+  
   100% {
     filter: hue-rotate(360deg);
   }
 }
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
 
-.input {
-  @apply w-[90%] bg-transparent border-2 border-[var(--secondary-color)] dark:border-none dark:bg-[var(--primary-color)] p-[8px_15px] text-[1.1em] text-[#aaa] rounded-[10px] mx-auto outline-none text-black dark:text-white
-}
-.btn {
-  @apply flex justify-center items-center mt-[20px] w-[88%] mx-auto cursor-pointer text-center font-bold text-black bg-[var(--secondary-color)] border-none outline-none rounded-[10px] text-[1.3em]
-}
-.display *:not(code, code *){
-  @apply comic-neue-bold text-black dark:text-white
-}
-.display code {
-	@apply comic-neue-bold break-words  whitespace-pre-wrap
-}
-.display code *{
-	@apply comic-neue-bold break-words whitespace-pre-wrap
-}
-.display ol,
-.display ul{
-  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
-}
-.display a{
-  @apply comic-neue-bold text-[var(--secondary-color)] 
-}
-
-.displayUser *:not(code, code *){
-  @apply comic-neue-bold text-black dark:text-white
-}
-.displayUser code {
-	@apply comic-neue-bold break-words  whitespace-pre-wrap
-}
-.displayUser code *{
-	@apply comic-neue-bold break-words whitespace-pre-wrap
-}
-.displayUser ol,
-.displayUser ul{
-  @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
-}
-.displayUser a{
-  @apply comic-neue-bold text-[gold]
-}
-.a2hs__logo{
-  @apply rounded-md
-}
-.a2hs__container{
-  @apply rounded-md dark:bg-black !important
-}
-.a2hs__text{
-  @apply dark:text-white
-}
-.a2hs__text strong{
-  @apply text-[var(--secondary-color)]
+@layer base {
+  * {
+    m-0
+  }
+  
+  .input {
+    @apply w-[90%] bg-transparent border-2 border-[var(--secondary-color)] dark:border-none dark:bg-[var(--primary-color)] p-[8px_15px] text-[1.1em] text-[#aaa] rounded-[10px] mx-auto outline-none text-black dark:text-white
+  }
+  
+  .btn {
+    @apply flex justify-center items-center mt-[20px] w-[88%] mx-auto cursor-pointer text-center font-bold text-black bg-[var(--secondary-color)] border-none outline-none rounded-[10px] text-[1.3em]
+  }
+  
+  .display *:not(code, code *) {
+    @apply comic-neue-bold text-black dark:text-white
+  }
+  
+  .display code {
+    @apply comic-neue-bold break-words whitespace-pre-wrap
+  }
+  
+  .display code * {
+    @apply comic-neue-bold break-words whitespace-pre-wrap
+  }
+  
+  .display ol,
+  .display ul {
+    @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
+  }
+  
+  .display a {
+    @apply comic-neue-bold text-[var(--secondary-color)]
+  }
+  
+  .displayUser *:not(code, code *) {
+    @apply comic-neue-bold text-black dark:text-white
+  }
+  
+  .displayUser code {
+    @apply comic-neue-bold break-words whitespace-pre-wrap
+  }
+  
+  .displayUser code * {
+    @apply comic-neue-bold break-words whitespace-pre-wrap
+  }
+  
+  .displayUser ol,
+  .displayUser ul {
+    @apply comic-neue-bold text-black dark:text-white ml-4 list-disc
+  }
+  
+  .displayUser a {
+    @apply comic-neue-bold text-[gold]
+  }
+  
+  .a2hs__logo {
+    @apply rounded-md
+  }
+  
+  .a2hs__container {
+    @apply rounded-md dark:bg-black !important
+  }
+  
+  .a2hs__text {
+    @apply dark:text-white
+  }
+  
+  .a2hs__text strong {
+    @apply text-[var(--secondary-color)]
+  }
 }

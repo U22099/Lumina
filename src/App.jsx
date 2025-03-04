@@ -34,7 +34,7 @@ const App = () => {
       {voiceInput ? <Speech listen={listening} setListening={setListening} setSpeaking={setSpeaking} setProcessing={setProcessing} speaking={speaking} initSpeech={initSpeech} setInitSpeech={setInitSpeech}/> :<InputBox loading={loading} setLoading={setLoading}/>}
       
       {error ? <ErrorDialog setError={setError} msg="Please refresh the page and try again, if problem persists contact the developer at: "/> : ""}
-      <p className="font-extrabold w-full text-wrap text-xs p-2">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy AI abilities...<a className="text-[var(--secondary-color)] cursor-pointer underline" href="https://nex-aix.vercel.app">NexAI</a></p>
+      <p className="font-extrabold w-full text-wrap text-xs p-2">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy the service...<a className="text-[var(--secondary-color)] cursor-pointer underline" href="https://nex-aix.vercel.app">NexAI</a></p>
 
     </div>
   );

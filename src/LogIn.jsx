@@ -153,7 +153,7 @@ const LogIn = () => {
             Sign up for Lumina
           </Link>
         </div>
-        <p className="font-extrabold w-full text-wrap">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy AI abilities...<a className="text-[var(--secondary-color)] cursor-pointer underline" href="https://nex-aix.vercel.app">NexAI</a></p>
+        <p className="font-extrabold w-full text-wrap">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy the service...<a className="text-[var(--secondary-color)] cursor-pointer underline" href="https://nex-aix.vercel.app">NexAI</a></p>
       </footer>
     </div>
   );

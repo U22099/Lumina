@@ -52,7 +52,7 @@ const Register = () => {
         }
       } catch (err) {
         console.log(err);
-        const data = err?.response?.data || {message: "Network Error"};
+        const data = err?.response?.data || { message: "Network Error" };
         setText("Sign up");
         setError(data.message);
       }
@@ -61,9 +61,9 @@ const Register = () => {
     }
   };
   const handleImage = async (e) => {
-    const data = e.target.files[0]
-      ? await imagebase64(e.target.files[0])
-      : await imagebase64("image.JPG");
+    const data = e.target.files[0] ?
+      await imagebase64(e.target.files[0]) :
+      await imagebase64("image.JPG");
     setImage(data);
   };
   const imagebase64 = (file) => {
@@ -160,7 +160,7 @@ const Register = () => {
         >
           Sign in to Lumina
         </Link>
-        <p className="font-extrabold">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy AI abilities...<a className="text-primary cursor-pointer" href="https://nex-aix.vercel.app">NexAI</a></p>
+        <p className="font-extrabold w-full text-wrap">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy AI abilities...<a className="text-[var(--secondary-color)] cursor-pointer underline" href="https://nex-aix.vercel.app">NexAI</a></p>
       </footer>
     </div>
   );

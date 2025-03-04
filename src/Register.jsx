@@ -160,6 +160,7 @@ const Register = () => {
         >
           Sign in to Lumina
         </Link>
+        <p className="font-extrabold">Lumina is depreciated and would stop service on 2nd April, 2025. Please migrate to NexAI to continue to enjoy AI abilities...<a className="text-primary cursor-pointer" href="https://nex-aix.vercel.app">NexAI</a></p>
       </footer>
     </div>
   );
